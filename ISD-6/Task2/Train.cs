@@ -7,12 +7,11 @@ using System.Threading.Tasks;
 namespace Task2
 {
     public struct Train
-    {
+    {        
         public string destination;
         public int trainNumber;
-        public int departure;
-
-        public Train(string destination, int trainNumber, int departure)
+        public TimeTrain departure;     
+        public Train(string destination, int trainNumber, TimeTrain departure)
         {
             this.destination = destination;
             this.trainNumber = trainNumber;

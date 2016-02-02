@@ -12,6 +12,7 @@ namespace Task2
         {
             int n = 0;
             int k = 0;
+            string t = "";
             Train[] UkrainianTrain = new Train[8];
             for (int i = 0; i < UkrainianTrain.Length; i++)
             {
@@ -21,7 +22,30 @@ namespace Task2
                 Console.WriteLine("Insert number of the train");
                 UkrainianTrain[i].trainNumber = Helper.InputValidationInt();
                 Console.WriteLine("Insert time of departure");
-                UkrainianTrain[i].departure = Helper.InputValidationInt();
+                t = Console.ReadLine();
+                try
+                {
+                    if (t.Length == 3)
+                    {
+                        UkrainianTrain[i].departure.hour = int.Parse(t[0].ToString());
+                        UkrainianTrain[i].departure.minute = int.Parse(t[1].ToString()) * 10 + int.Parse(t[2].ToString());
+                    }
+                    else if (t.Length == 4)
+                    {
+                        UkrainianTrain[i].departure.hour = int.Parse(t[0].ToString()) * 10 + int.Parse(t[1].ToString());
+                        UkrainianTrain[i].departure.minute = int.Parse(t[2].ToString()) * 10 + int.Parse(t[3].ToString());
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid");
+                    }
+
+                }
+                catch
+                {
+                    Console.WriteLine("You insert invalid Time");
+                }
+
             }
             for (int i = 0; i < UkrainianTrain.Length - 1; i++)
             {
@@ -30,7 +54,7 @@ namespace Task2
                     if (UkrainianTrain[j].trainNumber < UkrainianTrain[i].trainNumber)
                     {
                         int temp = UkrainianTrain[i].trainNumber;
-                        int temp2 = UkrainianTrain[i].departure;
+                        TimeTrain temp2 = UkrainianTrain[i].departure;
                         string temp3 = UkrainianTrain[i].destination;
                         UkrainianTrain[i].trainNumber = UkrainianTrain[j].trainNumber;
                         UkrainianTrain[i].departure = UkrainianTrain[j].departure;
@@ -49,7 +73,8 @@ namespace Task2
                 if (UkrainianTrain[i].trainNumber == n)
                 {
                     k++;
-                    Console.WriteLine("\n{0}\n{1}\n{2}", UkrainianTrain[i].trainNumber, UkrainianTrain[i].destination, UkrainianTrain[i].departure);
+                    Console.WriteLine("\n{0}\n{1}\n{2}:{3}", UkrainianTrain[i].trainNumber, UkrainianTrain[i].destination,
+                        UkrainianTrain[i].departure.hour, UkrainianTrain[i].departure.minute);
                 }
             }
             if (k == 0) { Console.WriteLine("This train is not"); }
