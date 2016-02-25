@@ -1,0 +1,6 @@
+User	1		
+Archer	1	
+Marco	0
+Player111	0	
+Player112	0	
+Player99	2	
