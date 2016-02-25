@@ -12,9 +12,17 @@ namespace fight_club
 {
     public partial class SecondPlayerLoadUserControl : BaseUserControl
     {
+        Player player1;
+        Player player2;
         public SecondPlayerLoadUserControl()
         {
             InitializeComponent();
+        }
+
+        public SecondPlayerLoadUserControl(object par)
+        {
+            InitializeComponent();
+            player1 = (Player)par;
         }
 
         private void LoginSecondPlayerButton_Click(object sender, EventArgs e)
@@ -24,12 +32,9 @@ namespace fight_club
             {
                 if (MainForm.playerRepository.IsExist(PlaerNameTextBox.Text))
                 {
-                    if (PlaerNameTextBox.Text != MainForm.FirstPlayer.Name)
+                    if (PlaerNameTextBox.Text != player1.Name)
                     {
-                        // подгрузка вторго игрока в бой , проверка если != первый игрок
-                        MainForm.SecondPlayer = MainForm.playerRepository.Get(PlaerNameTextBox.Text);
-                        // new Game
-                        SwitchScene(Scene.Combat); 
+                        SwitchScene(Scene.Combat , player1 , MainForm.playerRepository.Get(PlaerNameTextBox.Text)); 
                     }
                     else
                     {

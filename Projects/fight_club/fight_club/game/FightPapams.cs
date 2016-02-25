@@ -10,13 +10,11 @@ namespace fight_club
     {
         public int straight;
         public int agility;
-        //public int stamina;
 
         public FightPapams(int straight , int agility)
         {
             this.straight = straight;
             this.agility = agility;
-            //this.stamina = stamina;
         }
     }
 }

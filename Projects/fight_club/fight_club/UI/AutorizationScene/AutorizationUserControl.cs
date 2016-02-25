@@ -23,9 +23,7 @@ namespace fight_club
             {
                 if (MainForm.playerRepository.IsExist(PlaerNameTextBox.Text))
                 {
-                    // подгрузка игрока в меню
-                    MainForm.FirstPlayer = MainForm.playerRepository.Get(PlaerNameTextBox.Text);
-                    SwitchScene(Scene.Menu);
+                    SwitchScene(Scene.Menu , MainForm.playerRepository.Get(PlaerNameTextBox.Text));
                 }
                 else
                 {

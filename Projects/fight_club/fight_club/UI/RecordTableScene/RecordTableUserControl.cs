@@ -12,11 +12,18 @@ namespace fight_club
 {
     public partial class RecordTableUserControl : BaseUserControl
     {
+        Player player1;
         public RecordTableUserControl()
         {
             InitializeComponent();
-            //RecordTable.DataSource = MainForm.playerRepository.GetAll();
             RecordTable.DataSource = MainForm.playerRepository.GetAllRecords();
+        }
+
+        public RecordTableUserControl(object par)
+        {
+            InitializeComponent();
+            RecordTable.DataSource = MainForm.playerRepository.GetAllRecords();
+            player1 = (Player)par;
         }
 
         private void RecordTableUserControl_Load(object sender, EventArgs e)
@@ -26,7 +33,12 @@ namespace fight_club
 
         private void ToMenu_Click(object sender, EventArgs e)
         {
-            SwitchScene(Scene.Menu);
+            SwitchScene(Scene.Menu , player1);
+        }
+
+        private void RecordTable_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

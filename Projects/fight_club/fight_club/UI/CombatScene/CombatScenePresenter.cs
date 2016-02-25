@@ -12,19 +12,14 @@ namespace fight_club
         CombatUserControl view = null;
         public GameControl game; // = new GameControl();
         public GameType gameType;
+        public AbstractPlayer player1;
+        AbstractPlayer player2;
 
-        public CombatScenePresenter(CombatUserControl view)
+        public CombatScenePresenter(CombatUserControl view , AbstractPlayer player1 , AbstractPlayer player2)
         {
-            game = new GameControl();
+            game = new GameControl(player1 , player2);
             this.view = view;
-            if (MainForm.SecondPlayer != null)
-            {
-                game.NewGame(MainForm.FirstPlayer, MainForm.SecondPlayer);
-            }
-            else
-            {
-                game.NewGame(MainForm.FirstPlayer);
-            }
+
             if (game.player2 is NPC)
             {
                 gameType = GameType.PvE;
@@ -34,18 +29,17 @@ namespace fight_club
                 gameType = GameType.PvP;
             }
             DrawPlayersInfo();
-            game.GameOver += GameOverHandler;
         }
 
         public void NewGame()
         {
             if (MainForm.SecondPlayer != null)
             {
-                game.NewGame(MainForm.FirstPlayer, MainForm.SecondPlayer);
+                game.NewGame(player1, player2);
             }
             else
             {
-                game.NewGame(MainForm.FirstPlayer);
+                game.NewGame(player1);
             }
         }
 
@@ -58,15 +52,6 @@ namespace fight_club
         {
             view.DrawTextLog(game.Turn((BodyPart)player1punch, (BodyPart)player1block, (BodyPart)player2punch, (BodyPart)player2block));
             DrawPlayersInfo();
-        }
-
-        public void GameOverHandler(object sender, AbstractPlayer e)
-        {
-            string[] str = { "", "" };
-            str[0] = (sender as AbstractPlayer).Name + " die";
-            str[1] = "Game Over";
-            view.DrawTextLog(str);
-            //game = new GameControl();
         }
     }
 }

@@ -9,20 +9,19 @@ namespace fight_club
     [Serializable]
     public abstract class AbstractPlayer : IPlayer
     {
-        protected int level;          //
-        protected int hp;             //
-        protected string name;        //
-        protected int straight;       //   they are private and i cant serialize them!!!
-        protected int agility;        //
-        protected int stamina;        //
-        protected int exp;            //
+        protected int level;          
+        protected int hp;             
+        protected string name;        
+        protected int straight;       
+        protected int agility;        
+        protected int stamina;        
+        protected int exp;            
         public BodyPart blockedPart;
 
         public delegate void MyEvent(object sender, BodyPart e);
 
         public event MyEvent Block;
         public event MyEvent Wound;
-        public event MyEvent Death;
 
         public int Level
         {
@@ -92,16 +91,6 @@ namespace fight_club
             exp = 0;
         }
 
-        //public AbstractPlayer(int level , string name , int straight , int agility , int stamina)
-        //{
-        //    this.level = level;
-        //    this.name = name;
-        //    hp = 100 + ((stamina - 1) * 5);
-        //    this.straight = straight;
-        //    this.agility = agility;
-        //    this.stamina = stamina; 
-        //}
-
         public abstract void SetBlock(BodyPart part);
         public int GetHit(BodyPart part , FightPapams par)
         {
@@ -125,11 +114,6 @@ namespace fight_club
                     damage = 0;
                     Block.Invoke(this , blockedPart);
                 }
-            }
-            if (hp <= 0)
-            {
-                hp = 0;
-                Death.Invoke(this , BodyPart.Head);
             }
             return damage;
         }

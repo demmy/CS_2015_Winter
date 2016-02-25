@@ -12,7 +12,7 @@ namespace fight_club
 {
     public partial class PlayerCreationUserControl : BaseUserControl
     {
-        int allstats = 8;
+        int allstats = 8;    // продумать перенос в файл конфига
         public int freestats = 5;
         int oldstr = 1;
         int oldstm = 1;
@@ -41,9 +41,7 @@ namespace fight_club
                     {
                         MainForm.playerRepository.Add(new Player(0, NewPlayerTextBox.Text, str, agi, stm));
                         MainForm.playerRepository.Save();
-                        MainForm.FirstPlayer = MainForm.playerRepository.Get(NewPlayerTextBox.Text);
-                        // создание игрока и перенос его в меню
-                        SwitchScene(Scene.Menu);
+                        SwitchScene(Scene.Menu , MainForm.playerRepository.Get(NewPlayerTextBox.Text));
                     }
                     else
                     {

@@ -24,7 +24,7 @@ namespace fight_club
                     newPlayersList = (List<Player>)formatter.Deserialize(stream);
                 }
             }
-            else
+            else  // если файла нет, возвращаем лист с одним элементом, а файл потом создадим при создании
             {
                 newPlayersList.Add(new Player(0, "PublicPlayer", 1, 1, 1));
                 Save(newPlayersList);

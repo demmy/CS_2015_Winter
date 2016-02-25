@@ -12,11 +12,17 @@ namespace fight_club
 {
     public partial class MenuUserControl : BaseUserControl
     {
-        //Player MainPlayer;
+        Player MainPlayer;
         public MenuUserControl()
         {
             InitializeComponent();
-            DrawPlayerInfo(MainForm.FirstPlayer);  // delete or change
+        }
+
+        public MenuUserControl(object param)
+        {
+            InitializeComponent();
+            MainPlayer = (Player)param;
+            DrawPlayerInfo(MainPlayer);
         }
 
         void DrawPlayerInfo(Player player)
@@ -27,19 +33,17 @@ namespace fight_club
 
         private void PveEnterButton_Click(object sender, EventArgs e)
         {
-            // new Game
-            SwitchScene(Scene.Combat);
+            SwitchScene(Scene.Combat , MainPlayer);
         }
 
         private void PvpEnterButton_Click(object sender, EventArgs e)
         {
-            SwitchScene(Scene.SecondPlayerLoad);
-            //SwitchScene(Scene.Combat);
+            SwitchScene(Scene.SecondPlayerLoad , MainPlayer);
         }
 
         private void RecordTableButton_Click(object sender, EventArgs e)
         {
-            SwitchScene(Scene.RecordTable);
+            SwitchScene(Scene.RecordTable , MainPlayer);
         }
 
         private void ChangePlayerButton_Click(object sender, EventArgs e)
@@ -55,7 +59,7 @@ namespace fight_club
 
         private void MenuUserControl_Load(object sender, EventArgs e)
         {
-            DrawPlayerInfo(MainForm.FirstPlayer);
+            DrawPlayerInfo(MainPlayer);
         }
     }
 }

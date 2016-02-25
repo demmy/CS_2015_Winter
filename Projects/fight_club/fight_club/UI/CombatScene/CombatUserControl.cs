@@ -12,16 +12,31 @@ namespace fight_club
 {
     public partial class CombatUserControl : BaseUserControl
     {
-        public CombatScenePresenter presenter = null;  // продумать доступ
+        public CombatScenePresenter presenter = null; 
         public BodyPart firstPlPunchChoosenPart;
         public BodyPart firstPlBlockChoosenPart;
         public BodyPart secondPlPunchChoosenPart;
         public BodyPart secondPlBlockChoosenPart;
+        Player player1;
 
         public CombatUserControl()
         {
             InitializeComponent();
-            presenter = new CombatScenePresenter(this);
+            //presenter = new CombatScenePresenter(this);
+        }
+
+        public CombatUserControl(object par1)
+        {
+            InitializeComponent();
+            this.player1 = (Player)par1;
+            presenter = new CombatScenePresenter(this , (AbstractPlayer)par1 , null);
+        }
+
+        public CombatUserControl(object par1 , object par2)
+        {
+            InitializeComponent();
+            this.player1 = (Player)par1;
+            presenter = new CombatScenePresenter(this , (AbstractPlayer)par1 , (AbstractPlayer)par2);
         }
 
         public void DrawPlayersInfo(string player1name, int player1hp, int player1maxhp, string player2name, int player2hp, int player2maxhp)
@@ -58,12 +73,11 @@ namespace fight_club
             {
                 textlog.AppendText(str[2] + Environment.NewLine);
                 MessageBox.Show(str[2]);
-                //MainForm.playerRepository.Save();
                 if (presenter.gameType == GameType.PvP)
                 {
                     MainForm.SecondPlayer = null;
                 }
-                SwitchScene(Scene.Menu);
+                SwitchScene(Scene.Menu , MainForm.playerRepository.Get(player1.Name));  // kostil
             }
             textlog.AppendText("----------------------------------------------------------------" + "\n");
         }

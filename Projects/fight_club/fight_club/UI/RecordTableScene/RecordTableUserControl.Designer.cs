@@ -60,10 +60,11 @@
             // RecordTable
             // 
             this.RecordTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.RecordTable.Location = new System.Drawing.Point(26, 124);
+            this.RecordTable.Location = new System.Drawing.Point(26, 100);
             this.RecordTable.Name = "RecordTable";
             this.RecordTable.Size = new System.Drawing.Size(835, 262);
             this.RecordTable.TabIndex = 4;
+            this.RecordTable.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.RecordTable_CellContentClick);
             // 
             // playerRepositoryBindingSource
             // 
