@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GameCore
 {
-    static class Setup
+    static class GameSetup
     {
         public const int BaseHp = 100;
         public const int MinHit = 5;

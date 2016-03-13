@@ -33,6 +33,7 @@ namespace Combats
             {
                 playerHpLbl.Text = value.ToString();
                 playerHpProgress.Value = value;
+                playerHpProgress.ForeColor = Color.Red;
             }
         }
         public int PlayerStrengthProgress
