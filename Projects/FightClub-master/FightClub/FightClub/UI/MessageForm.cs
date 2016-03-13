@@ -1,14 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace FightClub
+namespace FightClub.UI
 {
     public partial class MessageForm : Form
     {
@@ -19,15 +12,15 @@ namespace FightClub
         }
         private void ShowMsg()
         {
-            if (StaticValues.bot_count_win > StaticValues.player_count_win)
+            if (PlayerOptions.BotCountWin > PlayerOptions.PlayerCountWin)
             {
                 heroBox.Image = FightClub.Properties.Resources.bot;
-                labelName.Text = StaticValues.BotName + " " + "win!";
+                labelName.Text = PlayerOptions.BotName + " " + "win!";
             }
             else
             {
                 heroBox.Image = FightClub.Properties.Resources.fight;
-                labelName.Text = StaticValues.PlayerName +" "+ "win!";
+                labelName.Text = PlayerOptions.PlayerName +" "+ "win!";
             }
         }
         private void buttonClose_Click(object sender, EventArgs e)

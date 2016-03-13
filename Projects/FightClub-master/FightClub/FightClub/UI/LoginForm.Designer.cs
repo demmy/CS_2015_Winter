@@ -1,4 +1,4 @@
-﻿namespace FightClub
+﻿namespace FightClub.UI
 {
     partial class LoginForm
     {
@@ -104,10 +104,6 @@
             this.classHeroLabel.Size = new System.Drawing.Size(67, 13);
             this.classHeroLabel.TabIndex = 6;
             this.classHeroLabel.Text = "Select class:";
-            // 
-            // iLvlBindingSource
-            // 
-           // this.iLvlBindingSource.DataSource = typeof(FightClub.ILvl);
             // 
             // LoginForm
             // 

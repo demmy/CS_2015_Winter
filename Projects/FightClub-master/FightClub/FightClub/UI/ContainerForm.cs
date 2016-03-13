@@ -1,14 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace FightClub
+namespace FightClub.UI
 {
     public partial class ContainerForm : Form
     {
@@ -19,9 +12,8 @@ namespace FightClub
 
         private void newGameToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            LoginForm mainf = new LoginForm();
-            mainf.MdiParent = this;
-            mainf.Show();
+            LoginForm loginForm = new LoginForm {MdiParent = this};
+            loginForm.Show();
         }
 
         private void cascadeToolStripMenuItem_Click(object sender, EventArgs e)
@@ -31,15 +23,13 @@ namespace FightClub
 
         private void informationToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            InformationForm informationForm = new InformationForm();
-            informationForm.MdiParent = this;
+            InformationForm informationForm = new InformationForm {MdiParent = this};
             informationForm.Show();
         }
 
         private void recordsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SaveForm saving = new SaveForm();
-            saving.MdiParent = this;
+            SaveForm saving = new SaveForm {MdiParent = this};
             saving.Show();
         }
 

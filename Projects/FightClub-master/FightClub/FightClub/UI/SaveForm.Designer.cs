@@ -1,4 +1,4 @@
-﻿namespace FightClub
+﻿namespace FightClub.UI
 {
     partial class SaveForm
     {
@@ -55,7 +55,7 @@
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(74, 23);
             this.buttonSave.TabIndex = 2;
-            this.buttonSave.Text = "Save Player";
+            this.buttonSave.Text = "Save PlayerModel";
             this.buttonSave.UseVisualStyleBackColor = true;
             this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 

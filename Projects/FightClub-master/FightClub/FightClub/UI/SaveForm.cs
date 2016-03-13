@@ -1,22 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace FightClub
+namespace FightClub.UI
 {
     public partial class SaveForm : Form
     {
-        List<Save> collection = null;
-        string fullpath = "";
+        List<Save> _collection = null;
+        string _fullpath = "";
         public SaveForm()
         {
             InitializeComponent();
@@ -24,16 +19,16 @@ namespace FightClub
         private void UpdateGrid()
         {
             dataRecords.DataSource = null;
-            dataRecords.DataSource = collection;
+            dataRecords.DataSource = _collection;
         }
 
         private List<Save> Open() 
         {
             var users = new List<Save>();
 
-            if (File.Exists(fullpath))
+            if (File.Exists(_fullpath))
             {
-                foreach (var line in File.ReadAllLines(fullpath))
+                foreach (var line in File.ReadAllLines(_fullpath))
                 {
                     try
                     {
@@ -101,8 +96,8 @@ namespace FightClub
         static void Serialize()
         {
             List<Save> list = new List<Save>();
-            list.Add(new Save() { Name = StaticValues.PlayerName, Win = StaticValues.player_count_win });
-            list.Add(new Save() { Name = StaticValues.BotName, Win = StaticValues.bot_count_win });
+            list.Add(new Save() { Name = PlayerOptions.PlayerName, Win = PlayerOptions.PlayerCountWin });
+            list.Add(new Save() { Name = PlayerOptions.BotName, Win = PlayerOptions.BotCountWin });
             FileStream fs = new FileStream("DataFile.dat", FileMode.Create);
 
             BinaryFormatter formatter = new BinaryFormatter();
@@ -154,18 +149,18 @@ namespace FightClub
             string path = Application.StartupPath;
             string filepath = path.Replace(@"\bin\Debug", "");
             string folder = @"\Resources\records.txt";
-            fullpath = filepath + folder;
+            _fullpath = filepath + folder;
 
-            collection = new List<Save> 
+            _collection = new List<Save> 
             {
-                new Save(){ Name = StaticValues.PlayerName, Win = StaticValues.player_count_win},
-                new Save(){  Name = StaticValues.BotName, Win = StaticValues.bot_count_win}
+                new Save(){ Name = PlayerOptions.PlayerName, Win = PlayerOptions.PlayerCountWin},
+                new Save(){  Name = PlayerOptions.BotName, Win = PlayerOptions.BotCountWin}
             };
             UpdateGrid();
         }
         private void buttonSave_Click(object sender, EventArgs e)
         {
-            SaveMethod(fullpath);
+            SaveMethod(_fullpath);
         }
         private void pveButton_Click(object sender, EventArgs e)
         {
@@ -174,7 +169,7 @@ namespace FightClub
         }
         private void buttonUpdate_Click(object sender, EventArgs e)
         {
-            collection = Open();
+            _collection = Open();
             UpdateGrid();
         }
     }

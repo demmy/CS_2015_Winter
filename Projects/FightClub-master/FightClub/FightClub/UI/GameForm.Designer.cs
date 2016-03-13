@@ -1,4 +1,4 @@
-﻿namespace FightClub
+﻿namespace FightClub.UI
 {
     partial class GameForm
     {

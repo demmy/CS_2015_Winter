@@ -1,163 +1,224 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+using FightClub.Game.Interfaces;
+using FightClub.UI;
+using FightClub.UI.Interfaces;
 
-namespace FightClub
+namespace FightClub.Game
 {
-   public enum Level { Easy, Medium }
-   public enum Hero { Striker, Defender, Usual }
-   class Presenter 
-   {
-       IGame view;
-       IPlayer player;
-       IPlayer npc;
-       GameController controller;
-       public Presenter(IGame view, IPlayer player, IPlayer npc)
-       {
-           this.player = player;
-           this.npc = npc;
-           this.view = view;
-           controller = new GameController(player, npc);
+    public enum Level { Easy, Medium }
+    public enum Style { Striker, Defender, Usual }
 
-           player.Name = view.PlayerName;
-           view.PlayerHp = player.HP;
-           npc.Name = "Bot";
-           view.BotName = npc.Name;
-           view.BotHp = npc.HP;
+    internal class Presenter
+    {
+        readonly IGame _view;
+        readonly IPlayerModel _playerModel;
+        readonly IPlayerModel _npc;
+        readonly GameController _controller;
 
-           player.Block += player_Block;
-           player.Death += player_Death;
-           player.Wound += player_Wound;
 
-           npc.Block += npc_Block;
-           npc.Death += npc_Death;
-           npc.Wound += npc_Wound;
-           view.Battle += view_Battle;
-       }
+        public Presenter(IGame view)
+        {
+            this._playerModel = new Player();
+            this._npc = new Npc();
+            this._view = view;
+            _controller = new GameController(_playerModel, _npc);
+            Settings(_view);
+        }
+        public Presenter(IGame view,IPlayerModel player)
+        {
+            this._playerModel = player;
+            this._npc = new Npc();
+            this._view = view;
+            Settings(_view);
+        }
+        private void Settings(IGame view)
+        {
+            _playerModel.Name = view.PlayerName;
+            view.PlayerHp = _playerModel.Hp;
+            _npc.Name = "Bot";
+            view.BotName = _npc.Name;
+            view.BotHp = _npc.Hp;
 
-       public void Difficulty()
-       {
-           switch (view.difficulty)
-           {
-               case Level.Easy:
-                  
-                   switch(view.hero)
-                   {
-                       case Hero.Usual:
-                           ChangeDmg();
-                           break;
-                       case Hero.Striker:
-                           Striker();
-                           break;
-                       case Hero.Defender:
-                           Defender();
-                           break;
-                   }
-                   break;
-               case Level.Medium:
-                   player.Damage = 10;
-                   switch (view.hero)
-                   {
-                       case Hero.Usual:
-                           ChangeDmg();
-                           break;
-                       case Hero.Striker:
-                           Striker();
-                           break;
-                       case Hero.Defender:
-                           Defender();
-                           break;
-                   }
-                   break;
-           }
-       }
+            _playerModel.Block += PlayerModelBlock;
+            _playerModel.Death += PlayerModelDeath;
+            _playerModel.Wound += PlayerModelWound;
 
-       private void Defender()
-       {
-           player.BonusHp();
-           player.ImproveDmg();
-           ChangeDmg();
-       }
+            _npc.Block += npc_Block;
+            _npc.Death += npc_Death;
+            _npc.Wound += npc_Wound;
+            view.Battle += view_Battle;
+        }
+        public void Difficulty()
+        {
+            switch (_view.Difficulty)
+            {
+                case Level.Easy:
 
-       private void Striker()
-       {
-           npc.ImproveDmg();
-           npc.BonusHp();
-           ChangeDmg();
-       }
+                    switch (_view.Kind)
+                    {
+                        case Style.Usual:
+                            ChangeDmg();
+                            break;
+                        case Style.Striker:
+                            Striker();
+                            break;
+                        case Style.Defender:
+                            Defender();
+                            break;
+                    }
+                    break;
+                case Level.Medium:
+                    _playerModel.Damage = 10;
+                    switch (_view.Kind)
+                    {
+                        case Style.Usual:
+                            ChangeDmg();
+                            break;
+                        case Style.Striker:
+                            Striker();
+                            break;
+                        case Style.Defender:
+                            Defender();
+                            break;
+                    }
+                    break;
+            }
+        }
 
-       private void ChangeDmg()
-       {
-           view.BotDamage = npc.Damage.ToString();
-           view.PlayerDamage = player.Damage.ToString();
-       }
+        private void Defender()
+        {
+            _playerModel.BonusHp();
+            _playerModel.ImproveDmg();
+            ChangeDmg();
+        }
 
-       void view_Battle(object sender, GameEventArgs e)
-       {
-           controller.Battle();
-       }
+        private void Striker()
+        {
+            _npc.ImproveDmg();
+            _npc.BonusHp();
+            ChangeDmg();
+        }
 
-       void npc_Wound(object sender, GameEventArgs e)
-       {
-           if (sender is NPC)
-           {
-               NPC bot = (NPC)sender;
-               npc.log = String.Format("{0} {1} {2}: left Bot HP:{3}", player.Name, e.msg, bot.Name ,bot.HP);
-           }
-       }
+        private void ChangeDmg()
+        {
+            _view.BotDamage = _npc.Damage.ToString();
+            _view.PlayerDamage = _playerModel.Damage.ToString();
+        }
+        public int BotRecovery(bool h)
+        {
+            int result = _npc.Recovery(h);
+            return result;
+        }
+        public int PlayerRecovery(bool h)
+        {
+            int result = _playerModel.Recovery(h);
+            return result;
+        }
+        public string PlayerName()
+        {
+            return _playerModel.Name;
+        }
 
-       void npc_Death(object sender, GameEventArgs e)
-       {
-           if (sender is NPC)
-           {
-               StaticValues.player_count_win++;
-               NPC bot = (NPC)sender;
-               npc.log = String.Format("{0} {1}: left Bot HP:{2}",bot.Name, e.msg, bot.HP);
-               MessageForm playerForm = new MessageForm();
-               playerForm.Show();
-           }
-       }
+        public string PlayerLog
+        {
+            get { return _playerModel.Log; }
+        }
 
-       void npc_Block(object sender, GameEventArgs e)
-       {
-           if (sender is NPC)
-           {
-               NPC bot = (NPC)sender;
-               npc.log = string.Format("{0} {1}: left Bot HP:{2}", bot.Name, e.msg, bot.HP);
-           }
-       }
+        public string BotLog
+        {
+            get { return _npc.Log; }
+        }
+        public int PlayerHit
+        {
+            get { return _playerModel.Hit; }
+            set { _playerModel.Hit = value; }
+        }
+        public void PlayerSetBlock(Part part)
+        {
+            _playerModel.SetBlock(part);
+        }
+        public int PlayerSet
+        {
+            get { return _playerModel.Set; }
+        }
+        public int PlayerHp()
+        {
+            return _playerModel.Hp;
+        }
+        public int Damage()
+        {
+            return _playerModel.Damage;
+        }
+        public string BotName()
+        {
+            return _npc.Name;
+        }
+        public int BotHp()
+        {
+            return _npc.Hp;
+        }
 
-       void player_Wound(object sender, GameEventArgs e)
-       {
-           if (sender is Player)
-           {
-               Player user = (Player)sender;
-               player.log = String.Format("{0} {1} {2}: left {3} HP:{4}", npc.Name, e.msg, player.Name, player.Name, player.HP);
-           }
-       }
+        public int BotHit()
+        {
+            return _npc.Hit;
+        }
 
-       void player_Death(object sender, GameEventArgs e)
-       {
-           if (sender is Player)
-           {
-               StaticValues.bot_count_win++;
-               Player user = (Player)sender;
-               player.log = String.Format("{0} {1}: left {2} HP:{3}", player.Name, e.msg, player.Name, player.HP);
-               MessageForm endForm = new MessageForm();
-               endForm.Show();
-           }
-       }
+        public int BotSet()
+        {
+            return _npc.Set;
+        }
+        void view_Battle(object sender, GameEventArgs e)
+        {
+            _controller.Battle();
+        }
 
-       void player_Block(object sender, GameEventArgs e)
-       {
-           if (sender is Player)
-           {
-               Player user = (Player)sender;
-               player.log = String.Format("{0} {1}: left {2} HP:{3}", player.Name, e.msg, player.Name, player.HP);
-           }
-       }
-   }
+        void npc_Wound(object sender, GameEventArgs e)
+        {
+            if (!(sender is Npc)) return;
+            var bot = (Npc)sender;
+            _npc.Log = string.Format("{0} {1} {2}: left Bot HP:{3}", _playerModel.Name, e.msg, bot.Name, bot.Hp);
+        }
+
+        void npc_Death(object sender, GameEventArgs e)
+        {
+            if (!(sender is Npc)) return;
+            PlayerOptions.PlayerCountWin++;
+            var bot = (Npc)sender;
+            _npc.Log = string.Format("{0} {1}: left Bot HP:{2}", bot.Name, e.msg, bot.Hp);
+            var playerForm = new MessageForm();
+            playerForm.Show();
+        }
+
+        void npc_Block(object sender, GameEventArgs e)
+        {
+            if (!(sender is Npc)) return;
+            var bot = (Npc)sender;
+            _npc.Log = string.Format("{0} {1}: left Bot HP:{2}", bot.Name, e.msg, bot.Hp);
+        }
+
+        void PlayerModelWound(object sender, GameEventArgs e)
+        {
+            if (!(sender is Player)) return;
+            var user = (Player)sender;
+            _playerModel.Log = string.Format("{0} {1} {2}: left {3} HP:{4}", _npc.Name, e.msg, _playerModel.Name, _playerModel.Name, _playerModel.Hp);
+        }
+
+        void PlayerModelDeath(object sender, GameEventArgs e)
+        {
+            if (!(sender is Player)) return;
+            PlayerOptions.BotCountWin++;
+            var user = (Player)sender;
+            _playerModel.Log = String.Format("{0} {1}: left {2} HP:{3}", _playerModel.Name, e.msg, _playerModel.Name, _playerModel.Hp);
+            var endForm = new MessageForm();
+            endForm.Show();
+        }
+
+        void PlayerModelBlock(object sender, GameEventArgs e)
+        {
+            if (!(sender is Player)) return;
+            var user = (Player) sender;
+            _playerModel.Log = string.Format("{0} {1}: left {2} HP:{3}", _playerModel.Name, e.msg, _playerModel.Name, _playerModel.Hp);
+        }
+    }
 }
+

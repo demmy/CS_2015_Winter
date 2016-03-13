@@ -1,25 +1,21 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using FightClub.Game;
+using FightClub.Game.Interfaces;
+using FightClub.UI.Interfaces;
 
-namespace FightClub
+namespace FightClub.UI
 {
-    public partial class GameForm : Form,IGame
+    public partial class GameForm : Form, IGame
     {
-        const string fullpath = "Log.txt";
-        StringBuilder fighterAction = new StringBuilder();
-        Presenter presenter;
-        IPlayer player = new Player();
-        IPlayer npc = new NPC();
-        public Level difficulty { get; set; }
-        public Hero hero { get; set; }
+        const string Fullpath = "Log.txt";
+        readonly StringBuilder _fighterAction = new StringBuilder();
+        Presenter _presenter;
+        public Level Difficulty { get; set; }
+        public Style Kind { get; set; }
         public string PlayerName
         {
             get { return userNameLabel.Text; }
@@ -72,17 +68,17 @@ namespace FightClub
 
         private void ShowActions()
         {
-            playerHitLabel.Text = ((Parts)player.Hit).ToString();
-            playerBlockLabel.Text = ((Parts)player.Set).ToString();
-            botBlockLabel.Text = ((Parts)npc.Set).ToString();
-            botHitLabel.Text = ((Parts)npc.Hit).ToString();
-            fighterAction.AppendLine(string.Format("Bot Attack: {0} | Player Blocked: {1}", botHitLabel.Text, playerBlockLabel.Text));
-            fighterAction.AppendLine(string.Format("Player Attack: {0} | Bot Blocked: {1}", playerHitLabel.Text, botBlockLabel.Text));
+            playerHitLabel.Text = ((Part)_presenter.PlayerHit).ToString();
+            playerBlockLabel.Text = ((Part)_presenter.PlayerSet).ToString();
+            botBlockLabel.Text = ((Part)_presenter.BotSet()).ToString();
+            botHitLabel.Text = ((Part)_presenter.BotHit()).ToString();
+            _fighterAction.AppendLine(string.Format("Bot Attack: {0} | PlayerModel Blocked: {1}", botHitLabel.Text, playerBlockLabel.Text));
+            _fighterAction.AppendLine(string.Format("PlayerModel Attack: {0} | Bot Blocked: {1}", playerHitLabel.Text, botBlockLabel.Text));
         }
 
         private void CheckHp()
         {
-            if (player.HP == 0 || npc.HP == 0)
+            if (_presenter.PlayerHp() == 0 || _presenter.BotHp() == 0)
             {
                 UncheckedRadiobuttons(AttackBox);
                 UncheckedRadiobuttons(DefenseBox);
@@ -114,34 +110,34 @@ namespace FightClub
                 }
             }
         }
-        private void UpdateHP()
+        private void UpdateHp()
         {
-            userHpLabel.Text = player.HP.ToString();
-            botHpLabel.Text = npc.HP.ToString();
-            userProgressBar.Value = player.HP;
-            botProgressBar.Value = npc.HP;
+            userHpLabel.Text = _presenter.PlayerHp().ToString();
+            botHpLabel.Text = _presenter.BotHp().ToString();
+            userProgressBar.Value = _presenter.PlayerHp();
+            botProgressBar.Value = _presenter.BotHp();
         }
         private void UpdateLog()
         {
-            logBox.Items.Add(player.log);
-            logBox.Items.Add(npc.log);
+            logBox.Items.Add(_presenter.PlayerLog);
+            logBox.Items.Add(_presenter.BotLog);
         }
         private void ExchangePb()
         {
-            if (hero == Hero.Striker)
+            if (Kind == Style.Striker)
             {
-                userProgressBar.Maximum = player.Recovery(true);
-                botProgressBar.Maximum = npc.Recovery(false);
+                userProgressBar.Maximum = _presenter.PlayerRecovery(true);
+                botProgressBar.Maximum = _presenter.BotRecovery(false);
             }
-            else if (hero == Hero.Defender)
+            else if (Kind == Style.Defender)
             {
-                userProgressBar.Maximum = player.Recovery(false);
-                botProgressBar.Maximum = npc.Recovery(true);
+                userProgressBar.Maximum = _presenter.PlayerRecovery(false);
+                botProgressBar.Maximum = _presenter.BotRecovery(true);
             }
             else
             {
-                userProgressBar.Maximum = player.Recovery(true);
-                botProgressBar.Maximum = npc.Recovery(true);
+                userProgressBar.Maximum = _presenter.PlayerRecovery(true);
+                botProgressBar.Maximum = _presenter.BotRecovery(true);
             }
         }
         private bool SetActions()
@@ -153,8 +149,8 @@ namespace FightClub
 
             try
             {
-                player.Hit = (int)((Parts)Enum.Parse(typeof(Parts), result1));
-                player.SetBlock((Parts)Enum.Parse(typeof(Parts), result2));
+                _presenter.PlayerHit = (int)((Part)Enum.Parse(typeof(Part), result1));
+                _presenter.PlayerSetBlock((Part)Enum.Parse(typeof(Part), result2));
             }
             catch
             {
@@ -179,47 +175,62 @@ namespace FightClub
             }
             return result;
         }
+        private void Restart()
+        {
+            fightButton.Visible = true;
+            CheckedRadiobuttons(AttackBox);
+            CheckedRadiobuttons(DefenseBox);
+            logBox.Items.Clear();
+            ExchangePb();
+            UpdateHp();
+            RestartBtn.Visible = false;
+
+            playerHitLabel.Text = "0";
+            playerBlockLabel.Text = "0";
+            botBlockLabel.Text = "0";
+            botHitLabel.Text = "0";
+        }
 
         private void GameForm_Load(object sender, EventArgs e)
         {
-            modeLabel.Text = hero.ToString();
-            lvlLabel.Text = difficulty.ToString();
+            modeLabel.Text = Kind.ToString();
+            lvlLabel.Text = Difficulty.ToString();
             playerPictureBox.Image = FightClub.Properties.Resources.fight;
             botPictureBox.Image = FightClub.Properties.Resources.bot;
-            presenter = new Presenter(this, player, npc);
-            presenter.Difficulty();
-            StaticValues.PlayerName = player.Name;
-            StaticValues.BotName = npc.Name;
+            _presenter = new Presenter(this);
+            _presenter.Difficulty();
+            PlayerOptions.PlayerName = _presenter.PlayerName();
+            PlayerOptions.BotName = _presenter.BotName();
             RestartBtn.Visible = false;
             ExchangePb();
-            UpdateHP();
+            UpdateHp();
         }
         private void fightButton_Click(object sender, EventArgs e)
         {
-            userdamageLabel.Text = player.Damage.ToString();
-            if(!SetActions())
+            userdamageLabel.Text = _presenter.Damage().ToString();
+            if (!SetActions())
             {
-            return;
+                return;
             }
             if (Battle != null)
                 Battle(this, new GameEventArgs("Fight"));
-            UpdateHP();
+            UpdateHp();
             UpdateLog();
             CheckHp();
             ShowActions();
-        }  
+        }
         private void buttonSave_Click(object sender, EventArgs e)
         {
-            string[] stringArray = fighterAction.ToString().Split('\n').ToArray();
-            StreamWriter sw = File.CreateText(fullpath);
-            sw.WriteLine(string.Format("Fight: {0} vs {1} ", PlayerName, npc.Name));
-            sw.WriteLine(string.Format("Mode: {0}", hero.ToString()));
-            sw.WriteLine(string.Format("Level difficulty: {0}", difficulty.ToString()));
+            string[] stringArray = _fighterAction.ToString().Split('\n').ToArray();
+            StreamWriter sw = File.CreateText(Fullpath);
+            sw.WriteLine(string.Format("Fight: {0} vs {1} ", PlayerName, _presenter.BotName()));
+            sw.WriteLine(string.Format("Mode: {0}", Kind.ToString()));
+            sw.WriteLine(string.Format("Level difficulty: {0}", Difficulty.ToString()));
 
             int count = 0;
             foreach (string s in logBox.Items)
             {
-                sw.WriteLine(stringArray[count] +'\t'+ s);
+                sw.WriteLine(stringArray[count] + '\t' + s);
                 count++;
             }
             sw.WriteLine("End battle!");
@@ -229,13 +240,7 @@ namespace FightClub
 
         private void RestartBtn_Click(object sender, EventArgs e)
         {
-            fightButton.Visible = true;
-            CheckedRadiobuttons(AttackBox);
-            CheckedRadiobuttons(DefenseBox);
-            logBox.Items.Clear();
-            ExchangePb();
-            UpdateHP();
-            RestartBtn.Visible = false;
+            Restart();
         }
         public event GameForceHandler Battle;
     }

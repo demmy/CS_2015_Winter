@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using FightClub.Game;
+using FightClub.Game.Interfaces;
 
-namespace FightClub
+namespace FightClub.UI.Interfaces
 {
     interface IGame
     {
@@ -14,8 +11,8 @@ namespace FightClub
         int BotHp { get; set; }
         string BotDamage { get; set; }
         string PlayerDamage { get; set; }
-        Level difficulty { get; set; }
-        Hero hero { get; set; }
+        Level Difficulty { get; set; }
+        Style Kind { get; set; }
         event GameForceHandler Battle;
     }
 }
