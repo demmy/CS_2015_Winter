@@ -48,7 +48,6 @@ namespace fight_club
 
         private void ChangePlayerButton_Click(object sender, EventArgs e)
         {
-            MainForm.FirstPlayer = null;
             SwitchScene(Scene.Autorization);
         }
 

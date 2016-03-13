@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace fight_club
 {
-    public interface IPlayer
+    public interface IPlayer  // extend it to use in game control
     {
         void SetBlock(BodyPart part);
         int GetHit(BodyPart part , FightPapams par);

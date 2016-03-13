@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace fight_club
 {
-    [Serializable]
     public enum BodyPart
     {
         Head = 0 , 
