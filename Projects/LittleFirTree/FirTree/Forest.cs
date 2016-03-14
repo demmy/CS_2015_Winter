@@ -37,6 +37,12 @@ namespace FirTree
         public void NextSeason()
         {
             age += DeltaAge;
+            ChooseSeason();
+            IfExistGrowth();
+        }
+
+        private void ChooseSeason()
+        {
             switch (actualSeason)
             {
                 case PartOfYear.Spring:
@@ -57,12 +63,14 @@ namespace FirTree
                 default:
                     break;
             }
+        }
 
+        private void IfExistGrowth()
+        {
             if (firTree != null)
             {
                 firTree.Growth();
             }
-            
         }
 
         public Shape GetFormFirTree()
@@ -97,8 +105,7 @@ namespace FirTree
             
             Console.ReadLine();
         }
-
-
+        
         static string GetDescription(Enum value)
         {
             FieldInfo fi = value.GetType().GetField(value.ToString());
