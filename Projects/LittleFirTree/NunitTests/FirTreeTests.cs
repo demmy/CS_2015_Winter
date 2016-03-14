@@ -69,7 +69,7 @@ namespace NunitTests
         public void AgeFirTreeForSeason()
         {
             //при рождении ёлочки ее возраст = 0
-            //с каждым новым сезоном возраст увеличивается на 0,25 года (сделать константу)
+            //с каждым новым сезоном возраст увеличивается на 0,25 года (константа)
 
             double age = forest.GetAgeFirTree();
             Assert.AreEqual(0, age);
@@ -85,7 +85,7 @@ namespace NunitTests
         public void HeightFirTreeForSeason()
         {
             //при рождении ёлочки ее рост = 0
-            //с каждым новым сезоном возраст увеличивается на 0,5 метра (сделать константу)
+            //с каждым новым сезоном возраст увеличивается на 0,5 метра (константа)
 
             double height = forest.GetHeightFirTree();
             Assert.AreEqual(0, height);
