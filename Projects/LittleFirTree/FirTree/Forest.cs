@@ -95,13 +95,13 @@ namespace FirTree
 
         public void ShowFirTreesInfo()
         {
-                Console.WriteLine("Сезон: {0}", GetDescription(actualSeason));
-                Console.WriteLine("Информация о ёлочке:");
-                Console.WriteLine("Форма: {0}.", GetDescription(firTree.Form));
-                Console.WriteLine("Цвет: {0}.", GetDescription(firTree.Condition));
-                Console.WriteLine("Высота: {0} м.", firTree.Height);
-                Console.WriteLine("Возраст: {0} года.", firTree.Age);
-                Console.WriteLine();
+            Console.WriteLine("Сезон: {0}", GetDescription(actualSeason));
+            Console.WriteLine("Информация о ёлочке:");
+            Console.WriteLine("Форма: {0}.", GetDescription(firTree.Form));
+            Console.WriteLine("Цвет: {0}.", GetDescription(firTree.Condition));
+            Console.WriteLine("Высота: {0} м.", firTree.Height);
+            Console.WriteLine("Возраст: {0} года.", firTree.Age);
+            Console.WriteLine();
             
             Console.ReadLine();
         }
