@@ -12,13 +12,16 @@ namespace fight_club
 {
     public partial class CombatUserControl : BaseUserControl
     {
-        public CombatScenePresenter presenter = null; 
+        #region Fields
+        public CombatScenePresenter presenter = null;
         public BodyPart firstPlPunchChoosenPart;
         public BodyPart firstPlBlockChoosenPart;
         public BodyPart secondPlPunchChoosenPart;
         public BodyPart secondPlBlockChoosenPart;
         Player player1;
+        #endregion
 
+        #region Constructors
         public CombatUserControl()
         {
             InitializeComponent();
@@ -29,16 +32,18 @@ namespace fight_club
         {
             InitializeComponent();
             this.player1 = (Player)par1;
-            presenter = new CombatScenePresenter(this , (AbstractPlayer)par1 , null);
+            presenter = new CombatScenePresenter(this, (AbstractPlayer)par1, null);
         }
 
-        public CombatUserControl(object par1 , object par2)
+        public CombatUserControl(object par1, object par2)
         {
             InitializeComponent();
             this.player1 = (Player)par1;
-            presenter = new CombatScenePresenter(this , (AbstractPlayer)par1 , (AbstractPlayer)par2);
+            presenter = new CombatScenePresenter(this, (AbstractPlayer)par1, (AbstractPlayer)par2);
         }
+        #endregion
 
+        #region Methods
         public void DrawPlayersInfo(string player1name, int player1hp, int player1maxhp, string player2name, int player2hp, int player2maxhp)
         {
             lbl_1st_name.Text = player1name;
@@ -63,6 +68,10 @@ namespace fight_club
             }
             lbl_1st_hp.Text = player1hp + " / " + player1maxhp;
             lbl_2nd_hp.Text = player2hp + " / " + player2maxhp;
+
+            //AvatarOfFirstPlayer.SizeMode = PictureBoxSizeMode.StretchImage;
+            //AvatarOfFirstPlayer.Parent = panel8;
+            //AvatarOfFirstPlayer.Image = Image.FromFile(@"/Images/pic1.jpg");
         }
 
         public void DrawTextLog(string[] str)
@@ -73,11 +82,7 @@ namespace fight_club
             {
                 textlog.AppendText(str[2] + Environment.NewLine);
                 MessageBox.Show(str[2]);
-                if (presenter.gameType == GameType.PvP)
-                {
-                    MainForm.SecondPlayer = null;
-                }
-                SwitchScene(Scene.Menu , MainForm.playerRepository.Get(player1.Name));  // kostil
+                SwitchScene(Scene.Menu, MainForm.playerRepository.Get(player1.Name));  // kostil
             }
             textlog.AppendText("----------------------------------------------------------------" + "\n");
         }
@@ -383,18 +388,66 @@ namespace fight_club
 
         private void btn_1st_endturn_Click(object sender, EventArgs e)
         {
-            btn_1st_endturn.Enabled = false;
-            pnl_1st_block.Enabled = false;
-            pnl_1st_punch.Enabled = false;
-            EndTurn();
+            bool punchischecked = false;
+            bool blockischecked = false;
+            foreach (Control item in pnl_1st_punch.Controls)
+            {
+                if (item.BackColor == Color.Gray)
+                {
+                    punchischecked = true;
+                }
+            }
+            foreach (Control item in pnl_1st_block.Controls)
+            {
+                if (item.BackColor == Color.Gray)
+                {
+                    blockischecked = true;
+                }
+            }
+
+            if (punchischecked && blockischecked)
+            {
+                btn_1st_endturn.Enabled = false;
+                pnl_1st_block.Enabled = false;
+                pnl_1st_punch.Enabled = false;
+                EndTurn();
+            }
+            else
+            {
+                MessageBox.Show("Choose part");
+            }
         }
 
         private void btn_2nd_endturn_Click(object sender, EventArgs e)
         {
-            btn_2nd_endturn.Enabled = false;
-            pnl_2nd_block.Enabled = false;
-            pnl_2nd_punch.Enabled = false;
-            EndTurn();
+            bool punchischecked = false;
+            bool blockischecked = false;
+            foreach (Control item in pnl_2nd_punch.Controls)
+            {
+                if (item.BackColor == Color.Gray)
+                {
+                    punchischecked = true;
+                }
+            }
+            foreach (Control item in pnl_2nd_block.Controls)
+            {
+                if (item.BackColor == Color.Gray)
+                {
+                    blockischecked = true;
+                }
+            }
+
+            if (punchischecked && blockischecked)
+            {
+                btn_2nd_endturn.Enabled = false;
+                pnl_2nd_block.Enabled = false;
+                pnl_2nd_punch.Enabled = false;
+                EndTurn();
+            }
+            else
+            {
+                MessageBox.Show("Choose part");
+            }
         }
 
         public void EndTurn()
@@ -410,6 +463,7 @@ namespace fight_club
                 pnl_2nd_block.Enabled = true;
                 pnl_2nd_punch.Enabled = true;
             }
-        }
+        } 
+        #endregion
     }
 }

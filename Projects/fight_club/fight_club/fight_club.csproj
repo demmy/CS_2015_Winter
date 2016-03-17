@@ -9,9 +9,10 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>fight_club</RootNamespace>
     <AssemblyName>fight_club</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -49,22 +50,24 @@
     <Compile Include="game\AbstractPlayer.cs" />
     <Compile Include="game\BodyPart.cs" />
     <Compile Include="game\Dice.cs" />
+    <Compile Include="data\IContainer.cs" />
+    <Compile Include="data\IPlayersContainer.cs" />
     <Compile Include="UI\Extensions.cs" />
     <Compile Include="game\FightPapams.cs" />
     <Compile Include="game\IPlayer.cs" />
     <Compile Include="game\NPC.cs" />
     <Compile Include="game\Player.cs" />
     <Compile Include="game\GameControl.cs" />
-    <Compile Include="IPlayerRepository.cs" />
+    <Compile Include="data\IPlayerRepository.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="PlayerRepository.cs" />
-    <Compile Include="PlayersRecordInfo.cs" />
-    <Compile Include="PlayersSaver.cs" />
+    <Compile Include="data\PlayerRepository.cs" />
+    <Compile Include="data\PlayersRecordInfo.cs" />
+    <Compile Include="data\PlayersSaver.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UI\AutorizationScene\AutorizationPresenter.cs" />
@@ -123,6 +126,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="UI\AutorizationScene\AutorizationUserControl.resx">
       <DependentUpon>AutorizationUserControl.cs</DependentUpon>
@@ -160,7 +164,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

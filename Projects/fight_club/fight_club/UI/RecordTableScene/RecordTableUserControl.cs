@@ -16,13 +16,16 @@ namespace fight_club
         public RecordTableUserControl()
         {
             InitializeComponent();
-            RecordTable.DataSource = MainForm.playerRepository.GetAllRecords();
+            RecordTable.Refresh();
         }
 
         public RecordTableUserControl(object par)
         {
             InitializeComponent();
-            RecordTable.DataSource = MainForm.playerRepository.GetAllRecords();
+
+            RecordTable.DataSource = MainForm.playerRepository.GetAll().
+                Select(pers => new {Name = pers.Name , Exp = pers.Exp}).
+                OrderByDescending(pers => pers.Exp).ToList();
             player1 = (Player)par;
         }
 

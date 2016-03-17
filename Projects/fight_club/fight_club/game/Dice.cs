@@ -11,7 +11,7 @@ namespace fight_club
         private static Random rnd = new Random();
         public static int Throw()
         {
-            return rnd.Next(21);
+            return rnd.Next(20) + 1;
         }
     }
 }

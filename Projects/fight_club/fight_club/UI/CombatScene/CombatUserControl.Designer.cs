@@ -28,8 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel7 = new System.Windows.Forms.Panel();
-            this.textlog = new System.Windows.Forms.RichTextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.lbl_2nd_hp = new System.Windows.Forms.Label();
             this.btn_2nd_endturn = new System.Windows.Forms.Button();
@@ -74,7 +72,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.prbar_1st_hp = new System.Windows.Forms.ProgressBar();
             this.lbl_1st_name = new System.Windows.Forms.Label();
-            this.panel7.SuspendLayout();
+            this.textlog = new System.Windows.Forms.RichTextBox();
             this.pnl_2nd_block.SuspendLayout();
             this.panel9.SuspendLayout();
             this.pnl_2nd_punch.SuspendLayout();
@@ -84,23 +82,6 @@
             this.pnl_1st_block.SuspendLayout();
             this.pnl_1st_punch.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // panel7
-            // 
-            this.panel7.Controls.Add(this.textlog);
-            this.panel7.Location = new System.Drawing.Point(228, 397);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(484, 119);
-            this.panel7.TabIndex = 21;
-            // 
-            // textlog
-            // 
-            this.textlog.Location = new System.Drawing.Point(3, 3);
-            this.textlog.Name = "textlog";
-            this.textlog.ReadOnly = true;
-            this.textlog.Size = new System.Drawing.Size(478, 113);
-            this.textlog.TabIndex = 0;
-            this.textlog.Text = "";
             // 
             // label12
             // 
@@ -207,6 +188,7 @@
             // 
             // panel9
             // 
+            this.panel9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel9.Controls.Add(this.label12);
             this.panel9.Location = new System.Drawing.Point(277, 10);
             this.panel9.Name = "panel9";
@@ -401,6 +383,7 @@
             // 
             // panel8
             // 
+            this.panel8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel8.Controls.Add(this.label11);
             this.panel8.Location = new System.Drawing.Point(277, 10);
             this.panel8.Name = "panel8";
@@ -562,17 +545,30 @@
             this.lbl_1st_name.TabIndex = 10;
             this.lbl_1st_name.Text = "Name";
             // 
+            // textlog
+            // 
+            this.textlog.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textlog.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textlog.Cursor = System.Windows.Forms.Cursors.Default;
+            this.textlog.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.textlog.Location = new System.Drawing.Point(231, 397);
+            this.textlog.Name = "textlog";
+            this.textlog.ReadOnly = true;
+            this.textlog.Size = new System.Drawing.Size(481, 113);
+            this.textlog.TabIndex = 0;
+            this.textlog.Text = "";
+            // 
             // CombatUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.panel7);
+            this.Controls.Add(this.textlog);
             this.Controls.Add(this.pnl_2nd_player);
             this.Controls.Add(this.pnl_1st_player);
             this.Name = "CombatUserControl";
-            this.Size = new System.Drawing.Size(941, 521);
+            this.Size = new System.Drawing.Size(941, 540);
             this.Load += new System.EventHandler(this.CombatUserControl_Load);
-            this.panel7.ResumeLayout(false);
             this.pnl_2nd_block.ResumeLayout(false);
             this.pnl_2nd_block.PerformLayout();
             this.panel9.ResumeLayout(false);
@@ -594,9 +590,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel panel7;
-        private System.Windows.Forms.RichTextBox textlog;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label lbl_2nd_hp;
         private System.Windows.Forms.Button btn_2nd_endturn;
@@ -641,5 +634,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ProgressBar prbar_1st_hp;
         private System.Windows.Forms.Label lbl_1st_name;
+        private System.Windows.Forms.RichTextBox textlog;
     }
 }
