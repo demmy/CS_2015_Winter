@@ -5,6 +5,8 @@ VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FightClub", "FightClub\FightClub.csproj", "{B160520E-FC32-4DAF-9DAD-2492F7F68BC5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FightClub.UnitTests", "FightClub.UnitTests\FightClub.UnitTests.csproj", "{53EEADA6-1474-40A4-85BE-A1CBFF11A2C7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{B160520E-FC32-4DAF-9DAD-2492F7F68BC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B160520E-FC32-4DAF-9DAD-2492F7F68BC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B160520E-FC32-4DAF-9DAD-2492F7F68BC5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{53EEADA6-1474-40A4-85BE-A1CBFF11A2C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53EEADA6-1474-40A4-85BE-A1CBFF11A2C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53EEADA6-1474-40A4-85BE-A1CBFF11A2C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53EEADA6-1474-40A4-85BE-A1CBFF11A2C7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

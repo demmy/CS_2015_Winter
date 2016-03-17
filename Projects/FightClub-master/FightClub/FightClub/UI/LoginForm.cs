@@ -1,21 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using FightClub.Game;
 
-namespace FightClub
+namespace FightClub.UI
 {
     public partial class LoginForm : Form
     {
-        GameForm game;
-        Level lvl;
-        Hero hero;
-        string str = "";
+        GameForm _game;
+        Level _lvl;
+        Style _style;
+        string _str = "";
         public LoginForm()
         {
             InitializeComponent();
@@ -27,20 +22,20 @@ namespace FightClub
             {
                 str = heroBox.SelectedItem.ToString();
             }
-            Enum.TryParse(str, out hero);
+            Enum.TryParse(str, out _style);
         }
   
         private void enterButton_Click(object sender, EventArgs e)
         {
             HeroType();
             this.Hide();
-            game = new GameForm();
-            game.PlayerName = nameTextBox.Text;
-            Enum.TryParse(str, out lvl);
-            game.difficulty = lvl;
-            game.hero = hero;
-            game.MdiParent = this.MdiParent as ContainerForm;
-            game.Show();
+            _game = new GameForm();
+            _game.PlayerName = nameTextBox.Text;
+            Enum.TryParse(_str, out _lvl);
+            _game.Difficulty = _lvl;
+            _game.Kind = _style;
+            _game.MdiParent = this.MdiParent as ContainerForm;
+            _game.Show();
             this.Close();     
         }
 
@@ -70,9 +65,7 @@ namespace FightClub
         }
         private void LvlBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            str = LvlBox.SelectedValue.ToString();
+            _str = LvlBox.SelectedValue.ToString();
         }
-      
-      
     }
 }

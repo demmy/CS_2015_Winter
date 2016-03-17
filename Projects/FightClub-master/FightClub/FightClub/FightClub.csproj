@@ -47,7 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Game\AbstractPlayer.cs" />
+    <Compile Include="Game\AbstractPlayerModel.cs" />
     <Compile Include="UI\MessageForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -74,16 +74,16 @@
     <Compile Include="UI\StartForm.Designer.cs">
       <DependentUpon>StartForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\StaticValues.cs" />
+    <Compile Include="UI\PlayerOptions.cs" />
     <Compile Include="UI\InformationForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\InformationForm.Designer.cs">
       <DependentUpon>InformationForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Game\Interface\IPlayer.cs" />
+    <Compile Include="Game\Interfaces\IPlayerModel.cs" />
     <Compile Include="UI\Save.cs" />
-    <Compile Include="UI\Interface\IGame.cs" />
+    <Compile Include="UI\Interfaces\IGame.cs" />
     <Compile Include="UI\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
