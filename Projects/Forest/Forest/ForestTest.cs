@@ -13,13 +13,16 @@ namespace Forest
     [TestFixture]
     public class ForestTest
     {
-        Forest forest = new Forest();
-        
+        Forest forest;
+        Tree first;
+            
         [SetUp]
         public void SetUp()
         {
+            forest = new Forest();
 //            forest.CurrentSeason = forest.GetSeason(DateTime.Now);
             forest.Add(TypeOfTree.Fir);
+            first = forest.TreesInForest[0];
         }
 
         [Test]
@@ -31,7 +34,7 @@ namespace Forest
         [Test]
         public void AddFirTest()
         {
-//            Assert.IsTrue(forest.TreesInForest.Find(x => x.Type.Equals(TypeOfTree.Fir) is ));
+                Assert.IsTrue(forest.TreesInForest.Find(x => x.Type.Equals(TypeOfTree.Fir)) == first );
         }
 
         [Test]
