@@ -19,11 +19,11 @@ namespace GameCore
         }
         protected int rand = 0;
         protected string name = "Player";
-        protected int hp = Setup.BaseHp;
-        protected int maxHp = Setup.BaseHp;
+        protected int hp = GameSetup.BaseHp;
+        protected int maxHp = GameSetup.BaseHp;
         protected int strength = 0;
         protected int armor = 0;
-        protected int bonus = Setup.BonusStat;
+        protected int bonus = GameSetup.BonusStat;
         protected Position block = Position.Legs;
         protected Position hit = Position.Legs;
         public void SetBlock(Position block)

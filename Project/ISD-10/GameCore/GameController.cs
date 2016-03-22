@@ -21,8 +21,8 @@ namespace GameCore
         }
         public void Fight(Position Hit, Position Block)
         {
-            bot.Rand = ran.Next(Setup.MinHit, Setup.MaxHit);
-            player.Rand = ran.Next(Setup.MinHit, Setup.MaxHit);
+            bot.Rand = ran.Next(GameSetup.MinHit, GameSetup.MaxHit);
+            player.Rand = ran.Next(GameSetup.MinHit, GameSetup.MaxHit);
             player.GetHit(bot.RandomHit, bot.Damage);
             bot.SetBlock(bot.RandomBlock);
             player.SetBlock(Block);
@@ -37,18 +37,18 @@ namespace GameCore
         {
             if (player.Hp == 0 && bot.Hp != 0)
             {                
-                bot.MaxHp = bot.MaxHp + Setup.BonusHp * 2;               
-                bot.Bonus += Setup.BonusStat * 2;
+                bot.MaxHp = bot.MaxHp + GameSetup.BonusHp * 2;               
+                bot.Bonus += GameSetup.BonusStat * 2;
             }
             if (bot.Hp == 0 && player.Hp != 0)
             {
-                player.MaxHp = player.MaxHp + Setup.BonusHp;                
-                player.Bonus += Setup.BonusStat;
+                player.MaxHp = player.MaxHp + GameSetup.BonusHp;                
+                player.Bonus += GameSetup.BonusStat;
             }
             if (player.Hp == 0 && bot.Hp == 0)
             {
-                player.MaxHp = player.MaxHp + Setup.BonusHp / 2;
-                bot.MaxHp = bot.MaxHp + Setup.BonusHp / 2;
+                player.MaxHp = player.MaxHp + GameSetup.BonusHp / 2;
+                bot.MaxHp = bot.MaxHp + GameSetup.BonusHp / 2;
             }
             bot.Hp = bot.MaxHp;
             player.Hp = player.MaxHp;

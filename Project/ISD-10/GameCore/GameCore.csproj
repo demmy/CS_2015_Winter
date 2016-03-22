@@ -56,7 +56,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Result.cs" />
     <Compile Include="Saver.cs" />
-    <Compile Include="Setup.cs" />
+    <Compile Include="GameSetup.cs" />
     <Compile Include="Сharacter.cs" />
   </ItemGroup>
   <ItemGroup />
