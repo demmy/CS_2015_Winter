@@ -1,0 +1,219 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E65CE510-1626-434E-A8E8-EB31E1B4E778}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ISD_13</RootNamespace>
+    <AssemblyName>ISD-13</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Data\AbstractPlayer.cs" />
+    <Compile Include="Data\Combat.cs" />
+    <Compile Include="Data\Context.cs" />
+    <Compile Include="Data\HitLog.cs" />
+    <Compile Include="Data\Player.cs" />
+    <Compile Include="Data\Transaction.cs" />
+    <Compile Include="Interfaces\IMainForm.cs" />
+    <Compile Include="Migrations\201604071303477_Init.cs" />
+    <Compile Include="Migrations\201604071303477_Init.Designer.cs">
+      <DependentUpon>201604071303477_Init.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Repository\Interfaces\IProxy.cs" />
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainPresenter.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\CombatRepository.cs" />
+    <Compile Include="Repository\HitLogRepository.cs" />
+    <Compile Include="Repository\Interfaces\ICombatRepository.cs" />
+    <Compile Include="Repository\Interfaces\IHitLogRepository.cs" />
+    <Compile Include="Repository\Interfaces\IPlayerRepository.cs" />
+    <Compile Include="Repository\Interfaces\IRepository.cs" />
+    <Compile Include="Repository\Interfaces\ITransactionRepository.cs" />
+    <Compile Include="Repository\PlayerRepository.cs" />
+    <Compile Include="Repository\Repository.cs" />
+    <Compile Include="Repository\TransactionRepository.cs" />
+    <Compile Include="Repository\Proxy.cs" />
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604071303477_Init.resx">
+      <DependentUpon>201604071303477_Init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="packages.config" />
+    <None Include="Properties\DataSources\ISD_13.Data.Combat.datasource" />
+    <None Include="Properties\DataSources\ISD_13.Data.Context.datasource" />
+    <None Include="Properties\DataSources\ISD_13.Data.HitLog.datasource" />
+    <None Include="Properties\DataSources\ISD_13.Data.Player.datasource" />
+    <None Include="Properties\DataSources\ISD_13.Data.Transaction.datasource" />
+    <None Include="Properties\DataSources\ISD_13.Interfaces.IMainForm.datasource" />
+    <None Include="Properties\DataSources\ISD_13.Migrations.Configuration.datasource" />
+    <None Include="Properties\DataSources\ISD_13.Migrations.Init.datasource" />
+    <None Include="Properties\DataSources\ISD_13.Migrations.Init1.datasource" />
+    <None Include="Properties\DataSources\ISD_13.Migrations.Init2.datasource" />
+    <None Include="Properties\DataSources\ISD_13.Migrations.InitialCreate.datasource" />
+    <None Include="Properties\DataSources\ISD_13.Migrations.New.datasource" />
+    <None Include="Properties\DataSources\ISD_13.Migrations.New1.datasource" />
+    <None Include="Properties\DataSources\ISD_13.Migrations.SaveUpdates.datasource" />
+    <None Include="Properties\DataSources\ISD_13.Migrations.Test.datasource" />
+    <None Include="Properties\DataSources\ISD_13.Migrations.ToString.datasource" />
+    <None Include="Properties\DataSources\ISD_13.Properties.Resources.datasource" />
+    <None Include="Properties\DataSources\ISD_13.Properties.Settings.datasource" />
+    <None Include="Properties\DataSources\ISD_13.Repository.CombatRepository.datasource" />
+    <None Include="Properties\DataSources\ISD_13.Repository.HitLogRepository.datasource" />
+    <None Include="Properties\DataSources\ISD_13.Repository.Interfaces.ICombatRepository.datasource" />
+    <None Include="Properties\DataSources\ISD_13.Repository.Interfaces.IHitLogRepository.datasource" />
+    <None Include="Properties\DataSources\ISD_13.Repository.Interfaces.IPlayerRepository.datasource" />
+    <None Include="Properties\DataSources\ISD_13.Repository.Interfaces.IProfileRepository.datasource" />
+    <None Include="Properties\DataSources\ISD_13.Repository.Interfaces.ITransactionRepository.datasource" />
+    <None Include="Properties\DataSources\ISD_13.Repository.Interfaces.IUnitOfWork.datasource" />
+    <None Include="Properties\DataSources\ISD_13.Repository.PlayerRepository.datasource" />
+    <None Include="Properties\DataSources\ISD_13.Repository.ProfileRepository.datasource" />
+    <None Include="Properties\DataSources\ISD_13.Repository.TransactionRepository.datasource" />
+    <None Include="Properties\DataSources\ISD_13.Repository.UnitOfWork.datasource" />
+    <None Include="Properties\DataSources\ISD_13._ISD_13_Data_ContextDataSet1TableAdapters.CombatsTableAdapter.datasource" />
+    <None Include="Properties\DataSources\ISD_13._ISD_13_Data_ContextDataSet1TableAdapters.HitLogsTableAdapter.datasource" />
+    <None Include="Properties\DataSources\ISD_13._ISD_13_Data_ContextDataSet1TableAdapters.PlayersTableAdapter.datasource" />
+    <None Include="Properties\DataSources\ISD_13._ISD_13_Data_ContextDataSet1TableAdapters.ProfilesTableAdapter.datasource" />
+    <None Include="Properties\DataSources\ISD_13._ISD_13_Data_ContextDataSet1TableAdapters.TableAdapterManager+UpdateOrderOption.datasource" />
+    <None Include="Properties\DataSources\ISD_13._ISD_13_Data_ContextDataSet1TableAdapters.TableAdapterManager.datasource" />
+    <None Include="Properties\DataSources\ISD_13._ISD_13_Data_ContextDataSet1TableAdapters.TransactionsTableAdapter.datasource" />
+    <None Include="Properties\DataSources\ISD_13._ISD_13_Data_ContextDataSet1TableAdapters.__MigrationHistoryTableAdapter.datasource" />
+    <None Include="Properties\DataSources\ISD_13._ISD_13_Data_ContextDataSetTableAdapters.CombatsTableAdapter.datasource" />
+    <None Include="Properties\DataSources\ISD_13._ISD_13_Data_ContextDataSetTableAdapters.HitLogsTableAdapter.datasource" />
+    <None Include="Properties\DataSources\ISD_13._ISD_13_Data_ContextDataSetTableAdapters.PlayersTableAdapter.datasource" />
+    <None Include="Properties\DataSources\ISD_13._ISD_13_Data_ContextDataSetTableAdapters.TableAdapterManager+UpdateOrderOption.datasource" />
+    <None Include="Properties\DataSources\ISD_13._ISD_13_Data_ContextDataSetTableAdapters.TableAdapterManager.datasource" />
+    <None Include="Properties\DataSources\ISD_13._ISD_13_Data_ContextDataSetTableAdapters.TransactionsTableAdapter.datasource" />
+    <None Include="Properties\DataSources\ISD_13._ISD_13_Data_ContextDataSetTableAdapters.__MigrationHistoryTableAdapter.datasource" />
+    <None Include="Properties\DataSources\MainForm.datasource" />
+    <None Include="Properties\DataSources\MainPresenter.datasource" />
+    <None Include="Properties\DataSources\Program.datasource" />
+    <None Include="Properties\DataSources\_ISD_13_Data_ContextDataSet.CombatsDataTable.datasource" />
+    <None Include="Properties\DataSources\_ISD_13_Data_ContextDataSet.CombatsRow.datasource" />
+    <None Include="Properties\DataSources\_ISD_13_Data_ContextDataSet.CombatsRowChangeEvent.datasource" />
+    <None Include="Properties\DataSources\_ISD_13_Data_ContextDataSet.CombatsRowChangeEventHandler.datasource" />
+    <None Include="Properties\DataSources\_ISD_13_Data_ContextDataSet.datasource" />
+    <None Include="Properties\DataSources\_ISD_13_Data_ContextDataSet.HitLogsDataTable.datasource" />
+    <None Include="Properties\DataSources\_ISD_13_Data_ContextDataSet.HitLogsRow.datasource" />
+    <None Include="Properties\DataSources\_ISD_13_Data_ContextDataSet.HitLogsRowChangeEvent.datasource" />
+    <None Include="Properties\DataSources\_ISD_13_Data_ContextDataSet.HitLogsRowChangeEventHandler.datasource" />
+    <None Include="Properties\DataSources\_ISD_13_Data_ContextDataSet.PlayersDataTable.datasource" />
+    <None Include="Properties\DataSources\_ISD_13_Data_ContextDataSet.PlayersRow.datasource" />
+    <None Include="Properties\DataSources\_ISD_13_Data_ContextDataSet.PlayersRowChangeEvent.datasource" />
+    <None Include="Properties\DataSources\_ISD_13_Data_ContextDataSet.PlayersRowChangeEventHandler.datasource" />
+    <None Include="Properties\DataSources\_ISD_13_Data_ContextDataSet.TransactionsDataTable.datasource" />
+    <None Include="Properties\DataSources\_ISD_13_Data_ContextDataSet.TransactionsRow.datasource" />
+    <None Include="Properties\DataSources\_ISD_13_Data_ContextDataSet.TransactionsRowChangeEvent.datasource" />
+    <None Include="Properties\DataSources\_ISD_13_Data_ContextDataSet.TransactionsRowChangeEventHandler.datasource" />
+    <None Include="Properties\DataSources\_ISD_13_Data_ContextDataSet.__MigrationHistoryDataTable.datasource" />
+    <None Include="Properties\DataSources\_ISD_13_Data_ContextDataSet.__MigrationHistoryRow.datasource" />
+    <None Include="Properties\DataSources\_ISD_13_Data_ContextDataSet.__MigrationHistoryRowChangeEvent.datasource" />
+    <None Include="Properties\DataSources\_ISD_13_Data_ContextDataSet.__MigrationHistoryRowChangeEventHandler.datasource" />
+    <None Include="Properties\DataSources\_ISD_13_Data_ContextDataSet1.CombatsDataTable.datasource" />
+    <None Include="Properties\DataSources\_ISD_13_Data_ContextDataSet1.CombatsRow.datasource" />
+    <None Include="Properties\DataSources\_ISD_13_Data_ContextDataSet1.CombatsRowChangeEvent.datasource" />
+    <None Include="Properties\DataSources\_ISD_13_Data_ContextDataSet1.CombatsRowChangeEventHandler.datasource" />
+    <None Include="Properties\DataSources\_ISD_13_Data_ContextDataSet1.datasource" />
+    <None Include="Properties\DataSources\_ISD_13_Data_ContextDataSet1.HitLogsDataTable.datasource" />
+    <None Include="Properties\DataSources\_ISD_13_Data_ContextDataSet1.HitLogsRow.datasource" />
+    <None Include="Properties\DataSources\_ISD_13_Data_ContextDataSet1.HitLogsRowChangeEvent.datasource" />
+    <None Include="Properties\DataSources\_ISD_13_Data_ContextDataSet1.HitLogsRowChangeEventHandler.datasource" />
+    <None Include="Properties\DataSources\_ISD_13_Data_ContextDataSet1.PlayersDataTable.datasource" />
+    <None Include="Properties\DataSources\_ISD_13_Data_ContextDataSet1.PlayersRow.datasource" />
+    <None Include="Properties\DataSources\_ISD_13_Data_ContextDataSet1.PlayersRowChangeEvent.datasource" />
+    <None Include="Properties\DataSources\_ISD_13_Data_ContextDataSet1.PlayersRowChangeEventHandler.datasource" />
+    <None Include="Properties\DataSources\_ISD_13_Data_ContextDataSet1.ProfilesDataTable.datasource" />
+    <None Include="Properties\DataSources\_ISD_13_Data_ContextDataSet1.ProfilesRow.datasource" />
+    <None Include="Properties\DataSources\_ISD_13_Data_ContextDataSet1.ProfilesRowChangeEvent.datasource" />
+    <None Include="Properties\DataSources\_ISD_13_Data_ContextDataSet1.ProfilesRowChangeEventHandler.datasource" />
+    <None Include="Properties\DataSources\_ISD_13_Data_ContextDataSet1.TransactionsDataTable.datasource" />
+    <None Include="Properties\DataSources\_ISD_13_Data_ContextDataSet1.TransactionsRow.datasource" />
+    <None Include="Properties\DataSources\_ISD_13_Data_ContextDataSet1.TransactionsRowChangeEvent.datasource" />
+    <None Include="Properties\DataSources\_ISD_13_Data_ContextDataSet1.TransactionsRowChangeEventHandler.datasource" />
+    <None Include="Properties\DataSources\_ISD_13_Data_ContextDataSet1.__MigrationHistoryDataTable.datasource" />
+    <None Include="Properties\DataSources\_ISD_13_Data_ContextDataSet1.__MigrationHistoryRow.datasource" />
+    <None Include="Properties\DataSources\_ISD_13_Data_ContextDataSet1.__MigrationHistoryRowChangeEvent.datasource" />
+    <None Include="Properties\DataSources\_ISD_13_Data_ContextDataSet1.__MigrationHistoryRowChangeEventHandler.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
