@@ -44,8 +44,12 @@
             this.PlayerLbl = new System.Windows.Forms.Label();
             this.CombatIdLbl = new System.Windows.Forms.Label();
             this.SelectedCombatIdTxt = new System.Windows.Forms.TextBox();
-            this.resetFilterBtn = new System.Windows.Forms.Button();
+            this.ResetFilterBtn = new System.Windows.Forms.Button();
             this.filterGroup = new System.Windows.Forms.GroupBox();
+            this.AddTransactiobBtn = new System.Windows.Forms.Button();
+            this.AddNewCombatBtn = new System.Windows.Forms.Button();
+            this.AddNewHitBtn = new System.Windows.Forms.Button();
+            this.AddNewPlayerBtn = new System.Windows.Forms.Button();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.loginDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.passwordDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -66,13 +70,13 @@
             this.experienceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.combatBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.hitLogBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Combat = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.hitValueDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.partDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.resultDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.hitLogBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.PlayerDGV)).BeginInit();
             this.MainTab.SuspendLayout();
             this.PlayersTab.SuspendLayout();
@@ -92,7 +96,7 @@
             // SaveBtn
             // 
             this.SaveBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.SaveBtn.Location = new System.Drawing.Point(713, 297);
+            this.SaveBtn.Location = new System.Drawing.Point(713, 315);
             this.SaveBtn.Name = "SaveBtn";
             this.SaveBtn.Size = new System.Drawing.Size(75, 23);
             this.SaveBtn.TabIndex = 13;
@@ -102,9 +106,9 @@
             // 
             // ValidEmailCB
             // 
-            this.ValidEmailCB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.ValidEmailCB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.ValidEmailCB.AutoSize = true;
-            this.ValidEmailCB.Location = new System.Drawing.Point(12, 332);
+            this.ValidEmailCB.Location = new System.Drawing.Point(689, 240);
             this.ValidEmailCB.Name = "ValidEmailCB";
             this.ValidEmailCB.Size = new System.Drawing.Size(77, 17);
             this.ValidEmailCB.TabIndex = 14;
@@ -114,6 +118,7 @@
             // 
             // PlayerDGV
             // 
+            this.PlayerDGV.AllowUserToAddRows = false;
             this.PlayerDGV.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -131,9 +136,10 @@
             this.PlayerDGV.Location = new System.Drawing.Point(6, 6);
             this.PlayerDGV.Name = "PlayerDGV";
             this.PlayerDGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.PlayerDGV.Size = new System.Drawing.Size(760, 233);
+            this.PlayerDGV.Size = new System.Drawing.Size(760, 222);
             this.PlayerDGV.TabIndex = 16;
             this.PlayerDGV.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.PlayerDGV_CellClick);
+            this.PlayerDGV.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.PlayerDGV_DataError);
             // 
             // MainTab
             // 
@@ -148,28 +154,31 @@
             this.MainTab.MinimumSize = new System.Drawing.Size(780, 250);
             this.MainTab.Name = "MainTab";
             this.MainTab.SelectedIndex = 0;
-            this.MainTab.Size = new System.Drawing.Size(780, 271);
+            this.MainTab.Size = new System.Drawing.Size(780, 289);
             this.MainTab.TabIndex = 17;
             this.MainTab.Click += new System.EventHandler(this.MainTab_Click);
             // 
             // PlayersTab
             // 
+            this.PlayersTab.Controls.Add(this.AddNewPlayerBtn);
             this.PlayersTab.Controls.Add(this.PlayerDGV);
+            this.PlayersTab.Controls.Add(this.ValidEmailCB);
             this.PlayersTab.Location = new System.Drawing.Point(4, 22);
             this.PlayersTab.Name = "PlayersTab";
             this.PlayersTab.Padding = new System.Windows.Forms.Padding(3);
-            this.PlayersTab.Size = new System.Drawing.Size(772, 245);
+            this.PlayersTab.Size = new System.Drawing.Size(772, 263);
             this.PlayersTab.TabIndex = 0;
             this.PlayersTab.Text = "Players";
             this.PlayersTab.UseVisualStyleBackColor = true;
             // 
             // TransactionsTab
             // 
+            this.TransactionsTab.Controls.Add(this.AddTransactiobBtn);
             this.TransactionsTab.Controls.Add(this.TransactionDGV);
             this.TransactionsTab.Location = new System.Drawing.Point(4, 22);
             this.TransactionsTab.Name = "TransactionsTab";
             this.TransactionsTab.Padding = new System.Windows.Forms.Padding(3);
-            this.TransactionsTab.Size = new System.Drawing.Size(772, 245);
+            this.TransactionsTab.Size = new System.Drawing.Size(772, 263);
             this.TransactionsTab.TabIndex = 1;
             this.TransactionsTab.Text = "Transactions";
             this.TransactionsTab.UseVisualStyleBackColor = true;
@@ -192,18 +201,19 @@
             this.TransactionDGV.Location = new System.Drawing.Point(6, 6);
             this.TransactionDGV.Name = "TransactionDGV";
             this.TransactionDGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.TransactionDGV.Size = new System.Drawing.Size(760, 233);
+            this.TransactionDGV.Size = new System.Drawing.Size(760, 223);
             this.TransactionDGV.TabIndex = 17;
-            this.TransactionDGV.CellParsing += new System.Windows.Forms.DataGridViewCellParsingEventHandler(this.TransactionDGV_CellParsing);
+            this.TransactionDGV.CellLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.TransactionDGV_CellLeave);
             this.TransactionDGV.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.TransactionDGV_DataError);
             // 
             // CombatsTab
             // 
+            this.CombatsTab.Controls.Add(this.AddNewCombatBtn);
             this.CombatsTab.Controls.Add(this.CombatDGV);
             this.CombatsTab.Location = new System.Drawing.Point(4, 22);
             this.CombatsTab.Name = "CombatsTab";
             this.CombatsTab.Padding = new System.Windows.Forms.Padding(3);
-            this.CombatsTab.Size = new System.Drawing.Size(772, 245);
+            this.CombatsTab.Size = new System.Drawing.Size(772, 263);
             this.CombatsTab.TabIndex = 2;
             this.CombatsTab.Text = "Combats";
             this.CombatsTab.UseVisualStyleBackColor = true;
@@ -229,17 +239,20 @@
             this.CombatDGV.Location = new System.Drawing.Point(6, 6);
             this.CombatDGV.Name = "CombatDGV";
             this.CombatDGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.CombatDGV.Size = new System.Drawing.Size(760, 233);
+            this.CombatDGV.Size = new System.Drawing.Size(760, 223);
             this.CombatDGV.TabIndex = 17;
             this.CombatDGV.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.CombatDGV_CellClick);
+            this.CombatDGV.CellLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.CombatDGV_CellLeave);
+            this.CombatDGV.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.CombatDGV_DataError);
             // 
             // HitsTab
             // 
+            this.HitsTab.Controls.Add(this.AddNewHitBtn);
             this.HitsTab.Controls.Add(this.HitDGV);
             this.HitsTab.Location = new System.Drawing.Point(4, 22);
             this.HitsTab.Name = "HitsTab";
             this.HitsTab.Padding = new System.Windows.Forms.Padding(3);
-            this.HitsTab.Size = new System.Drawing.Size(772, 245);
+            this.HitsTab.Size = new System.Drawing.Size(772, 263);
             this.HitsTab.TabIndex = 3;
             this.HitsTab.Text = "Hits";
             this.HitsTab.UseVisualStyleBackColor = true;
@@ -251,6 +264,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.HitDGV.AutoGenerateColumns = false;
+            this.HitDGV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.HitDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.HitDGV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn7,
@@ -263,7 +277,7 @@
             this.HitDGV.Location = new System.Drawing.Point(6, 6);
             this.HitDGV.Name = "HitDGV";
             this.HitDGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.HitDGV.Size = new System.Drawing.Size(760, 233);
+            this.HitDGV.Size = new System.Drawing.Size(760, 223);
             this.HitDGV.TabIndex = 17;
             this.HitDGV.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.HitDGV_DataError);
             // 
@@ -307,29 +321,73 @@
             this.SelectedCombatIdTxt.Click += new System.EventHandler(this.CurrentCombatIdTxt_Click);
             this.SelectedCombatIdTxt.KeyUp += new System.Windows.Forms.KeyEventHandler(this.CurrentCombatIdTxt_KeyUp);
             // 
-            // resetFilterBtn
+            // ResetFilterBtn
             // 
-            this.resetFilterBtn.Location = new System.Drawing.Point(444, 9);
-            this.resetFilterBtn.Name = "resetFilterBtn";
-            this.resetFilterBtn.Size = new System.Drawing.Size(95, 23);
-            this.resetFilterBtn.TabIndex = 22;
-            this.resetFilterBtn.Text = "Reset Filter";
-            this.resetFilterBtn.UseVisualStyleBackColor = true;
-            this.resetFilterBtn.Click += new System.EventHandler(this.resetFilterBtn_Click);
+            this.ResetFilterBtn.Location = new System.Drawing.Point(444, 9);
+            this.ResetFilterBtn.Name = "ResetFilterBtn";
+            this.ResetFilterBtn.Size = new System.Drawing.Size(95, 23);
+            this.ResetFilterBtn.TabIndex = 22;
+            this.ResetFilterBtn.Text = "Reset Filter";
+            this.ResetFilterBtn.UseVisualStyleBackColor = true;
+            this.ResetFilterBtn.Click += new System.EventHandler(this.resetFilterBtn_Click);
             // 
             // filterGroup
             // 
             this.filterGroup.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.filterGroup.Controls.Add(this.resetFilterBtn);
+            this.filterGroup.Controls.Add(this.ResetFilterBtn);
             this.filterGroup.Controls.Add(this.SelectedPlayerTxt);
             this.filterGroup.Controls.Add(this.PlayerLbl);
             this.filterGroup.Controls.Add(this.CombatIdLbl);
             this.filterGroup.Controls.Add(this.SelectedCombatIdTxt);
-            this.filterGroup.Location = new System.Drawing.Point(12, 289);
+            this.filterGroup.Location = new System.Drawing.Point(12, 307);
             this.filterGroup.Name = "filterGroup";
             this.filterGroup.Size = new System.Drawing.Size(545, 37);
             this.filterGroup.TabIndex = 23;
             this.filterGroup.TabStop = false;
+            // 
+            // AddTransactiobBtn
+            // 
+            this.AddTransactiobBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.AddTransactiobBtn.Location = new System.Drawing.Point(6, 235);
+            this.AddTransactiobBtn.Name = "AddTransactiobBtn";
+            this.AddTransactiobBtn.Size = new System.Drawing.Size(145, 23);
+            this.AddTransactiobBtn.TabIndex = 18;
+            this.AddTransactiobBtn.Text = "Add new transaction";
+            this.AddTransactiobBtn.UseVisualStyleBackColor = true;
+            this.AddTransactiobBtn.Click += new System.EventHandler(this.AddTransactiobBtn_Click);
+            // 
+            // AddNewCombatBtn
+            // 
+            this.AddNewCombatBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.AddNewCombatBtn.Location = new System.Drawing.Point(6, 235);
+            this.AddNewCombatBtn.Name = "AddNewCombatBtn";
+            this.AddNewCombatBtn.Size = new System.Drawing.Size(125, 23);
+            this.AddNewCombatBtn.TabIndex = 18;
+            this.AddNewCombatBtn.Text = "Add new combat";
+            this.AddNewCombatBtn.UseVisualStyleBackColor = true;
+            this.AddNewCombatBtn.Click += new System.EventHandler(this.AddNewCombatBtn_Click);
+            // 
+            // AddNewHitBtn
+            // 
+            this.AddNewHitBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.AddNewHitBtn.Location = new System.Drawing.Point(6, 235);
+            this.AddNewHitBtn.Name = "AddNewHitBtn";
+            this.AddNewHitBtn.Size = new System.Drawing.Size(98, 23);
+            this.AddNewHitBtn.TabIndex = 18;
+            this.AddNewHitBtn.Text = "Add new hit";
+            this.AddNewHitBtn.UseVisualStyleBackColor = true;
+            this.AddNewHitBtn.Click += new System.EventHandler(this.AddNewHitBtn_Click);
+            // 
+            // AddNewPlayerBtn
+            // 
+            this.AddNewPlayerBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.AddNewPlayerBtn.Location = new System.Drawing.Point(6, 235);
+            this.AddNewPlayerBtn.Name = "AddNewPlayerBtn";
+            this.AddNewPlayerBtn.Size = new System.Drawing.Size(119, 23);
+            this.AddNewPlayerBtn.TabIndex = 17;
+            this.AddNewPlayerBtn.Text = "Add new player";
+            this.AddNewPlayerBtn.UseVisualStyleBackColor = true;
+            this.AddNewPlayerBtn.Click += new System.EventHandler(this.AddNewPlayerBtn_Click);
             // 
             // dataGridViewTextBoxColumn2
             // 
@@ -421,21 +479,18 @@
             this.firstPlayerDataGridViewTextBoxColumn.DataPropertyName = "FirstPlayer";
             this.firstPlayerDataGridViewTextBoxColumn.HeaderText = "FirstPlayer";
             this.firstPlayerDataGridViewTextBoxColumn.Name = "firstPlayerDataGridViewTextBoxColumn";
-            this.firstPlayerDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // secondPlayerDataGridViewTextBoxColumn
             // 
             this.secondPlayerDataGridViewTextBoxColumn.DataPropertyName = "SecondPlayer";
             this.secondPlayerDataGridViewTextBoxColumn.HeaderText = "SecondPlayer";
             this.secondPlayerDataGridViewTextBoxColumn.Name = "secondPlayerDataGridViewTextBoxColumn";
-            this.secondPlayerDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // winnerDataGridViewTextBoxColumn
             // 
             this.winnerDataGridViewTextBoxColumn.DataPropertyName = "Winner";
             this.winnerDataGridViewTextBoxColumn.HeaderText = "Winner";
             this.winnerDataGridViewTextBoxColumn.Name = "winnerDataGridViewTextBoxColumn";
-            this.winnerDataGridViewTextBoxColumn.ReadOnly = true;
             this.winnerDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // experienceDataGridViewTextBoxColumn
@@ -454,17 +509,12 @@
             // 
             this.combatBindingSource.DataSource = typeof(ISD_13.Data.Combat);
             // 
-            // hitLogBindingSource
-            // 
-            this.hitLogBindingSource.DataSource = typeof(ISD_13.Data.HitLog);
-            // 
             // dataGridViewTextBoxColumn7
             // 
             this.dataGridViewTextBoxColumn7.DataPropertyName = "Id";
             this.dataGridViewTextBoxColumn7.HeaderText = "Id";
             this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
             this.dataGridViewTextBoxColumn7.ReadOnly = true;
-            this.dataGridViewTextBoxColumn7.Width = 120;
             // 
             // Combat
             // 
@@ -472,14 +522,12 @@
             this.Combat.HeaderText = "Combat";
             this.Combat.Name = "Combat";
             this.Combat.ReadOnly = true;
-            this.Combat.Width = 119;
             // 
             // hitValueDataGridViewTextBoxColumn
             // 
             this.hitValueDataGridViewTextBoxColumn.DataPropertyName = "HitValue";
             this.hitValueDataGridViewTextBoxColumn.HeaderText = "HitValue";
             this.hitValueDataGridViewTextBoxColumn.Name = "hitValueDataGridViewTextBoxColumn";
-            this.hitValueDataGridViewTextBoxColumn.Width = 120;
             // 
             // partDataGridViewTextBoxColumn
             // 
@@ -487,31 +535,31 @@
             this.partDataGridViewTextBoxColumn.HeaderText = "Part";
             this.partDataGridViewTextBoxColumn.Name = "partDataGridViewTextBoxColumn";
             this.partDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.partDataGridViewTextBoxColumn.Width = 119;
             // 
             // resultDataGridViewTextBoxColumn
             // 
             this.resultDataGridViewTextBoxColumn.DataPropertyName = "Result";
             this.resultDataGridViewTextBoxColumn.HeaderText = "Result";
             this.resultDataGridViewTextBoxColumn.Name = "resultDataGridViewTextBoxColumn";
-            this.resultDataGridViewTextBoxColumn.Width = 120;
             // 
             // dataGridViewTextBoxColumn8
             // 
             this.dataGridViewTextBoxColumn8.DataPropertyName = "Date";
             this.dataGridViewTextBoxColumn8.HeaderText = "Date";
             this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
-            this.dataGridViewTextBoxColumn8.Width = 119;
+            // 
+            // hitLogBindingSource
+            // 
+            this.hitLogBindingSource.DataSource = typeof(ISD_13.Data.HitLog);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(804, 356);
+            this.ClientSize = new System.Drawing.Size(804, 355);
             this.Controls.Add(this.filterGroup);
             this.Controls.Add(this.MainTab);
             this.Controls.Add(this.SaveBtn);
-            this.Controls.Add(this.ValidEmailCB);
             this.MinimumSize = new System.Drawing.Size(820, 370);
             this.Name = "MainForm";
             this.Text = "Combats";
@@ -519,6 +567,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.PlayerDGV)).EndInit();
             this.MainTab.ResumeLayout(false);
             this.PlayersTab.ResumeLayout(false);
+            this.PlayersTab.PerformLayout();
             this.TransactionsTab.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.TransactionDGV)).EndInit();
             this.CombatsTab.ResumeLayout(false);
@@ -532,7 +581,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.combatBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.hitLogBindingSource)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -569,8 +617,18 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn playerDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn sumDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private System.Windows.Forms.Button resetFilterBtn;
+        private System.Windows.Forms.Button ResetFilterBtn;
         private System.Windows.Forms.GroupBox filterGroup;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Combat;
+        private System.Windows.Forms.DataGridViewTextBoxColumn hitValueDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn partDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn resultDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
+        private System.Windows.Forms.Button AddTransactiobBtn;
+        private System.Windows.Forms.Button AddNewCombatBtn;
+        private System.Windows.Forms.Button AddNewHitBtn;
+        private System.Windows.Forms.Button AddNewPlayerBtn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewCheckBoxColumn combatTypePVPDataGridViewCheckBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn firstPlayerDataGridViewTextBoxColumn;
@@ -578,12 +636,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn winnerDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn experienceDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Combat;
-        private System.Windows.Forms.DataGridViewTextBoxColumn hitValueDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn partDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn resultDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
 
     }
 }

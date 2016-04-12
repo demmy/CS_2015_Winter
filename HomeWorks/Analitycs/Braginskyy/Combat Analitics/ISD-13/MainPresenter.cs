@@ -25,36 +25,21 @@ namespace ISD_13
             this.proxy = new Proxy();
             view.LoadAllTables += view_LoadAllTables;
             view.SaveInfo += SaveInfo;
-            view.FindUserByLogin += view_FindPlayerByName;
-            view.FindHitLogsByCombatId += view_FindHitLogsByCombatId;
+            view.AddNewPlayer += view_AddNewPlayer;
+            view.AddNewTransaction += view_AddNewTransaction;
+            view.AddNewCombat += view_AddNewCombat;
+            view.AddNewHit += view_AddNewHit;
+            view.FindUserByLogin += view_FindPlayerByName;            
             view.EditTransactionCell += view_EditTransactionCell;
+            view.EditCombatCell += view_EditCombatCell;
         }
-
-        void view_EditTransactionCell(object sender, EventArgs e)
+        void view_LoadAllTables(object sender, EventArgs e)
         {
-            if (playerList.Where(x => x.Login == view.TransactiomPlayerLogin).FirstOrDefault() != null)
-            {
-                transactionList.Where(x => x.Id.ToString() == view.TransactionId).FirstOrDefault().Player =
-                    playerList.Where(x => x.Login == view.TransactiomPlayerLogin).FirstOrDefault();
-            }
+            LoadPlayerTable();
+            LoadTransactionTable();
+            LoadCombatTable();
+            LoadHitLogTable();
         }
-
-        void view_FindHitLogsByCombatId(object sender, EventArgs e)
-        {
-            if (proxy.HitLog.FindHitLogsByCombatId(view.SelectedCombat) != null)
-            {
-                view.SelectedCombatId = view.SelectedCombat;
-            }
-        }
-
-        void view_FindPlayerByName(object sender, EventArgs e)
-        {
-            if (proxy.Player.FindUserByLogin(view.SelectedPlayerName) != null)
-            {
-                view.SelectedPlayerId = proxy.Player.FindUserByLogin(view.SelectedPlayerName).Id;
-            }
-        }
-
         void SaveInfo(object sender, EventArgs e)
         {
             switch (view.SelectedTabIndex)
@@ -125,43 +110,131 @@ namespace ISD_13
                     }
             }
         }
-
-        void view_LoadAllTables(object sender, EventArgs e)
+        void view_AddNewPlayer(object sender, EventArgs e)
         {
+            proxy.Player.Create(new Player() { Date = DateTime.Now });
+            proxy.Save();
             LoadPlayerTable();
+        }
+        void view_AddNewTransaction(object sender, EventArgs e)
+        {
+            if (view.SelectedPlayerName != string.Empty)
+            {
+                proxy.Transaction.Create(new Transaction() { Player = playerList.Where(x => x.Id.ToString() == view.SelectedPlayerId).FirstOrDefault(), Date = DateTime.Now });
+            }
+            else
+            {
+                proxy.Transaction.Create(new Transaction() { Date = DateTime.Now });
+            }
+            proxy.Save();
             LoadTransactionTable();
+        }
+        void view_AddNewCombat(object sender, EventArgs e)
+        {
+            if (view.SelectedPlayerName != string.Empty)
+            {
+                proxy.Combat.Create(new Combat() { FirstPlayer = playerList.Where(x => x.Id.ToString() == view.SelectedPlayerId).FirstOrDefault(), Date = DateTime.Now });
+            }
+            else
+            {
+                proxy.Combat.Create(new Combat() { Date = DateTime.Now });
+            }
+            proxy.Save();
             LoadCombatTable();
+        }
+        void view_AddNewHit(object sender, EventArgs e)
+        {
+            if (view.SelectedCombatId != string.Empty)
+            {
+                proxy.HitLog.Create(new HitLog() { Combat = combatList.Where(x => x.Id.ToString() == view.SelectedCombatId).FirstOrDefault(), Date = DateTime.Now });
+            }
+            else
+            {
+                proxy.HitLog.Create(new HitLog() { Combat = null, Date = DateTime.Now });
+            }
+            proxy.Save();
             LoadHitLogTable();
         }
-        public void LoadTransactionTable()
+
+        void view_EditTransactionCell(object sender, EventArgs e)
         {
-            transactionList = proxy.Transaction.GetAll().ToList();
-            if (view.SelectedPlayerName != "")
+            if (playerList.Where(x => x.Login == view.EditPlayerLogin).FirstOrDefault() != null)
             {
-                transactionList = proxy.Transaction.FindTransactionsByUserId(view.SelectedPlayerId);
+                transactionList.Where(x => x.Id.ToString() == view.SelectedTransactionId).FirstOrDefault().Player =
+                    playerList.Where(x => x.Login == view.EditPlayerLogin).FirstOrDefault();
             }
             view.TransactionBindingSource = transactionList;
         }
-        public void LoadCombatTable()
+        void view_EditCombatCell(object sender, EventArgs e)
+        {
+            if (playerList.Where(x => x.Login == view.EditPlayerLogin).FirstOrDefault() != null)
+            {
+                switch (view.EditCombatColumn)
+                {
+                    case 2:
+                        {
+                            combatList.Where(x => x.Id.ToString() == view.SelectedCombatId).FirstOrDefault().FirstPlayer =
+                    playerList.Where(x => x.Login == view.EditPlayerLogin).FirstOrDefault();
+                            break;
+                        }
+                    case 3:
+                        {
+                            combatList.Where(x => x.Id.ToString() == view.SelectedCombatId).FirstOrDefault().SecondPlayer =
+                    playerList.Where(x => x.Login == view.EditPlayerLogin).FirstOrDefault();
+                            break;
+                        }
+                    case 4:
+                        {
+                            combatList.Where(x => x.Id.ToString() == view.SelectedCombatId).FirstOrDefault().Winner =
+                    playerList.Where(x => x.Login == view.EditPlayerLogin).FirstOrDefault();
+                            break;
+                        }
+                    default:
+                        {
+                            break;
+                        }
+                }
+            }
+            view.CombatBindingSource = combatList;
+        }
+
+        void view_FindPlayerByName(object sender, EventArgs e)
+        {
+            if (proxy.Player.FindUserByLogin(view.SelectedPlayerName) != null)
+            {
+                view.SelectedPlayerId = (proxy.Player.FindUserByLogin(view.SelectedPlayerName).Id).ToString();
+            }
+        }
+
+        private void LoadTransactionTable()
+        {
+            transactionList = proxy.Transaction.GetAll().ToList();
+            if (view.SelectedPlayerName != string.Empty)
+            {
+                transactionList = proxy.Transaction.FindTransactionsByUserId(int.Parse(view.SelectedPlayerId));
+            }
+            view.TransactionBindingSource = transactionList;
+        }
+        private void LoadCombatTable()
         {
             combatList = proxy.Combat.GetAll().ToList();
-            if (view.SelectedPlayerName != "")
+            if (view.SelectedPlayerName != string.Empty)
             {
-                combatList = proxy.Combat.FindCombatsByUserId(view.SelectedPlayerId);
+                combatList = proxy.Combat.FindCombatsByUserId(int.Parse(view.SelectedPlayerId));
             }
             view.CombatBindingSource = combatList;
 
         }
-        public void LoadHitLogTable()
+        private void LoadHitLogTable()
         {
             hitLogList = proxy.HitLog.GetAll().ToList();
-            if (view.SelectedCombat != "")
+            if (view.SelectedCombat != string.Empty)
             {
                 hitLogList = proxy.HitLog.FindHitLogsByCombatId(view.SelectedCombatId);
             }
             view.HitLogBindingSource = hitLogList;
         }
-        public void LoadPlayerTable()
+        private void LoadPlayerTable()
         {
             playerList = proxy.Player.GetAll().ToList();
             if (view.ValidEmailCBStatus)

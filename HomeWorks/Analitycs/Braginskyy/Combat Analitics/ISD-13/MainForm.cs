@@ -13,26 +13,38 @@ namespace ISD_13
 {
     public partial class MainForm : Form, IMainForm
     {
+        public event EventHandler AddNewPlayer;
+        public event EventHandler AddNewTransaction;
+        public event EventHandler AddNewCombat;
+        public event EventHandler AddNewHit;
         public event EventHandler LoadAllTables;
         public event EventHandler SaveInfo;
-        public event EventHandler FindUserByLogin;
-        public event EventHandler FindHitLogsByCombatId;
         public event EventHandler EditTransactionCell;
+        public event EventHandler EditCombatCell;
+        public event EventHandler FindUserByLogin;
+
         public MainPresenter presenter;
-        public string transactionPlayerLogin = string.Empty;
+        private string insertPlayerLogin = string.Empty;
+
         public MainForm()
         {
             InitializeComponent();
             presenter = new MainPresenter(this);
         }
-        public string TransactiomPlayerLogin
+
+        public string EditPlayerLogin
         {
-            get { return transactionPlayerLogin; }
+            get { return insertPlayerLogin; }
         }
-        public string TransactionId
+        public int EditCombatColumn
+        {
+            get { return CombatDGV.CurrentCellAddress.X; }
+        }
+        public string SelectedTransactionId
         {
             get { return TransactionDGV[0, TransactionDGV.CurrentCellAddress.Y].Value.ToString(); }
         }
+
         public object PlayerBindingSource
         {
             set { playerBindingSource.DataSource = value; }
@@ -74,19 +86,19 @@ namespace ISD_13
             get { return SelectedPlayerTxt.Text; }
             set { SelectedPlayerTxt.Text = value; }
         }
-        public int SelectedPlayerId
+        public string SelectedPlayerId
         {
-            get { return (int)PlayerDGV[0, PlayerDGV.CurrentCellAddress.Y].Value; }
-            set 
+            get { return PlayerDGV[0, PlayerDGV.CurrentCellAddress.Y].Value.ToString(); }
+            set
             {
                 for (int i = 0; i < PlayerDGV.Rows.Count; i++)
                 {
-                    if (PlayerDGV[0, i].Value.ToString() == value.ToString())
+                    if (PlayerDGV[0, i].Value.ToString() == value)
                     {
                         PlayerDGV.CurrentCell = PlayerDGV[0, i];
                         SelectedPlayerTxt.BackColor = Color.Red;
                     }
-                }                
+                }
             }
         }
         public int SelectedTabIndex
@@ -106,13 +118,25 @@ namespace ISD_13
             HitDGV.DataSource = hitLogBindingSource;
             if (LoadAllTables != null) { LoadAllTables(this, EventArgs.Empty); }
         }
-
+        private void MainTab_Click(object sender, EventArgs e)
+        {
+            if (LoadAllTables != null) { LoadAllTables(this, EventArgs.Empty); }
+        }
         private void SaveBtn_Click(object sender, EventArgs e)
         {
             if (SaveInfo != null) { SaveInfo(this, EventArgs.Empty); }
-            MessageBox.Show("Changes saved");           
+            MessageBox.Show("Changes saved");
         }
-
+        private void resetFilterBtn_Click(object sender, EventArgs e)
+        {
+            SelectedCombatIdTxt.Text = string.Empty;
+            SelectedPlayerTxt.Text = string.Empty;
+            SelectedPlayerTxt.BackColor = Color.White;
+            SelectedCombatIdTxt.BackColor = Color.White;
+            PlayerDGV.CurrentCell.Selected = false;
+            CombatDGV.CurrentCell.Selected = false;
+            if (LoadAllTables != null) { LoadAllTables(this, EventArgs.Empty); }
+        }
         private void ValidEmailCB_CheckedChanged(object sender, EventArgs e)
         {
             if (LoadAllTables != null) { LoadAllTables(this, EventArgs.Empty); }
@@ -123,80 +147,93 @@ namespace ISD_13
             SelectedPlayerTxt.Text = (string)PlayerDGV[1, PlayerDGV.CurrentCellAddress.Y].Value;
             SelectedPlayerTxt.BackColor = Color.Red;
         }
-
-        private void CombatDGV_Click(object sender, EventArgs e)
-        {
-            if (LoadAllTables != null) { LoadAllTables(this, EventArgs.Empty); }
-        }
-
-        private void MainTab_Click(object sender, EventArgs e)
-        {
-            if (LoadAllTables != null) { LoadAllTables(this, EventArgs.Empty); }
-        }
-
         private void CombatDGV_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             SelectedCombatIdTxt.Text = CombatDGV[0, CombatDGV.CurrentCellAddress.Y].Value.ToString();
             SelectedCombatIdTxt.BackColor = Color.Red;
         }
-
-        private void TransactionDGV_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        private void CombatDGV_CellLeave(object sender, DataGridViewCellEventArgs e)
         {
+            if ((CombatDGV.CurrentCell == CombatDGV[2, e.RowIndex]) ||
+                (CombatDGV.CurrentCell == CombatDGV[3, e.RowIndex]) ||
+                (CombatDGV.CurrentCell == CombatDGV[4, e.RowIndex]))
+            {
+                insertPlayerLogin = CombatDGV.CurrentCell.EditedFormattedValue.ToString();
+                CombatDGV.CurrentCell.Value = null;
+                if (EditCombatCell != null) { EditCombatCell(this, EventArgs.Empty); }
+            }
+        }
+        private void TransactionDGV_CellLeave(object sender, DataGridViewCellEventArgs e)
+        {
+            if (TransactionDGV.CurrentCell == TransactionDGV[1, e.RowIndex])
+            {
+                insertPlayerLogin = TransactionDGV.CurrentCell.EditedFormattedValue.ToString();
+                TransactionDGV.CurrentCell.Value = null;
+                if (EditTransactionCell != null) { EditTransactionCell(this, EventArgs.Empty); }
+            }
+        }
 
+        private void CurrentPlayerTxt_Click(object sender, EventArgs e)
+        {
+            SelectedPlayerTxt.BackColor = Color.White;
+        }
+        private void CurrentPlayerTxt_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (FindUserByLogin != null) { FindUserByLogin(this, EventArgs.Empty); }
+                if (LoadAllTables != null) { LoadAllTables(this, EventArgs.Empty); }
+            }
+        }
+        private void CurrentCombatIdTxt_Click(object sender, EventArgs e)
+        {
+            SelectedCombatIdTxt.BackColor = Color.White;
+        }
+        private void CurrentCombatIdTxt_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                SelectedCombatId = SelectedCombat;
+                if (LoadAllTables != null) { LoadAllTables(this, EventArgs.Empty); }
+            }
+        }
+
+        private void AddTransactiobBtn_Click(object sender, EventArgs e)
+        {
+            if (AddNewTransaction != null) { AddNewTransaction(this, EventArgs.Empty); }
+            TransactionDGV.FirstDisplayedCell = TransactionDGV.Rows[TransactionDGV.Rows.Count - 1].Cells[1];
+        }
+        private void AddNewCombatBtn_Click(object sender, EventArgs e)
+        {
+            if (AddNewCombat != null) { AddNewCombat(this, EventArgs.Empty); }
+            CombatDGV.FirstDisplayedCell = CombatDGV.Rows[CombatDGV.Rows.Count - 1].Cells[1];
+        }
+        private void AddNewHitBtn_Click(object sender, EventArgs e)
+        {
+            if (AddNewHit != null) { AddNewHit(this, EventArgs.Empty); }
+            HitDGV.FirstDisplayedCell = HitDGV.Rows[HitDGV.Rows.Count - 1].Cells[1];
+        }
+        private void AddNewPlayerBtn_Click(object sender, EventArgs e)
+        {
+            if (AddNewPlayer != null) { AddNewPlayer(this, EventArgs.Empty); }
+            PlayerDGV.FirstDisplayedCell = PlayerDGV.Rows[PlayerDGV.Rows.Count - 1].Cells[1];
         }
 
         private void HitDGV_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
 
         }
+        private void CombatDGV_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
 
-        private void CurrentPlayerTxt_Click(object sender, EventArgs e)
-        {
-            SelectedPlayerTxt.BackColor = Color.White;
-        }               
-        
-        private void CurrentPlayerTxt_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {                
-                if (FindUserByLogin != null) { FindUserByLogin(this, EventArgs.Empty); }              
-                if (LoadAllTables != null) { LoadAllTables(this, EventArgs.Empty); }                
-            }
         }
-
-        private void CurrentCombatIdTxt_Click(object sender, EventArgs e)
+        private void PlayerDGV_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
-            SelectedCombatIdTxt.BackColor = Color.White;            
+
         }
-
-        private void CurrentCombatIdTxt_KeyUp(object sender, KeyEventArgs e)
+        private void TransactionDGV_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
-            {
-                if (FindHitLogsByCombatId != null) { FindHitLogsByCombatId(this, EventArgs.Empty); }
-                if (LoadAllTables != null) { LoadAllTables(this, EventArgs.Empty); }
-            }
+
         }
-
-        private void resetFilterBtn_Click(object sender, EventArgs e)
-        {
-            SelectedCombatIdTxt.Text = string.Empty;
-            SelectedPlayerTxt.Text = string.Empty;
-            SelectedPlayerTxt.BackColor = Color.White;
-            SelectedCombatIdTxt.BackColor = Color.White;
-            PlayerDGV.CurrentCell = PlayerDGV[0, 0];
-            CombatDGV.CurrentCell = CombatDGV[0, 0];
-            if (LoadAllTables != null) { LoadAllTables(this, EventArgs.Empty); }
-        }
-
-        private void TransactionDGV_CellParsing(object sender, DataGridViewCellParsingEventArgs e)
-        {
-            if (TransactionDGV.CurrentCell == TransactionDGV[1, e.RowIndex])
-            {
-                transactionPlayerLogin = TransactionDGV.CurrentCell.EditedFormattedValue.ToString();
-                if (EditTransactionCell != null) { EditTransactionCell(this, EventArgs.Empty); }                
-                if (LoadAllTables != null) { LoadAllTables(this, EventArgs.Empty); }    
-            }
-        }        
     }
 }

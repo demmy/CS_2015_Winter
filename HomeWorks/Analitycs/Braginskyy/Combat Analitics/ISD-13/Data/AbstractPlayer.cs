@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ISD_13.Data
 {
-    public class AbstractPlayer
+    public abstract class AbstractPlayer
     {
         public int Id { get; set; }
         [Column(TypeName = "datetime2")]
