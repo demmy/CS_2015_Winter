@@ -42,7 +42,6 @@ namespace FightClubReports.Repository
                 if (playerRepository == null)
                 {
                     playerRepository = new PlayerRepository(db);
-                    statisticsRepository = new StaticticsRepository(db);
                 }
                 return playerRepository;
             }

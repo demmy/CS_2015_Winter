@@ -12,6 +12,7 @@ namespace FightClubReports.Repository.Interfaces
         IEnumerable<Transaction> GetTransactionsBySum(); 
         IEnumerable<Transaction> GetTransactionsByDate();
         IEnumerable<Transaction> GetTransactionsByLogin(string login);
+        Transaction GetTransactionsById(int id);
     }
 }
 

@@ -20,7 +20,7 @@ namespace FightClubReports
         public bool IsEmaillValid { get; set; }
         public DateTime DateOfRegistrations { get; set; }
         public virtual List<Combat> GameData { get; set; }
-        public Statistics Statistics { get; set; } 
+        public virtual Statistics Statistics { get; set; } 
         public virtual List<Transaction> Transactions { get; set; }
 
         public override string ToString()
