@@ -17,6 +17,11 @@ namespace FightClubReports.Repository
             
         }
 
+        public Transaction GetTransactionsById(int id)
+        {
+            return db.Transactions.FirstOrDefault(t => t.Id == id);
+        }
+
         public IEnumerable<Transaction> GetTransactionsByDate()
         {
             return db.Transactions
