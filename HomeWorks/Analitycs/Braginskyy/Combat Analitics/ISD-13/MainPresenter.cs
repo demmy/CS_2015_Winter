@@ -23,23 +23,23 @@ namespace ISD_13
         {
             this.view = view;
             this.proxy = new Proxy();
-            view.LoadAllTables += view_LoadAllTables;
+            view.LoadAllTables += view_LoadAllTables;            
             view.SaveInfo += SaveInfo;
             view.AddNewPlayer += view_AddNewPlayer;
             view.AddNewTransaction += view_AddNewTransaction;
             view.AddNewCombat += view_AddNewCombat;
-            view.AddNewHit += view_AddNewHit;
-            view.FindUserByLogin += view_FindPlayerByName;            
+            view.AddNewHit += view_AddNewHit;                       
             view.EditTransactionCell += view_EditTransactionCell;
             view.EditCombatCell += view_EditCombatCell;
         }
+       
         void view_LoadAllTables(object sender, EventArgs e)
         {
             LoadPlayerTable();
             LoadTransactionTable();
             LoadCombatTable();
             LoadHitLogTable();
-        }
+        }        
         void SaveInfo(object sender, EventArgs e)
         {
             switch (view.SelectedTabIndex)
@@ -197,21 +197,21 @@ namespace ISD_13
             }
             view.CombatBindingSource = combatList;
         }
-
-        void view_FindPlayerByName(object sender, EventArgs e)
-        {
-            if (proxy.Player.FindUserByLogin(view.SelectedPlayerName) != null)
-            {
-                view.SelectedPlayerId = (proxy.Player.FindUserByLogin(view.SelectedPlayerName).Id).ToString();
-            }
-        }
-
+         
         private void LoadTransactionTable()
         {
             transactionList = proxy.Transaction.GetAll().ToList();
             if (view.SelectedPlayerName != string.Empty)
             {
                 transactionList = proxy.Transaction.FindTransactionsByUserId(int.Parse(view.SelectedPlayerId));
+            }
+            if (view.TopTenBySummCBStatus && view.SelectedPlayerName != string.Empty)
+            {
+                transactionList = transactionList.OrderByDescending(x => x.Sum).Take(10).ToList();
+            }
+            if (view.TopTenBySummCBStatus && view.SelectedPlayerName == string.Empty)
+            {
+                transactionList = proxy.Transaction.TopTenTransactionsBySum();
             }
             view.TransactionBindingSource = transactionList;
         }
@@ -223,7 +223,6 @@ namespace ISD_13
                 combatList = proxy.Combat.FindCombatsByUserId(int.Parse(view.SelectedPlayerId));
             }
             view.CombatBindingSource = combatList;
-
         }
         private void LoadHitLogTable()
         {

@@ -12,11 +12,10 @@ namespace ISD_13.Interfaces
         event EventHandler AddNewTransaction;
         event EventHandler AddNewCombat;
         event EventHandler AddNewHit;
-        event EventHandler LoadAllTables;
+        event EventHandler LoadAllTables;        
         event EventHandler SaveInfo;
         event EventHandler EditTransactionCell;
-        event EventHandler EditCombatCell;
-        event EventHandler FindUserByLogin;
+        event EventHandler EditCombatCell;       
 
         object PlayerBindingSource { set; }
         object CombatBindingSource { set; }
@@ -35,5 +34,6 @@ namespace ISD_13.Interfaces
         int EditCombatColumn { get; }
 
         bool ValidEmailCBStatus { get; }
+        bool TopTenBySummCBStatus { get; }
     }
 }

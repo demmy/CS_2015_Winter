@@ -17,11 +17,10 @@ namespace ISD_13
         public event EventHandler AddNewTransaction;
         public event EventHandler AddNewCombat;
         public event EventHandler AddNewHit;
-        public event EventHandler LoadAllTables;
+        public event EventHandler LoadAllTables;        
         public event EventHandler SaveInfo;
         public event EventHandler EditTransactionCell;
-        public event EventHandler EditCombatCell;
-        public event EventHandler FindUserByLogin;
+        public event EventHandler EditCombatCell;        
 
         public MainPresenter presenter;
         private string insertPlayerLogin = string.Empty;
@@ -93,10 +92,11 @@ namespace ISD_13
             {
                 for (int i = 0; i < PlayerDGV.Rows.Count; i++)
                 {
-                    if (PlayerDGV[0, i].Value.ToString() == value)
+                    if (PlayerDGV[1, i].Value.ToString() == value)
                     {
                         PlayerDGV.CurrentCell = PlayerDGV[0, i];
                         SelectedPlayerTxt.BackColor = Color.Red;
+                        i = PlayerDGV.Rows.Count;
                     }
                 }
             }
@@ -108,6 +108,10 @@ namespace ISD_13
         public bool ValidEmailCBStatus
         {
             get { return ValidEmailCB.Checked; }
+        }
+        public bool TopTenBySummCBStatus
+        {
+            get { return TopTenBySummCB.Checked; }
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -134,10 +138,14 @@ namespace ISD_13
             SelectedPlayerTxt.BackColor = Color.White;
             SelectedCombatIdTxt.BackColor = Color.White;
             PlayerDGV.CurrentCell.Selected = false;
-            CombatDGV.CurrentCell.Selected = false;
+            CombatDGV.CurrentCell.Selected = false;           
             if (LoadAllTables != null) { LoadAllTables(this, EventArgs.Empty); }
         }
         private void ValidEmailCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (LoadAllTables != null) { LoadAllTables(this, EventArgs.Empty); }
+        }
+        private void TopTenBySummCB_CheckedChanged(object sender, EventArgs e)
         {
             if (LoadAllTables != null) { LoadAllTables(this, EventArgs.Empty); }
         }
@@ -181,7 +189,7 @@ namespace ISD_13
         {
             if (e.KeyCode == Keys.Enter)
             {
-                if (FindUserByLogin != null) { FindUserByLogin(this, EventArgs.Empty); }
+                SelectedPlayerId = SelectedPlayerName;
                 if (LoadAllTables != null) { LoadAllTables(this, EventArgs.Empty); }
             }
         }
@@ -234,6 +242,6 @@ namespace ISD_13
         private void TransactionDGV_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
 
-        }
+        }        
     }
 }

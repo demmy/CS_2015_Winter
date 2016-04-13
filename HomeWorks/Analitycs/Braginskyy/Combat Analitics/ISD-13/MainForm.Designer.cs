@@ -34,11 +34,15 @@
             this.PlayerDGV = new System.Windows.Forms.DataGridView();
             this.MainTab = new System.Windows.Forms.TabControl();
             this.PlayersTab = new System.Windows.Forms.TabPage();
+            this.AddNewPlayerBtn = new System.Windows.Forms.Button();
             this.TransactionsTab = new System.Windows.Forms.TabPage();
+            this.AddTransactiobBtn = new System.Windows.Forms.Button();
             this.TransactionDGV = new System.Windows.Forms.DataGridView();
             this.CombatsTab = new System.Windows.Forms.TabPage();
+            this.AddNewCombatBtn = new System.Windows.Forms.Button();
             this.CombatDGV = new System.Windows.Forms.DataGridView();
             this.HitsTab = new System.Windows.Forms.TabPage();
+            this.AddNewHitBtn = new System.Windows.Forms.Button();
             this.HitDGV = new System.Windows.Forms.DataGridView();
             this.SelectedPlayerTxt = new System.Windows.Forms.TextBox();
             this.PlayerLbl = new System.Windows.Forms.Label();
@@ -46,10 +50,7 @@
             this.SelectedCombatIdTxt = new System.Windows.Forms.TextBox();
             this.ResetFilterBtn = new System.Windows.Forms.Button();
             this.filterGroup = new System.Windows.Forms.GroupBox();
-            this.AddTransactiobBtn = new System.Windows.Forms.Button();
-            this.AddNewCombatBtn = new System.Windows.Forms.Button();
-            this.AddNewHitBtn = new System.Windows.Forms.Button();
-            this.AddNewPlayerBtn = new System.Windows.Forms.Button();
+            this.TopTenBySummCB = new System.Windows.Forms.CheckBox();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.loginDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.passwordDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -108,11 +109,11 @@
             // 
             this.ValidEmailCB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.ValidEmailCB.AutoSize = true;
-            this.ValidEmailCB.Location = new System.Drawing.Point(689, 240);
+            this.ValidEmailCB.Location = new System.Drawing.Point(690, 240);
             this.ValidEmailCB.Name = "ValidEmailCB";
-            this.ValidEmailCB.Size = new System.Drawing.Size(77, 17);
+            this.ValidEmailCB.Size = new System.Drawing.Size(76, 17);
             this.ValidEmailCB.TabIndex = 14;
-            this.ValidEmailCB.Text = "Valid Email";
+            this.ValidEmailCB.Text = "Valid email";
             this.ValidEmailCB.UseVisualStyleBackColor = true;
             this.ValidEmailCB.CheckedChanged += new System.EventHandler(this.ValidEmailCB_CheckedChanged);
             // 
@@ -171,8 +172,20 @@
             this.PlayersTab.Text = "Players";
             this.PlayersTab.UseVisualStyleBackColor = true;
             // 
+            // AddNewPlayerBtn
+            // 
+            this.AddNewPlayerBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.AddNewPlayerBtn.Location = new System.Drawing.Point(6, 235);
+            this.AddNewPlayerBtn.Name = "AddNewPlayerBtn";
+            this.AddNewPlayerBtn.Size = new System.Drawing.Size(119, 23);
+            this.AddNewPlayerBtn.TabIndex = 17;
+            this.AddNewPlayerBtn.Text = "Add new player";
+            this.AddNewPlayerBtn.UseVisualStyleBackColor = true;
+            this.AddNewPlayerBtn.Click += new System.EventHandler(this.AddNewPlayerBtn_Click);
+            // 
             // TransactionsTab
             // 
+            this.TransactionsTab.Controls.Add(this.TopTenBySummCB);
             this.TransactionsTab.Controls.Add(this.AddTransactiobBtn);
             this.TransactionsTab.Controls.Add(this.TransactionDGV);
             this.TransactionsTab.Location = new System.Drawing.Point(4, 22);
@@ -182,6 +195,17 @@
             this.TransactionsTab.TabIndex = 1;
             this.TransactionsTab.Text = "Transactions";
             this.TransactionsTab.UseVisualStyleBackColor = true;
+            // 
+            // AddTransactiobBtn
+            // 
+            this.AddTransactiobBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.AddTransactiobBtn.Location = new System.Drawing.Point(6, 235);
+            this.AddTransactiobBtn.Name = "AddTransactiobBtn";
+            this.AddTransactiobBtn.Size = new System.Drawing.Size(145, 23);
+            this.AddTransactiobBtn.TabIndex = 18;
+            this.AddTransactiobBtn.Text = "Add new transaction";
+            this.AddTransactiobBtn.UseVisualStyleBackColor = true;
+            this.AddTransactiobBtn.Click += new System.EventHandler(this.AddTransactiobBtn_Click);
             // 
             // TransactionDGV
             // 
@@ -217,6 +241,17 @@
             this.CombatsTab.TabIndex = 2;
             this.CombatsTab.Text = "Combats";
             this.CombatsTab.UseVisualStyleBackColor = true;
+            // 
+            // AddNewCombatBtn
+            // 
+            this.AddNewCombatBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.AddNewCombatBtn.Location = new System.Drawing.Point(6, 235);
+            this.AddNewCombatBtn.Name = "AddNewCombatBtn";
+            this.AddNewCombatBtn.Size = new System.Drawing.Size(125, 23);
+            this.AddNewCombatBtn.TabIndex = 18;
+            this.AddNewCombatBtn.Text = "Add new combat";
+            this.AddNewCombatBtn.UseVisualStyleBackColor = true;
+            this.AddNewCombatBtn.Click += new System.EventHandler(this.AddNewCombatBtn_Click);
             // 
             // CombatDGV
             // 
@@ -256,6 +291,17 @@
             this.HitsTab.TabIndex = 3;
             this.HitsTab.Text = "Hits";
             this.HitsTab.UseVisualStyleBackColor = true;
+            // 
+            // AddNewHitBtn
+            // 
+            this.AddNewHitBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.AddNewHitBtn.Location = new System.Drawing.Point(6, 235);
+            this.AddNewHitBtn.Name = "AddNewHitBtn";
+            this.AddNewHitBtn.Size = new System.Drawing.Size(98, 23);
+            this.AddNewHitBtn.TabIndex = 18;
+            this.AddNewHitBtn.Text = "Add new hit";
+            this.AddNewHitBtn.UseVisualStyleBackColor = true;
+            this.AddNewHitBtn.Click += new System.EventHandler(this.AddNewHitBtn_Click);
             // 
             // HitDGV
             // 
@@ -345,49 +391,16 @@
             this.filterGroup.TabIndex = 23;
             this.filterGroup.TabStop = false;
             // 
-            // AddTransactiobBtn
+            // TopTenBySummCB
             // 
-            this.AddTransactiobBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.AddTransactiobBtn.Location = new System.Drawing.Point(6, 235);
-            this.AddTransactiobBtn.Name = "AddTransactiobBtn";
-            this.AddTransactiobBtn.Size = new System.Drawing.Size(145, 23);
-            this.AddTransactiobBtn.TabIndex = 18;
-            this.AddTransactiobBtn.Text = "Add new transaction";
-            this.AddTransactiobBtn.UseVisualStyleBackColor = true;
-            this.AddTransactiobBtn.Click += new System.EventHandler(this.AddTransactiobBtn_Click);
-            // 
-            // AddNewCombatBtn
-            // 
-            this.AddNewCombatBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.AddNewCombatBtn.Location = new System.Drawing.Point(6, 235);
-            this.AddNewCombatBtn.Name = "AddNewCombatBtn";
-            this.AddNewCombatBtn.Size = new System.Drawing.Size(125, 23);
-            this.AddNewCombatBtn.TabIndex = 18;
-            this.AddNewCombatBtn.Text = "Add new combat";
-            this.AddNewCombatBtn.UseVisualStyleBackColor = true;
-            this.AddNewCombatBtn.Click += new System.EventHandler(this.AddNewCombatBtn_Click);
-            // 
-            // AddNewHitBtn
-            // 
-            this.AddNewHitBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.AddNewHitBtn.Location = new System.Drawing.Point(6, 235);
-            this.AddNewHitBtn.Name = "AddNewHitBtn";
-            this.AddNewHitBtn.Size = new System.Drawing.Size(98, 23);
-            this.AddNewHitBtn.TabIndex = 18;
-            this.AddNewHitBtn.Text = "Add new hit";
-            this.AddNewHitBtn.UseVisualStyleBackColor = true;
-            this.AddNewHitBtn.Click += new System.EventHandler(this.AddNewHitBtn_Click);
-            // 
-            // AddNewPlayerBtn
-            // 
-            this.AddNewPlayerBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.AddNewPlayerBtn.Location = new System.Drawing.Point(6, 235);
-            this.AddNewPlayerBtn.Name = "AddNewPlayerBtn";
-            this.AddNewPlayerBtn.Size = new System.Drawing.Size(119, 23);
-            this.AddNewPlayerBtn.TabIndex = 17;
-            this.AddNewPlayerBtn.Text = "Add new player";
-            this.AddNewPlayerBtn.UseVisualStyleBackColor = true;
-            this.AddNewPlayerBtn.Click += new System.EventHandler(this.AddNewPlayerBtn_Click);
+            this.TopTenBySummCB.AutoSize = true;
+            this.TopTenBySummCB.Location = new System.Drawing.Point(648, 240);
+            this.TopTenBySummCB.Name = "TopTenBySummCB";
+            this.TopTenBySummCB.Size = new System.Drawing.Size(118, 17);
+            this.TopTenBySummCB.TabIndex = 24;
+            this.TopTenBySummCB.Text = "Top ten transaction";
+            this.TopTenBySummCB.UseVisualStyleBackColor = true;
+            this.TopTenBySummCB.CheckedChanged += new System.EventHandler(this.TopTenBySummCB_CheckedChanged);
             // 
             // dataGridViewTextBoxColumn2
             // 
@@ -569,6 +582,7 @@
             this.PlayersTab.ResumeLayout(false);
             this.PlayersTab.PerformLayout();
             this.TransactionsTab.ResumeLayout(false);
+            this.TransactionsTab.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TransactionDGV)).EndInit();
             this.CombatsTab.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.CombatDGV)).EndInit();
@@ -636,6 +650,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn winnerDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn experienceDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.CheckBox TopTenBySummCB;
 
     }
 }
