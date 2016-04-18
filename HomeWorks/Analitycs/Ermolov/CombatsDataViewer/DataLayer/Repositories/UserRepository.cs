@@ -20,5 +20,18 @@ namespace DataLayer.Repositories
     public class UserRepository : BaseRepository<User>, IUserRepository
     {
         public UserRepository(Context db) : base(db) {}
+
+        public int GetLastUsedUserId()
+        {
+            if (db.Users.Where(u => u.Id != 0).Count() > 0)
+                return db.Users.OrderByDescending(u => u.Id).FirstOrDefault().Id;
+            else
+                return 0;
+        }
+
+        public User GetUserByLogin(string login)
+        {
+                return db.Users.Where(u => u.Login == login).FirstOrDefault();
+        }
     }
 }

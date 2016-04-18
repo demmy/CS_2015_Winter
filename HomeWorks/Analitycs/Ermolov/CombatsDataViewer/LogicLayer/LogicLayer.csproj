@@ -53,13 +53,10 @@
     <Compile Include="Interfaces\IUserService.cs" />
     <Compile Include="Interfaces\IUserTransactionService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\UserTransactionService.cs" />
     <Compile Include="Services\UserService.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="DataObject" />
-    <Folder Include="Interfaces" />
-    <Folder Include="Services" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\DataLayer\DataLayer.csproj">
       <Project>{7CD0BC53-2718-4688-8217-FC9E253E8F81}</Project>

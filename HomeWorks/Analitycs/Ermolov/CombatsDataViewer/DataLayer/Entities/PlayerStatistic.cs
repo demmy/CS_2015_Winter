@@ -5,6 +5,7 @@
  * Time: 15:48
  */
 using System;
+using System.ComponentModel;
 
 namespace DataLayer.Entities
 {
@@ -13,11 +14,11 @@ namespace DataLayer.Entities
     /// </summary>
     public class PlayerStatistic
     {
-        public int Id { get; set; }
-        public DateTime Date { get; set; }
-        public virtual Player Player { get; set; }
+        [DefaultValue(0)]
         public int Wins { get; set; }
+        [DefaultValue(0)]
         public int Loses { get; set; }
+        [DefaultValue(0)]
         public int Draws { get; set; }
     }
 }

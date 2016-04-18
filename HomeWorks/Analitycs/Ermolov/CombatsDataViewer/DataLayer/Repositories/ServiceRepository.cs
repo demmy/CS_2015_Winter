@@ -12,7 +12,7 @@ using DataLayer.Interfaces;
 namespace DataLayer.Repositories
 {
     /// <summary>
-    /// Description of UnitOfWork.
+    /// Description of ServiceRepository.
     /// </summary>
     public class ServiceRepository : IServiceRepository
     {
@@ -23,9 +23,9 @@ namespace DataLayer.Repositories
         private IBattleRepository battleRepository;
         private IBattleLogRepository battleLogRepository;
         
-        public ServiceRepository()
+        public ServiceRepository(string connectionString)
         {
-            this.db = new Context();
+            this.db = new Context(connectionString);
         }
 
         public IUserRepository Users

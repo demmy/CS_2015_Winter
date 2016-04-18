@@ -10,7 +10,7 @@ using DataLayer.Entities;
 namespace DataLayer.Interfaces
 {
     /// <summary>
-    /// Description of IUnitOfWork.
+    /// Description of IServiceRepository.
     /// </summary>
     public interface IServiceRepository : IDisposable
     {

@@ -14,6 +14,7 @@ namespace DataLayer.Interfaces
     /// </summary>
     public interface IUserRepository : IRepository<User>
     {
-        
+        int GetLastUsedUserId();
+        User GetUserByLogin(string login);
     }
 }

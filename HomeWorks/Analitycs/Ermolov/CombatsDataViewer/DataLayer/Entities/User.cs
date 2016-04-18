@@ -6,6 +6,7 @@
  */
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace DataLayer.Entities
 {
@@ -19,6 +20,7 @@ namespace DataLayer.Entities
         public string Login { get; set; }
         public string Password { get; set; }
         public string EMail { get; set; }
+        [DefaultValue(false)]
         public bool IsEMailValid { get; set; }
         public virtual Player Character { get; set; }
         public virtual ICollection<UserTransaction> UserTransactions { get; set; }

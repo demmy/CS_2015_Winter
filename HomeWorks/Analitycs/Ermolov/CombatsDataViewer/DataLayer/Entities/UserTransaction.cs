@@ -17,6 +17,6 @@ namespace DataLayer.Entities
         public DateTime Date { get; set; }
         public virtual User User { get; set; }
         public string Description { get; set; }
-        public decimal Sum { get; set; }
+        public decimal? Sum { get; set; }
     }
 }

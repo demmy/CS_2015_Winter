@@ -6,6 +6,7 @@
  */
 using System;
 using DataLayer.Entities;
+using System.Collections.Generic;
 
 namespace DataLayer.Interfaces
 {
@@ -14,6 +15,7 @@ namespace DataLayer.Interfaces
     /// </summary>
     public interface IUserTransactionRepository : IRepository<UserTransaction>
     {
-        
+        int GetLastUsedUserTransactionId();
+        List<UserTransaction> GetUserTransactions(int userId);
     }
 }

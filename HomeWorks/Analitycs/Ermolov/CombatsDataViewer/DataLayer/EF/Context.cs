@@ -5,6 +5,7 @@
  * Time: 15:52
  */
 using System;
+using System.Configuration;
 using System.Data.Entity;
 using DataLayer.Entities;
 
@@ -22,13 +23,26 @@ namespace DataLayer.EF
         public DbSet<BattleLog> BattleLogs { get; set; }
 
         public Context()
-            : base ("name=MsSqlServer")
+            : base ("name=dbLocal")
         {
         }
         
         public Context(string connectionString)
-            : base(connectionString)
+            : base(SetConnectionString(connectionString))
         {
+        }
+        
+        public static string SetConnectionString(string connectionString)
+        {
+            switch (connectionString)
+            {
+                case "dbLocal":
+                    return ConfigurationManager.ConnectionStrings["dbLocal"].ConnectionString;
+                case "dbExternal":
+                    return ConfigurationManager.ConnectionStrings["dbExternal"].ConnectionString;
+                default:
+                    return connectionString;
+            }
         }
     }
 }

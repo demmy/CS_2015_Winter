@@ -17,5 +17,10 @@ namespace LogicLayer.DataObject
         public int Wins { get; set; }
         public int Loses { get; set; }
         public int Draws { get; set; }
+
+        public override string ToString()
+        {
+            return CharacterName;
+        }
     }
 }

@@ -15,8 +15,11 @@ namespace LogicLayer.Interfaces
     /// </summary>
     public interface IUserTransactionService
     {
-        IEnumerable<UserTransactionDTO> GetUserTransactions(int userId);
-        IEnumerable<UserTransactionDTO> GetTransactionsByDate(DateTime date);
-        IEnumerable<UserTransactionDTO> GetLastTransactions(int num);
+        List<UserTransactionDTO> GetUserTransactions(int userId);
+        List<UserTransactionDTO> GetTransactionsByDate(int userId, DateTime date);
+        List<UserTransactionDTO> GetLastUserTransactions(int userId, int num);
+        List<UserTransactionDTO> GetUserTransactionsDescByMaxSum(int userId);
+        void EditUserTransaction(UserTransactionDTO transaction);
+        void DeleteUserTransaction(UserTransactionDTO transaction);
     }
 }
