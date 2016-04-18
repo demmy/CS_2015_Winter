@@ -16,7 +16,6 @@ namespace FightClubReports.Repository
         private IPlayerRepository playerRepository;
         private ICombatRepository combatRepository;
         private ITransactionRepository transactionRepository;
-        private IStatisticsRepository statisticsRepository;
 
         public ServiceRepository()
         {
@@ -69,6 +68,5 @@ namespace FightClubReports.Repository
             db.SaveChanges();
         }
             
-
     }
 }

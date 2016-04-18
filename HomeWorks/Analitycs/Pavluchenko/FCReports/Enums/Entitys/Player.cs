@@ -18,7 +18,7 @@ namespace FightClubReports
         public string Password { get; set; }
         public string EMail { get; set; }        
         public bool IsEmaillValid { get; set; }
-        public DateTime DateOfRegistrations { get; set; }
+        public DateTime RegistrationDate { get; set; }
         public virtual List<Combat> GameData { get; set; }
         public virtual Statistics Statistics { get; set; } 
         public virtual List<Transaction> Transactions { get; set; }

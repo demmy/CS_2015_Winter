@@ -33,6 +33,7 @@ namespace FightClubReports
             this.playersOk = new System.Windows.Forms.Button();
             this.infoControl = new System.Windows.Forms.TabControl();
             this.playersPage = new System.Windows.Forms.TabPage();
+            this.nonExistentPlayer = new System.Windows.Forms.Label();
             this.loginValidError = new System.Windows.Forms.Label();
             this.passwordValidError = new System.Windows.Forms.Label();
             this.emailValidError = new System.Windows.Forms.Label();
@@ -53,6 +54,8 @@ namespace FightClubReports
             this.topPlayers = new System.Windows.Forms.RadioButton();
             this.playersTable = new System.Windows.Forms.DataGridView();
             this.transactionsPage = new System.Windows.Forms.TabPage();
+            this.dateValidError = new System.Windows.Forms.Label();
+            this.sumValidError = new System.Windows.Forms.Label();
             this.saveTransactionLb = new System.Windows.Forms.Label();
             this.saveTransactions = new System.Windows.Forms.Button();
             this.dateEdit = new System.Windows.Forms.TextBox();
@@ -72,8 +75,6 @@ namespace FightClubReports
             this.combatsByLogin = new System.Windows.Forms.RadioButton();
             this.combatsByDate = new System.Windows.Forms.RadioButton();
             this.combatsByType = new System.Windows.Forms.RadioButton();
-            this.sumValidError = new System.Windows.Forms.Label();
-            this.dateValidError = new System.Windows.Forms.Label();
             this.infoControl.SuspendLayout();
             this.playersPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.playersTable)).BeginInit();
@@ -92,7 +93,7 @@ namespace FightClubReports
             this.playersOk.Text = "ОК";
             this.playersOk.UseVisualStyleBackColor = true;
             this.playersOk.Visible = false;
-            this.playersOk.Click += new System.EventHandler(this.playersOk_Click);
+            this.playersOk.Click += new System.EventHandler(this.playersLoginOk_Click);
             // 
             // infoControl
             // 
@@ -110,6 +111,7 @@ namespace FightClubReports
             // 
             // playersPage
             // 
+            this.playersPage.Controls.Add(this.nonExistentPlayer);
             this.playersPage.Controls.Add(this.loginValidError);
             this.playersPage.Controls.Add(this.passwordValidError);
             this.playersPage.Controls.Add(this.emailValidError);
@@ -137,6 +139,20 @@ namespace FightClubReports
             this.playersPage.TabIndex = 0;
             this.playersPage.Text = "Пользователи";
             this.playersPage.UseVisualStyleBackColor = true;
+            // 
+            // nonExistentPlayer
+            // 
+            this.nonExistentPlayer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.nonExistentPlayer.AutoSize = true;
+            this.nonExistentPlayer.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.nonExistentPlayer.ForeColor = System.Drawing.Color.DarkRed;
+            this.nonExistentPlayer.Location = new System.Drawing.Point(583, 40);
+            this.nonExistentPlayer.Name = "nonExistentPlayer";
+            this.nonExistentPlayer.Size = new System.Drawing.Size(134, 13);
+            this.nonExistentPlayer.TabIndex = 36;
+            this.nonExistentPlayer.Text = "Пользователь не найден";
+            this.nonExistentPlayer.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.nonExistentPlayer.Visible = false;
             // 
             // loginValidError
             // 
@@ -374,6 +390,32 @@ namespace FightClubReports
             this.transactionsPage.Text = "Транзакции";
             this.transactionsPage.UseVisualStyleBackColor = true;
             // 
+            // dateValidError
+            // 
+            this.dateValidError.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.dateValidError.AutoSize = true;
+            this.dateValidError.ForeColor = System.Drawing.Color.DarkRed;
+            this.dateValidError.Location = new System.Drawing.Point(217, 407);
+            this.dateValidError.Name = "dateValidError";
+            this.dateValidError.Size = new System.Drawing.Size(130, 13);
+            this.dateValidError.TabIndex = 42;
+            this.dateValidError.Text = "Введите дату корректно";
+            this.dateValidError.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.dateValidError.Visible = false;
+            // 
+            // sumValidError
+            // 
+            this.sumValidError.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.sumValidError.AutoSize = true;
+            this.sumValidError.ForeColor = System.Drawing.Color.DarkRed;
+            this.sumValidError.Location = new System.Drawing.Point(40, 407);
+            this.sumValidError.Name = "sumValidError";
+            this.sumValidError.Size = new System.Drawing.Size(140, 13);
+            this.sumValidError.TabIndex = 41;
+            this.sumValidError.Text = "Введите сумму корректно";
+            this.sumValidError.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.sumValidError.Visible = false;
+            // 
             // saveTransactionLb
             // 
             this.saveTransactionLb.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -554,7 +596,7 @@ namespace FightClubReports
             this.combatsOk.Text = "ОК";
             this.combatsOk.UseVisualStyleBackColor = true;
             this.combatsOk.Visible = false;
-            this.combatsOk.Click += new System.EventHandler(this.combatsOk_Click);
+            this.combatsOk.Click += new System.EventHandler(this.combatsLoginOk_Click);
             // 
             // combatsByLogin
             // 
@@ -590,32 +632,6 @@ namespace FightClubReports
             this.combatsByType.Text = global::FightClubReports.Properties.Resources.byType;
             this.combatsByType.UseVisualStyleBackColor = true;
             this.combatsByType.CheckedChanged += new System.EventHandler(this.combatsByType_CheckedChanged);
-            // 
-            // sumValidError
-            // 
-            this.sumValidError.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.sumValidError.AutoSize = true;
-            this.sumValidError.ForeColor = System.Drawing.Color.DarkRed;
-            this.sumValidError.Location = new System.Drawing.Point(40, 407);
-            this.sumValidError.Name = "sumValidError";
-            this.sumValidError.Size = new System.Drawing.Size(140, 13);
-            this.sumValidError.TabIndex = 41;
-            this.sumValidError.Text = "Введите сумму корректно";
-            this.sumValidError.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.sumValidError.Visible = false;
-            // 
-            // dateValidError
-            // 
-            this.dateValidError.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.dateValidError.AutoSize = true;
-            this.dateValidError.ForeColor = System.Drawing.Color.DarkRed;
-            this.dateValidError.Location = new System.Drawing.Point(217, 407);
-            this.dateValidError.Name = "dateValidError";
-            this.dateValidError.Size = new System.Drawing.Size(130, 13);
-            this.dateValidError.TabIndex = 42;
-            this.dateValidError.Text = "Введите дату корректно";
-            this.dateValidError.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.dateValidError.Visible = false;
             // 
             // MainForm
             // 
@@ -689,6 +705,7 @@ namespace FightClubReports
         private System.Windows.Forms.Label passwordValidError;
         private System.Windows.Forms.Label dateValidError;
         private System.Windows.Forms.Label sumValidError;
+        private System.Windows.Forms.Label nonExistentPlayer;
     }
 }
 

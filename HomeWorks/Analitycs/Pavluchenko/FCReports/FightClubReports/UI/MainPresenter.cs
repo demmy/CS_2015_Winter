@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace FightClubReports
@@ -25,7 +26,7 @@ namespace FightClubReports
         bool passwordValid;
         bool emailValid;
         bool sumValid;
-        bool dateValid = true;
+        bool dateValid;
 
         public MainPresenter(IView view)
         {
@@ -66,35 +67,20 @@ namespace FightClubReports
                 service.Save();
                 view.SavePlayer = true;
             }
-            ErrorsVisible();
+                PlayersErrorsVisible();
+            
         }
 
         private void onTransactionsSaveClick(object sender, EventArgs e)
         {
-            dateValid = true;
-            ChangeSelectedTransaction();
-            try
+            if (TransactionsValidation())
             {
-                service.Transactions.Save();
-            }
-            catch (System.Data.Entity.Infrastructure.DbUpdateException)
-            {
-                dateValid = false;
-            }
-
-            if (!dateValid)
-            {
-                view.DateError = true;
-                view.SaveTransaction = false;
-            }
-            else
-            {
-                view.DateError = false;
+                ChangeSelectedTransaction();
                 service.Save();
                 view.SaveTransaction = true;
-
             }
-            
+            TransactionsErrorsVisible();
+
         }
 
         #endregion
@@ -110,50 +96,22 @@ namespace FightClubReports
             LoginOrPasswordValid(false);
             ValidEmail();
 
-            if (emailValid && loginValid && passwordValid)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return (emailValid && loginValid && passwordValid) ? true : false;
         }
-
 
         private void ValidEmail()
         {
-            if (view.SelectedPlayer.EMail != string.Empty)
+            string pattern = @"^(?("")(""[^""]+?""@)|(([0-9a-z]((\.(?!\.))|[-!#\$%&'\*\+/=\?\^`\{\}\|~\w])*)(?<=[0-9a-z])@))" +
+                @"(?(\[)(\[(\d{1,3}\.){3}\d{1,3}\])|(([0-9a-z][-\w]*[0-9a-z]*\.)+[a-z0-9]{2,17}))$";
+
+            string email = view.SelectedPlayer.EMail;
+
+            if (email != string.Empty)
             {
-                if (view.SelectedPlayer.EMail.Contains("@") && view.SelectedPlayer.EMail.Contains("."))
+                if (Regex.IsMatch(email, pattern, RegexOptions.IgnoreCase))
                 {
-                    char[] currentEmail = view.SelectedPlayer.EMail.ToCharArray();
-                    int NumbersOfNecessarySymbol = 0;
-
-                    for (int i = 0; i < currentEmail.Length; i++)
-                    {
-                        if (!((currentEmail[i] >= 'A' && currentEmail[i] <= 'Z') || (currentEmail[i] >= 'a' && currentEmail[i] <= 'z') ||
-                            (currentEmail[i] >= '0' && currentEmail[i] <= '9')))
-                        {
-                            if ((currentEmail[i] != '@') && (currentEmail[i] != '.'))
-                            {
-                                emailValid = false;
-                                break;
-                            }
-                            else if (NumbersOfNecessarySymbol == 2)
-                            {
-                                emailValid = false;
-                                break;
-                            }
-                            else
-                            {
-                                NumbersOfNecessarySymbol++;
-                            }
-                        }
-                        view.SelectedPlayer.IsEmaillValid = true;
-                        emailValid = true;
-                    }
-
+                    emailValid = true;
+                    view.SelectedPlayer.IsEmaillValid = true;
                 }
                 else
                 {
@@ -168,7 +126,6 @@ namespace FightClubReports
             }
         }
 
-
         private void LoginOrPasswordValid(bool isLogin)
         {
             if (isLogin)
@@ -181,53 +138,20 @@ namespace FightClubReports
                 string password = view.SelectedPlayer.Password;
                 passwordValid = LatinAndNumbersValid(password) ? true : false;
             }
-
         }
 
         private bool LatinAndNumbersValid(string text)
         {
-
-            char[] currentText = text.ToCharArray();
-
-            for (int i = 0; i < currentText.Length; i++)
-            {
-                if (!((currentText[i] >= 'A' && currentText[i] <= 'Z') || (currentText[i] >= 'a' && currentText[i] <= 'z') ||
-                    (currentText[i] >= '0' && currentText[i] <= '9')))
-                {
-                    return false;
-                }
-            }
-            return true;
+            string pattern = @"^[a-zA-Z][a-zA-Z0-9-_\.]{1,20}$";
+            
+            return (Regex.IsMatch(text, pattern, RegexOptions.IgnoreCase)) ? true : false;
         }
 
-        private void ErrorsVisible()
+        private void PlayersErrorsVisible()
         {
-            if (emailValid)
-            {
-                view.EmailError = false;
-            }
-            else
-            {
-                view.EmailError = true;
-            }
-
-            if (loginValid)
-            {
-                view.LoginError = false;
-            }
-            else
-            {
-                view.LoginError = true;
-            }
-
-            if (passwordValid)
-            {
-                view.PasswordError = false;
-            }
-            else
-            {
-                view.PasswordError = true;
-            }
+            view.EmailError = !emailValid;
+            view.LoginError = !loginValid;
+            view.PasswordError = !passwordValid;
         }
         #endregion
 
@@ -236,25 +160,29 @@ namespace FightClubReports
         private bool TransactionsValidation()
         {
             SumValidation();
-
-            if (true)
-            {
-
-
-            }
-            return true;
+            DateValidation();
+            return (sumValid && dateValid) ? true : false;
+        }
+        
+        private void DateValidation()
+        {
+            dateValid = (view.SelectedTransaction.Date == DateTime.MinValue) ? false : true;
         }
 
         private void SumValidation()
         {
-            
+            sumValid = (view.SelectedTransaction.Sum <= 0) ? false : true;
         }
-        
+
+        private void TransactionsErrorsVisible()
+        {
+            view.DateError = !dateValid;
+            view.SumError = !sumValid;
+        }
 
         #endregion
 
         #endregion
-
 
         private void  InfoForPlayerTable()
         {
@@ -290,10 +218,11 @@ namespace FightClubReports
 
         private void ChangeSelectedPlayer()
         {
-            player = service.Players.GetPlayerById(view.SelectedPlayer.Id); 
+            player = service.Players.GetPlayerById(view.SelectedPlayer.Id);
             player.Login = view.SelectedPlayer.Login;
             player.Password = view.SelectedPlayer.Password;
             player.EMail = view.SelectedPlayer.EMail;
+            player.IsEmaillValid = (player.EMail != null) ? true : false;
         }
 
         private void InfoForTransactionTable()

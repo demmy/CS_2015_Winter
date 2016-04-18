@@ -160,6 +160,15 @@ namespace FightClubReports.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Пример: &quot;Vilka24@gmail.com&quot;. Или оставьте поле пустым.
+        /// </summary>
+        internal static string emailValidError {
+            get {
+                return ResourceManager.GetString("emailValidError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Введите логин ниже.
         /// </summary>
         internal static string enterLogin {
@@ -196,6 +205,15 @@ namespace FightClubReports.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Логин должен содержать только латинские буквы и цифры без пробелов (максимум 20 символов).
+        /// </summary>
+        internal static string loginValidError {
+            get {
+                return ResourceManager.GetString("loginValidError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ни один вариант не выбран.
         /// </summary>
         internal static string noOneOptionIsNotSelected {
@@ -228,6 +246,15 @@ namespace FightClubReports.Properties {
         internal static string password {
             get {
                 return ResourceManager.GetString("password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Пароль должен содержать только латинские буквы и цифры без пробелов (максимум 20 символов).
+        /// </summary>
+        internal static string passwordValidError {
+            get {
+                return ResourceManager.GetString("passwordValidError", resourceCulture);
             }
         }
         
