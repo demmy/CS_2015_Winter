@@ -43,7 +43,7 @@ namespace FightClubReports.Repository
         public IEnumerable<Player> GetPlayersByRegist()
         {
             return db.Players
-               .OrderBy(t => t.DateOfRegistrations)
+               .OrderBy(t => t.RegistrationDate)
                .ToList();
         }
 

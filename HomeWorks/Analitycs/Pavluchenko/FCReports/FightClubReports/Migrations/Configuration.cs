@@ -19,7 +19,7 @@ namespace FightClubReports.Migrations
         protected override void Seed(FightClubReports.Data.Context context)
         {
 
-            if (context.Players.Count() == 0) //?
+            if (context.Players.Count() == 0)
             {
                 #region Statistics
                 var statistics1 = new Statistics()
@@ -61,7 +61,7 @@ namespace FightClubReports.Migrations
                     EMail = "PikEmail@gmail.com",
                     IsEmaillValid = true,
                     Statistics = statistics1,
-                    DateOfRegistrations = new DateTime(2001, 2, 2)
+                    RegistrationDate = new DateTime(2001, 2, 2)
                 };
 
                 var player2 = new Player()
@@ -71,7 +71,7 @@ namespace FightClubReports.Migrations
                     EMail = "Irish@ir.com",
                     IsEmaillValid = true,
                     Statistics = statistics2,
-                    DateOfRegistrations = new DateTime(1997, 12, 2)
+                    RegistrationDate = new DateTime(1997, 12, 2)
                 };
 
                 var player3 = new Player()
@@ -81,7 +81,7 @@ namespace FightClubReports.Migrations
                     EMail = null,
                     IsEmaillValid = false,
                     Statistics = statistics3,
-                    DateOfRegistrations = new DateTime(2012, 1, 1)
+                    RegistrationDate = new DateTime(2012, 1, 1)
                 };
 
                 var player4 = new Player()
@@ -91,7 +91,7 @@ namespace FightClubReports.Migrations
                     EMail = null,
                     IsEmaillValid = false,
                     Statistics = statistics4,
-                    DateOfRegistrations = new DateTime(2001, 6, 19)
+                    RegistrationDate = new DateTime(2001, 6, 19)
                 };
 
                 context.Players.AddRange(new List<Player> { player1, player2, player3, player4 });
@@ -167,9 +167,6 @@ namespace FightClubReports.Migrations
 
                 context.SaveChanges();
             }
-                
-            
-
         }
     }
 }

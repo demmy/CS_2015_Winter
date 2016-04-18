@@ -33,6 +33,10 @@ namespace FightClubReports
             this.playersOk = new System.Windows.Forms.Button();
             this.infoControl = new System.Windows.Forms.TabControl();
             this.playersPage = new System.Windows.Forms.TabPage();
+            this.nonExistentPlayer = new System.Windows.Forms.Label();
+            this.loginValidError = new System.Windows.Forms.Label();
+            this.passwordValidError = new System.Windows.Forms.Label();
+            this.emailValidError = new System.Windows.Forms.Label();
             this.savePlayerLb = new System.Windows.Forms.Label();
             this.save = new System.Windows.Forms.Button();
             this.emailEditTb = new System.Windows.Forms.TextBox();
@@ -50,6 +54,9 @@ namespace FightClubReports
             this.topPlayers = new System.Windows.Forms.RadioButton();
             this.playersTable = new System.Windows.Forms.DataGridView();
             this.transactionsPage = new System.Windows.Forms.TabPage();
+            this.dateValidError = new System.Windows.Forms.Label();
+            this.sumValidError = new System.Windows.Forms.Label();
+            this.saveTransactionLb = new System.Windows.Forms.Label();
             this.saveTransactions = new System.Windows.Forms.Button();
             this.dateEdit = new System.Windows.Forms.TextBox();
             this.dateEditLb = new System.Windows.Forms.Label();
@@ -68,7 +75,6 @@ namespace FightClubReports
             this.combatsByLogin = new System.Windows.Forms.RadioButton();
             this.combatsByDate = new System.Windows.Forms.RadioButton();
             this.combatsByType = new System.Windows.Forms.RadioButton();
-            this.saveTransactionLb = new System.Windows.Forms.Label();
             this.infoControl.SuspendLayout();
             this.playersPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.playersTable)).BeginInit();
@@ -87,7 +93,7 @@ namespace FightClubReports
             this.playersOk.Text = "ОК";
             this.playersOk.UseVisualStyleBackColor = true;
             this.playersOk.Visible = false;
-            this.playersOk.Click += new System.EventHandler(this.playersOk_Click);
+            this.playersOk.Click += new System.EventHandler(this.playersLoginOk_Click);
             // 
             // infoControl
             // 
@@ -100,11 +106,15 @@ namespace FightClubReports
             this.infoControl.Location = new System.Drawing.Point(63, 4);
             this.infoControl.Name = "infoControl";
             this.infoControl.SelectedIndex = 0;
-            this.infoControl.Size = new System.Drawing.Size(751, 431);
+            this.infoControl.Size = new System.Drawing.Size(751, 454);
             this.infoControl.TabIndex = 21;
             // 
             // playersPage
             // 
+            this.playersPage.Controls.Add(this.nonExistentPlayer);
+            this.playersPage.Controls.Add(this.loginValidError);
+            this.playersPage.Controls.Add(this.passwordValidError);
+            this.playersPage.Controls.Add(this.emailValidError);
             this.playersPage.Controls.Add(this.savePlayerLb);
             this.playersPage.Controls.Add(this.save);
             this.playersPage.Controls.Add(this.emailEditTb);
@@ -125,17 +135,70 @@ namespace FightClubReports
             this.playersPage.Location = new System.Drawing.Point(4, 22);
             this.playersPage.Name = "playersPage";
             this.playersPage.Padding = new System.Windows.Forms.Padding(3);
-            this.playersPage.Size = new System.Drawing.Size(743, 405);
+            this.playersPage.Size = new System.Drawing.Size(743, 428);
             this.playersPage.TabIndex = 0;
             this.playersPage.Text = "Пользователи";
             this.playersPage.UseVisualStyleBackColor = true;
+            // 
+            // nonExistentPlayer
+            // 
+            this.nonExistentPlayer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.nonExistentPlayer.AutoSize = true;
+            this.nonExistentPlayer.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.nonExistentPlayer.ForeColor = System.Drawing.Color.DarkRed;
+            this.nonExistentPlayer.Location = new System.Drawing.Point(583, 40);
+            this.nonExistentPlayer.Name = "nonExistentPlayer";
+            this.nonExistentPlayer.Size = new System.Drawing.Size(134, 13);
+            this.nonExistentPlayer.TabIndex = 36;
+            this.nonExistentPlayer.Text = "Пользователь не найден";
+            this.nonExistentPlayer.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.nonExistentPlayer.Visible = false;
+            // 
+            // loginValidError
+            // 
+            this.loginValidError.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.loginValidError.AutoSize = true;
+            this.loginValidError.ForeColor = System.Drawing.Color.DarkRed;
+            this.loginValidError.Location = new System.Drawing.Point(40, 407);
+            this.loginValidError.Name = "loginValidError";
+            this.loginValidError.Size = new System.Drawing.Size(137, 13);
+            this.loginValidError.TabIndex = 36;
+            this.loginValidError.Text = "Введите логин корректно";
+            this.loginValidError.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.loginValidError.Visible = false;
+            // 
+            // passwordValidError
+            // 
+            this.passwordValidError.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.passwordValidError.AutoSize = true;
+            this.passwordValidError.ForeColor = System.Drawing.Color.DarkRed;
+            this.passwordValidError.Location = new System.Drawing.Point(210, 407);
+            this.passwordValidError.Name = "passwordValidError";
+            this.passwordValidError.Size = new System.Drawing.Size(144, 13);
+            this.passwordValidError.TabIndex = 35;
+            this.passwordValidError.Text = "Введите пароль корректно";
+            this.passwordValidError.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.passwordValidError.Visible = false;
+            // 
+            // emailValidError
+            // 
+            this.emailValidError.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.emailValidError.AutoSize = true;
+            this.emailValidError.ForeColor = System.Drawing.Color.DarkRed;
+            this.emailValidError.Location = new System.Drawing.Point(378, 407);
+            this.emailValidError.Name = "emailValidError";
+            this.emailValidError.Size = new System.Drawing.Size(133, 13);
+            this.emailValidError.TabIndex = 34;
+            this.emailValidError.Text = "Введите Email корректно";
+            this.emailValidError.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.emailValidError.Visible = false;
             // 
             // savePlayerLb
             // 
             this.savePlayerLb.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.savePlayerLb.AutoSize = true;
             this.savePlayerLb.ForeColor = System.Drawing.Color.DarkGreen;
-            this.savePlayerLb.Location = new System.Drawing.Point(674, 377);
+            this.savePlayerLb.Location = new System.Drawing.Point(666, 388);
             this.savePlayerLb.Name = "savePlayerLb";
             this.savePlayerLb.Size = new System.Drawing.Size(61, 13);
             this.savePlayerLb.TabIndex = 33;
@@ -145,7 +208,7 @@ namespace FightClubReports
             // save
             // 
             this.save.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.save.Location = new System.Drawing.Point(529, 374);
+            this.save.Location = new System.Drawing.Point(517, 383);
             this.save.Name = "save";
             this.save.Size = new System.Drawing.Size(131, 21);
             this.save.TabIndex = 32;
@@ -156,7 +219,7 @@ namespace FightClubReports
             // emailEditTb
             // 
             this.emailEditTb.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.emailEditTb.Location = new System.Drawing.Point(387, 374);
+            this.emailEditTb.Location = new System.Drawing.Point(386, 384);
             this.emailEditTb.Name = "emailEditTb";
             this.emailEditTb.Size = new System.Drawing.Size(118, 20);
             this.emailEditTb.TabIndex = 31;
@@ -166,7 +229,7 @@ namespace FightClubReports
             // 
             this.emailEditLb.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.emailEditLb.AutoSize = true;
-            this.emailEditLb.Location = new System.Drawing.Point(349, 377);
+            this.emailEditLb.Location = new System.Drawing.Point(348, 387);
             this.emailEditLb.Name = "emailEditLb";
             this.emailEditLb.Size = new System.Drawing.Size(32, 13);
             this.emailEditLb.TabIndex = 30;
@@ -175,7 +238,7 @@ namespace FightClubReports
             // passwordEditTb
             // 
             this.passwordEditTb.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.passwordEditTb.Location = new System.Drawing.Point(225, 374);
+            this.passwordEditTb.Location = new System.Drawing.Point(224, 384);
             this.passwordEditTb.Name = "passwordEditTb";
             this.passwordEditTb.Size = new System.Drawing.Size(118, 20);
             this.passwordEditTb.TabIndex = 29;
@@ -185,7 +248,7 @@ namespace FightClubReports
             // 
             this.passwordEditLb.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.passwordEditLb.AutoSize = true;
-            this.passwordEditLb.Location = new System.Drawing.Point(174, 377);
+            this.passwordEditLb.Location = new System.Drawing.Point(173, 387);
             this.passwordEditLb.Name = "passwordEditLb";
             this.passwordEditLb.Size = new System.Drawing.Size(45, 13);
             this.passwordEditLb.TabIndex = 28;
@@ -194,7 +257,7 @@ namespace FightClubReports
             // loginEditTb
             // 
             this.loginEditTb.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.loginEditTb.Location = new System.Drawing.Point(50, 374);
+            this.loginEditTb.Location = new System.Drawing.Point(49, 384);
             this.loginEditTb.Name = "loginEditTb";
             this.loginEditTb.Size = new System.Drawing.Size(118, 20);
             this.loginEditTb.TabIndex = 27;
@@ -204,7 +267,7 @@ namespace FightClubReports
             // 
             this.loginEditLb.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.loginEditLb.AutoSize = true;
-            this.loginEditLb.Location = new System.Drawing.Point(6, 378);
+            this.loginEditLb.Location = new System.Drawing.Point(5, 388);
             this.loginEditLb.Name = "loginEditLb";
             this.loginEditLb.Size = new System.Drawing.Size(38, 13);
             this.loginEditLb.TabIndex = 22;
@@ -299,12 +362,14 @@ namespace FightClubReports
             this.playersTable.Location = new System.Drawing.Point(0, 34);
             this.playersTable.Name = "playersTable";
             this.playersTable.ReadOnly = true;
-            this.playersTable.Size = new System.Drawing.Size(743, 334);
+            this.playersTable.Size = new System.Drawing.Size(743, 344);
             this.playersTable.TabIndex = 18;
             this.playersTable.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.playersTable_CellClick);
             // 
             // transactionsPage
             // 
+            this.transactionsPage.Controls.Add(this.dateValidError);
+            this.transactionsPage.Controls.Add(this.sumValidError);
             this.transactionsPage.Controls.Add(this.saveTransactionLb);
             this.transactionsPage.Controls.Add(this.saveTransactions);
             this.transactionsPage.Controls.Add(this.dateEdit);
@@ -320,17 +385,55 @@ namespace FightClubReports
             this.transactionsPage.Location = new System.Drawing.Point(4, 22);
             this.transactionsPage.Name = "transactionsPage";
             this.transactionsPage.Padding = new System.Windows.Forms.Padding(3);
-            this.transactionsPage.Size = new System.Drawing.Size(743, 405);
+            this.transactionsPage.Size = new System.Drawing.Size(743, 428);
             this.transactionsPage.TabIndex = 1;
             this.transactionsPage.Text = "Транзакции";
             this.transactionsPage.UseVisualStyleBackColor = true;
             // 
+            // dateValidError
+            // 
+            this.dateValidError.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.dateValidError.AutoSize = true;
+            this.dateValidError.ForeColor = System.Drawing.Color.DarkRed;
+            this.dateValidError.Location = new System.Drawing.Point(217, 407);
+            this.dateValidError.Name = "dateValidError";
+            this.dateValidError.Size = new System.Drawing.Size(130, 13);
+            this.dateValidError.TabIndex = 42;
+            this.dateValidError.Text = "Введите дату корректно";
+            this.dateValidError.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.dateValidError.Visible = false;
+            // 
+            // sumValidError
+            // 
+            this.sumValidError.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.sumValidError.AutoSize = true;
+            this.sumValidError.ForeColor = System.Drawing.Color.DarkRed;
+            this.sumValidError.Location = new System.Drawing.Point(40, 407);
+            this.sumValidError.Name = "sumValidError";
+            this.sumValidError.Size = new System.Drawing.Size(140, 13);
+            this.sumValidError.TabIndex = 41;
+            this.sumValidError.Text = "Введите сумму корректно";
+            this.sumValidError.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.sumValidError.Visible = false;
+            // 
+            // saveTransactionLb
+            // 
+            this.saveTransactionLb.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.saveTransactionLb.AutoSize = true;
+            this.saveTransactionLb.ForeColor = System.Drawing.Color.DarkGreen;
+            this.saveTransactionLb.Location = new System.Drawing.Point(510, 388);
+            this.saveTransactionLb.Name = "saveTransactionLb";
+            this.saveTransactionLb.Size = new System.Drawing.Size(61, 13);
+            this.saveTransactionLb.TabIndex = 40;
+            this.saveTransactionLb.Text = "Сохранено";
+            this.saveTransactionLb.Visible = false;
+            // 
             // saveTransactions
             // 
             this.saveTransactions.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.saveTransactions.Location = new System.Drawing.Point(358, 374);
+            this.saveTransactions.Location = new System.Drawing.Point(360, 384);
             this.saveTransactions.Name = "saveTransactions";
-            this.saveTransactions.Size = new System.Drawing.Size(135, 21);
+            this.saveTransactions.Size = new System.Drawing.Size(135, 22);
             this.saveTransactions.TabIndex = 39;
             this.saveTransactions.Text = "Сохранить изменения ";
             this.saveTransactions.UseVisualStyleBackColor = true;
@@ -339,7 +442,7 @@ namespace FightClubReports
             // dateEdit
             // 
             this.dateEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.dateEdit.Location = new System.Drawing.Point(225, 374);
+            this.dateEdit.Location = new System.Drawing.Point(224, 384);
             this.dateEdit.Name = "dateEdit";
             this.dateEdit.Size = new System.Drawing.Size(118, 20);
             this.dateEdit.TabIndex = 36;
@@ -349,7 +452,7 @@ namespace FightClubReports
             // 
             this.dateEditLb.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.dateEditLb.AutoSize = true;
-            this.dateEditLb.Location = new System.Drawing.Point(180, 377);
+            this.dateEditLb.Location = new System.Drawing.Point(180, 387);
             this.dateEditLb.Name = "dateEditLb";
             this.dateEditLb.Size = new System.Drawing.Size(33, 13);
             this.dateEditLb.TabIndex = 35;
@@ -358,7 +461,7 @@ namespace FightClubReports
             // sumEdit
             // 
             this.sumEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.sumEdit.Location = new System.Drawing.Point(50, 374);
+            this.sumEdit.Location = new System.Drawing.Point(49, 384);
             this.sumEdit.Name = "sumEdit";
             this.sumEdit.Size = new System.Drawing.Size(118, 20);
             this.sumEdit.TabIndex = 34;
@@ -368,7 +471,7 @@ namespace FightClubReports
             // 
             this.sumEditLb.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.sumEditLb.AutoSize = true;
-            this.sumEditLb.Location = new System.Drawing.Point(6, 378);
+            this.sumEditLb.Location = new System.Drawing.Point(5, 388);
             this.sumEditLb.Name = "sumEditLb";
             this.sumEditLb.Size = new System.Drawing.Size(41, 13);
             this.sumEditLb.TabIndex = 33;
@@ -386,7 +489,7 @@ namespace FightClubReports
             this.transactionsTable.Location = new System.Drawing.Point(0, 34);
             this.transactionsTable.Name = "transactionsTable";
             this.transactionsTable.ReadOnly = true;
-            this.transactionsTable.Size = new System.Drawing.Size(743, 334);
+            this.transactionsTable.Size = new System.Drawing.Size(743, 344);
             this.transactionsTable.TabIndex = 26;
             this.transactionsTable.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.transactionsTable_CellClick);
             // 
@@ -455,7 +558,7 @@ namespace FightClubReports
             this.combatsPage.Controls.Add(this.combatsByType);
             this.combatsPage.Location = new System.Drawing.Point(4, 22);
             this.combatsPage.Name = "combatsPage";
-            this.combatsPage.Size = new System.Drawing.Size(743, 405);
+            this.combatsPage.Size = new System.Drawing.Size(743, 428);
             this.combatsPage.TabIndex = 2;
             this.combatsPage.Text = "Бои";
             this.combatsPage.UseVisualStyleBackColor = true;
@@ -493,7 +596,7 @@ namespace FightClubReports
             this.combatsOk.Text = "ОК";
             this.combatsOk.UseVisualStyleBackColor = true;
             this.combatsOk.Visible = false;
-            this.combatsOk.Click += new System.EventHandler(this.combatsOk_Click);
+            this.combatsOk.Click += new System.EventHandler(this.combatsLoginOk_Click);
             // 
             // combatsByLogin
             // 
@@ -530,23 +633,11 @@ namespace FightClubReports
             this.combatsByType.UseVisualStyleBackColor = true;
             this.combatsByType.CheckedChanged += new System.EventHandler(this.combatsByType_CheckedChanged);
             // 
-            // saveTransactionLb
-            // 
-            this.saveTransactionLb.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.saveTransactionLb.AutoSize = true;
-            this.saveTransactionLb.ForeColor = System.Drawing.Color.DarkGreen;
-            this.saveTransactionLb.Location = new System.Drawing.Point(508, 377);
-            this.saveTransactionLb.Name = "saveTransactionLb";
-            this.saveTransactionLb.Size = new System.Drawing.Size(61, 13);
-            this.saveTransactionLb.TabIndex = 40;
-            this.saveTransactionLb.Text = "Сохранено";
-            this.saveTransactionLb.Visible = false;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(884, 441);
+            this.ClientSize = new System.Drawing.Size(884, 463);
             this.Controls.Add(this.infoControl);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(2000, 1200);
@@ -554,6 +645,7 @@ namespace FightClubReports
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Fight Club Analitycs";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.infoControl.ResumeLayout(false);
             this.playersPage.ResumeLayout(false);
             this.playersPage.PerformLayout();
@@ -608,6 +700,12 @@ namespace FightClubReports
         private System.Windows.Forms.Label sumEditLb;
         private System.Windows.Forms.Label savePlayerLb;
         private System.Windows.Forms.Label saveTransactionLb;
+        private System.Windows.Forms.Label emailValidError;
+        private System.Windows.Forms.Label loginValidError;
+        private System.Windows.Forms.Label passwordValidError;
+        private System.Windows.Forms.Label dateValidError;
+        private System.Windows.Forms.Label sumValidError;
+        private System.Windows.Forms.Label nonExistentPlayer;
     }
 }
 

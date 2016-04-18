@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace FightClubReports
@@ -21,6 +22,11 @@ namespace FightClubReports
         private List<Transaction> transactions;
         private Transaction transaction;
         private List<Combat> combats;
+        bool loginValid;
+        bool passwordValid;
+        bool emailValid;
+        bool sumValid;
+        bool dateValid;
 
         public MainPresenter(IView view)
         {
@@ -55,19 +61,128 @@ namespace FightClubReports
 
         private void onPlayerSaveClick(object sender, EventArgs e)
         {
-            ChangeSelectedPlayer();
-            service.Save();
+            if (PlayersValidation())
+            {
+                ChangeSelectedPlayer();
+                service.Save();
+                view.SavePlayer = true;
+            }
+                PlayersErrorsVisible();
+            
         }
 
         private void onTransactionsSaveClick(object sender, EventArgs e)
         {
-            ChangeSelectedTransaction();
-            service.Save();
+            if (TransactionsValidation())
+            {
+                ChangeSelectedTransaction();
+                service.Save();
+                view.SaveTransaction = true;
+            }
+            TransactionsErrorsVisible();
+
         }
 
         #endregion
 
         #region Methods
+
+        #region Validation
+
+        #region Players
+        private bool PlayersValidation()
+        {
+            LoginOrPasswordValid(true);
+            LoginOrPasswordValid(false);
+            ValidEmail();
+
+            return (emailValid && loginValid && passwordValid) ? true : false;
+        }
+
+        private void ValidEmail()
+        {
+            string pattern = @"^(?("")(""[^""]+?""@)|(([0-9a-z]((\.(?!\.))|[-!#\$%&'\*\+/=\?\^`\{\}\|~\w])*)(?<=[0-9a-z])@))" +
+                @"(?(\[)(\[(\d{1,3}\.){3}\d{1,3}\])|(([0-9a-z][-\w]*[0-9a-z]*\.)+[a-z0-9]{2,17}))$";
+
+            string email = view.SelectedPlayer.EMail;
+
+            if (email != string.Empty)
+            {
+                if (Regex.IsMatch(email, pattern, RegexOptions.IgnoreCase))
+                {
+                    emailValid = true;
+                    view.SelectedPlayer.IsEmaillValid = true;
+                }
+                else
+                {
+                    emailValid = false;
+                }
+            }
+            else
+            {
+                emailValid = true;
+                view.SelectedPlayer.EMail = null;
+                view.SelectedPlayer.IsEmaillValid = false;
+            }
+        }
+
+        private void LoginOrPasswordValid(bool isLogin)
+        {
+            if (isLogin)
+            {
+                string login = view.SelectedPlayer.Login;
+                loginValid = LatinAndNumbersValid(login) ? true : false;
+            }
+            else
+            {
+                string password = view.SelectedPlayer.Password;
+                passwordValid = LatinAndNumbersValid(password) ? true : false;
+            }
+        }
+
+        private bool LatinAndNumbersValid(string text)
+        {
+            string pattern = @"^[a-zA-Z][a-zA-Z0-9-_\.]{1,20}$";
+            
+            return (Regex.IsMatch(text, pattern, RegexOptions.IgnoreCase)) ? true : false;
+        }
+
+        private void PlayersErrorsVisible()
+        {
+            view.EmailError = !emailValid;
+            view.LoginError = !loginValid;
+            view.PasswordError = !passwordValid;
+        }
+        #endregion
+
+        #region Transactions
+
+        private bool TransactionsValidation()
+        {
+            SumValidation();
+            DateValidation();
+            return (sumValid && dateValid) ? true : false;
+        }
+        
+        private void DateValidation()
+        {
+            dateValid = (view.SelectedTransaction.Date == DateTime.MinValue) ? false : true;
+        }
+
+        private void SumValidation()
+        {
+            sumValid = (view.SelectedTransaction.Sum <= 0) ? false : true;
+        }
+
+        private void TransactionsErrorsVisible()
+        {
+            view.DateError = !dateValid;
+            view.SumError = !sumValid;
+        }
+
+        #endregion
+
+        #endregion
 
         private void  InfoForPlayerTable()
         {
@@ -103,10 +218,11 @@ namespace FightClubReports
 
         private void ChangeSelectedPlayer()
         {
-            player = service.Players.GetPlayerById(view.SelectedPlayer.Id); 
+            player = service.Players.GetPlayerById(view.SelectedPlayer.Id);
             player.Login = view.SelectedPlayer.Login;
             player.Password = view.SelectedPlayer.Password;
             player.EMail = view.SelectedPlayer.EMail;
+            player.IsEmaillValid = (player.EMail != null) ? true : false;
         }
 
         private void InfoForTransactionTable()
