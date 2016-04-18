@@ -22,7 +22,11 @@ namespace ISD_13.Repository
             var query = db.Transactions.Where(t => t.Player.Id == id).ToList();
             return query;
         }
-        
+        public List<Transaction> TopTenTransactionsBySum()
+        {
+            var query = GetAll().OrderByDescending(x => x.Sum).Take(10).ToList();
+            return query;
+        }
 
         public void Delete(List<Transaction> transactionList)
         {

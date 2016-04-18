@@ -18,10 +18,9 @@ namespace ISD_13
         public event EventHandler AddNewCombat;
         public event EventHandler AddNewHit;
         public event EventHandler LoadAllTables;
-        public event EventHandler SaveInfo;
+        public event EventHandler SaveAllTables;
         public event EventHandler EditTransactionCell;
         public event EventHandler EditCombatCell;
-        public event EventHandler FindUserByLogin;
 
         public MainPresenter presenter;
         private string insertPlayerLogin = string.Empty;
@@ -76,7 +75,7 @@ namespace ISD_13
                     if (CombatDGV[0, i].Value.ToString() == value.ToString())
                     {
                         CombatDGV.CurrentCell = CombatDGV[0, i];
-                        SelectedCombatIdTxt.BackColor = Color.Red;
+                        SelectedCombatIdTxt.BackColor = Color.Yellow;
                     }
                 }
             }
@@ -93,21 +92,22 @@ namespace ISD_13
             {
                 for (int i = 0; i < PlayerDGV.Rows.Count; i++)
                 {
-                    if (PlayerDGV[0, i].Value.ToString() == value)
+                    if (PlayerDGV[1, i].Value.ToString() == value)
                     {
                         PlayerDGV.CurrentCell = PlayerDGV[0, i];
-                        SelectedPlayerTxt.BackColor = Color.Red;
+                        SelectedPlayerTxt.BackColor = Color.Yellow;
+                        i = PlayerDGV.Rows.Count;
                     }
                 }
             }
         }
-        public int SelectedTabIndex
-        {
-            get { return MainTab.SelectedIndex; }
-        }
         public bool ValidEmailCBStatus
         {
             get { return ValidEmailCB.Checked; }
+        }
+        public bool TopTenBySummCBStatus
+        {
+            get { return TopTenBySummCB.Checked; }
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -117,6 +117,7 @@ namespace ISD_13
             TransactionDGV.DataSource = transactionBindingSource;
             HitDGV.DataSource = hitLogBindingSource;
             if (LoadAllTables != null) { LoadAllTables(this, EventArgs.Empty); }
+            SaveStatusLbl.Text = string.Empty;
         }
         private void MainTab_Click(object sender, EventArgs e)
         {
@@ -124,8 +125,9 @@ namespace ISD_13
         }
         private void SaveBtn_Click(object sender, EventArgs e)
         {
-            if (SaveInfo != null) { SaveInfo(this, EventArgs.Empty); }
-            MessageBox.Show("Changes saved");
+            if (SaveAllTables != null) { SaveAllTables(this, EventArgs.Empty); }
+            SaveStatusLbl.ForeColor = Color.Black;
+            SaveStatusLbl.Text = "Changes saved";
         }
         private void resetFilterBtn_Click(object sender, EventArgs e)
         {
@@ -133,11 +135,13 @@ namespace ISD_13
             SelectedPlayerTxt.Text = string.Empty;
             SelectedPlayerTxt.BackColor = Color.White;
             SelectedCombatIdTxt.BackColor = Color.White;
-            PlayerDGV.CurrentCell.Selected = false;
-            CombatDGV.CurrentCell.Selected = false;
             if (LoadAllTables != null) { LoadAllTables(this, EventArgs.Empty); }
         }
         private void ValidEmailCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (LoadAllTables != null) { LoadAllTables(this, EventArgs.Empty); }
+        }
+        private void TopTenBySummCB_CheckedChanged(object sender, EventArgs e)
         {
             if (LoadAllTables != null) { LoadAllTables(this, EventArgs.Empty); }
         }
@@ -145,12 +149,12 @@ namespace ISD_13
         private void PlayerDGV_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             SelectedPlayerTxt.Text = (string)PlayerDGV[1, PlayerDGV.CurrentCellAddress.Y].Value;
-            SelectedPlayerTxt.BackColor = Color.Red;
+            SelectedPlayerTxt.BackColor = Color.Yellow;
         }
         private void CombatDGV_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             SelectedCombatIdTxt.Text = CombatDGV[0, CombatDGV.CurrentCellAddress.Y].Value.ToString();
-            SelectedCombatIdTxt.BackColor = Color.Red;
+            SelectedCombatIdTxt.BackColor = Color.Yellow;
         }
         private void CombatDGV_CellLeave(object sender, DataGridViewCellEventArgs e)
         {
@@ -159,7 +163,6 @@ namespace ISD_13
                 (CombatDGV.CurrentCell == CombatDGV[4, e.RowIndex]))
             {
                 insertPlayerLogin = CombatDGV.CurrentCell.EditedFormattedValue.ToString();
-                CombatDGV.CurrentCell.Value = null;
                 if (EditCombatCell != null) { EditCombatCell(this, EventArgs.Empty); }
             }
         }
@@ -168,7 +171,6 @@ namespace ISD_13
             if (TransactionDGV.CurrentCell == TransactionDGV[1, e.RowIndex])
             {
                 insertPlayerLogin = TransactionDGV.CurrentCell.EditedFormattedValue.ToString();
-                TransactionDGV.CurrentCell.Value = null;
                 if (EditTransactionCell != null) { EditTransactionCell(this, EventArgs.Empty); }
             }
         }
@@ -181,7 +183,7 @@ namespace ISD_13
         {
             if (e.KeyCode == Keys.Enter)
             {
-                if (FindUserByLogin != null) { FindUserByLogin(this, EventArgs.Empty); }
+                SelectedPlayerId = SelectedPlayerName;
                 if (LoadAllTables != null) { LoadAllTables(this, EventArgs.Empty); }
             }
         }
@@ -219,21 +221,44 @@ namespace ISD_13
             PlayerDGV.FirstDisplayedCell = PlayerDGV.Rows[PlayerDGV.Rows.Count - 1].Cells[1];
         }
 
-        private void HitDGV_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        private void DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
+
+        }       
+
+        private void TransactionDGV_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            {
+                ComboBox c = e.Control as ComboBox;
+                if (c != null)
+                {
+                    c.DropDownStyle = ComboBoxStyle.DropDown;
+                }
+            }
 
         }
-        private void CombatDGV_DataError(object sender, DataGridViewDataErrorEventArgs e)
-        {
 
+        private void CombatDGV_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            {
+                ComboBox c = e.Control as ComboBox;
+                if (c != null)
+                {
+                    c.DropDownStyle = ComboBoxStyle.DropDown;
+                }
+            }
         }
-        private void PlayerDGV_DataError(object sender, DataGridViewDataErrorEventArgs e)
-        {
 
+        private void CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            SaveStatusLbl.ForeColor = Color.Red;
+            SaveStatusLbl.Text = "You have unsaved changes";
         }
-        private void TransactionDGV_DataError(object sender, DataGridViewDataErrorEventArgs e)
-        {
 
+        private void RowRemoved(object sender, KeyEventArgs e)
+        {
+            SaveStatusLbl.ForeColor = Color.Red;
+            SaveStatusLbl.Text = "You have unsaved changes";
         }
     }
 }

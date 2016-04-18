@@ -12,11 +12,10 @@ namespace ISD_13.Interfaces
         event EventHandler AddNewTransaction;
         event EventHandler AddNewCombat;
         event EventHandler AddNewHit;
-        event EventHandler LoadAllTables;
-        event EventHandler SaveInfo;
+        event EventHandler LoadAllTables;        
+        event EventHandler SaveAllTables;
         event EventHandler EditTransactionCell;
-        event EventHandler EditCombatCell;
-        event EventHandler FindUserByLogin;
+        event EventHandler EditCombatCell;       
 
         object PlayerBindingSource { set; }
         object CombatBindingSource { set; }
@@ -26,8 +25,7 @@ namespace ISD_13.Interfaces
         string SelectedPlayerId { get; set; }
         string SelectedTransactionId { get; }
         string SelectedCombatId { get; set; }
-
-        int SelectedTabIndex { get; }
+        
         string SelectedPlayerName { get; set; }
         string SelectedCombat { get; set; }
 
@@ -35,5 +33,6 @@ namespace ISD_13.Interfaces
         int EditCombatColumn { get; }
 
         bool ValidEmailCBStatus { get; }
+        bool TopTenBySummCBStatus { get; }
     }
 }

@@ -24,15 +24,15 @@ namespace ISD_13
             this.view = view;
             this.proxy = new Proxy();
             view.LoadAllTables += view_LoadAllTables;
-            view.SaveInfo += SaveInfo;
+            view.SaveAllTables += SaveAllTables;            
             view.AddNewPlayer += view_AddNewPlayer;
             view.AddNewTransaction += view_AddNewTransaction;
             view.AddNewCombat += view_AddNewCombat;
             view.AddNewHit += view_AddNewHit;
-            view.FindUserByLogin += view_FindPlayerByName;            
             view.EditTransactionCell += view_EditTransactionCell;
             view.EditCombatCell += view_EditCombatCell;
         }
+
         void view_LoadAllTables(object sender, EventArgs e)
         {
             LoadPlayerTable();
@@ -40,76 +40,14 @@ namespace ISD_13
             LoadCombatTable();
             LoadHitLogTable();
         }
-        void SaveInfo(object sender, EventArgs e)
+        void SaveAllTables(object sender, EventArgs e)
         {
-            switch (view.SelectedTabIndex)
-            {
-                case 0:
-                    {
-                        proxy.Player.AddOrUpdate(playerList);
-                        if (view.ValidEmailCBStatus)
-                        {
-                            proxy.Player.DeleteWhithFilterByValidEmail(playerList);
-                        }
-                        else
-                        {
-                            proxy.Player.Delete(playerList);
-                        }
-                        proxy.Save();
-                        LoadPlayerTable();
-                        break;
-                    }
-                case 1:
-                    {
-                        proxy.Transaction.AddOrUpdate(transactionList);
-                        if (view.SelectedPlayerName != string.Empty)
-                        {
-                            proxy.Transaction.DeleteWhithSelectedPlayer(transactionList);
-                        }
-                        else
-                        {
-                            proxy.Transaction.Delete(transactionList);
-                        }
-                        proxy.Save();
-                        LoadTransactionTable();
-                        break;
-                    }
-                case 2:
-                    {
-                        proxy.Combat.AddOrUpdate(combatList);
-                        if (view.SelectedPlayerName != string.Empty)
-                        {
-                            proxy.Combat.DeleteWhithSelectedPlayer(combatList);
-                        }
-                        else
-                        {
-                            proxy.Combat.Delete(combatList);
-                        }
-                        proxy.Save();
-                        LoadCombatTable();
-                        break;
-                    }
-                case 3:
-                    {
-                        proxy.HitLog.AddOrUpdate(hitLogList);
-                        if (view.SelectedCombat != string.Empty)
-                        {
-                            proxy.HitLog.DeleteWhithSelectedCombat(hitLogList);
-                        }
-                        else
-                        {
-                            proxy.HitLog.Delete(hitLogList);
-                        }
-                        proxy.Save();
-                        LoadHitLogTable();
-                        break;
-                    }
-                default:
-                    {
-                        break;
-                    }
-            }
+            SavePlayerTable();
+            SaveTransactionTable();
+            SaveCombatTable();
+            SaveHitLogTable();                       
         }
+        
         void view_AddNewPlayer(object sender, EventArgs e)
         {
             proxy.Player.Create(new Player() { Date = DateTime.Now });
@@ -198,20 +136,20 @@ namespace ISD_13
             view.CombatBindingSource = combatList;
         }
 
-        void view_FindPlayerByName(object sender, EventArgs e)
-        {
-            if (proxy.Player.FindUserByLogin(view.SelectedPlayerName) != null)
-            {
-                view.SelectedPlayerId = (proxy.Player.FindUserByLogin(view.SelectedPlayerName).Id).ToString();
-            }
-        }
-
         private void LoadTransactionTable()
         {
             transactionList = proxy.Transaction.GetAll().ToList();
             if (view.SelectedPlayerName != string.Empty)
             {
                 transactionList = proxy.Transaction.FindTransactionsByUserId(int.Parse(view.SelectedPlayerId));
+            }
+            if (view.TopTenBySummCBStatus && view.SelectedPlayerName != string.Empty)
+            {
+                transactionList = transactionList.OrderByDescending(x => x.Sum).Take(10).ToList();
+            }
+            if (view.TopTenBySummCBStatus && view.SelectedPlayerName == string.Empty)
+            {
+                transactionList = proxy.Transaction.TopTenTransactionsBySum();
             }
             view.TransactionBindingSource = transactionList;
         }
@@ -223,7 +161,6 @@ namespace ISD_13
                 combatList = proxy.Combat.FindCombatsByUserId(int.Parse(view.SelectedPlayerId));
             }
             view.CombatBindingSource = combatList;
-
         }
         private void LoadHitLogTable()
         {
@@ -242,6 +179,62 @@ namespace ISD_13
                 playerList = proxy.Player.FindUsersByValidEmail().ToList();
             }
             view.PlayerBindingSource = playerList;
+        }
+        private void SavePlayerTable()
+        {
+            proxy.Player.AddOrUpdate(playerList);
+            if (view.ValidEmailCBStatus)
+            {
+                proxy.Player.DeleteWhithFilterByValidEmail(playerList);
+            }
+            else
+            {
+                proxy.Player.Delete(playerList);
+            }
+            proxy.Save();
+            LoadPlayerTable();
+        }
+        private void SaveTransactionTable()
+        {
+            proxy.Transaction.AddOrUpdate(transactionList);
+            if (view.SelectedPlayerName != string.Empty)
+            {
+                proxy.Transaction.DeleteWhithSelectedPlayer(transactionList);
+            }
+            else
+            {
+                proxy.Transaction.Delete(transactionList);
+            }
+            proxy.Save();
+            LoadTransactionTable();
+        }
+        private void SaveCombatTable()
+        {
+            proxy.Combat.AddOrUpdate(combatList);
+            if (view.SelectedPlayerName != string.Empty)
+            {
+                proxy.Combat.DeleteWhithSelectedPlayer(combatList);
+            }
+            else
+            {
+                proxy.Combat.Delete(combatList);
+            }
+            proxy.Save();
+            LoadCombatTable();
+        }
+        private void SaveHitLogTable()
+        {
+            proxy.HitLog.AddOrUpdate(hitLogList);
+            if (view.SelectedCombat != string.Empty)
+            {
+                proxy.HitLog.DeleteWhithSelectedCombat(hitLogList);
+            }
+            else
+            {
+                proxy.HitLog.Delete(hitLogList);
+            }
+            proxy.Save();
+            LoadHitLogTable();
         }
     }
 }
