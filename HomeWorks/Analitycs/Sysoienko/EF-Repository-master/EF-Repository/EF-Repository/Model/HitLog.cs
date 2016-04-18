@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 
 namespace EF_Repository.Model
 {
-    class HitLog
+ public  class HitLog
     {
         [Key]
         public int CombatId { get; set; }
-        public string FirstPlayerLogin { get; set; }
-        public string SecondPlayerLogin { get; set; }
-        public int FirstPlayerHitValue { get; set; }
-        public int SecondPlayerHitValue { get; set; }
+        public string PlayerLogin { get; set; }
+        public string EnemyLogin { get; set; }
+        public int PlayerHitValue { get; set; }
+        public int EnemyHitValue { get; set; }
         [Required]
         public virtual Combat Combat { get; set; }
     }

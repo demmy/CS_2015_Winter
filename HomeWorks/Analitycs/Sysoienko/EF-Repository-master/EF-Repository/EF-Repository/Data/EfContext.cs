@@ -12,15 +12,20 @@ namespace EF_Repository.Data
     class EfContext:DbContext
     {
         public EfContext()
-            : base("CombatDb")
+            : base("CombatDbReport")
         {
-           // Database.SetInitializer(new DbInitializer());
         }
         public virtual DbSet<Player> Players { get; set; }
         public virtual DbSet<Combat> Combats { get; set; }
         public virtual DbSet<Pve> Pves { get; set; }
         public virtual DbSet<Pvp> Pvps { get; set; }
         public virtual DbSet<HitLog> HitLogs { get; set; }
-        public virtual DbSet<Transcation> Transactions { get; set; }
+        public virtual DbSet<Transaction> Transactions { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Pve>().HasRequired(c => c.Player).WithMany().WillCascadeOnDelete(false);
+            //base.OnModelCreating(modelBuilder);
+        }
     }
 }
