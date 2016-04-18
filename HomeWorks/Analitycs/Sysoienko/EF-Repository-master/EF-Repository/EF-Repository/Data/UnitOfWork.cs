@@ -6,62 +6,114 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using EF_Repository.Data.Interfaces;
+using EF_Repository.Model;
 using EF_Repository.Repository;
 using EF_Repository.Repository.Interfaces;
 
 namespace EF_Repository.Data
 {
-    class UnitOfWork:IUnitOfWork
+   public class UnitOfWork:IUnitOfWork, IDisposable
     {
-        private IPlayersRepository _playersRepo;
-        private ICombatsRepository _combatsRepo;
-        private ITransactionsRepository _transactionsRepo;
-        private IHitLogsRepository _hitLogsRepo;
-        private IPvesRepository _pvesRepo;
-        private IPvpsRepository _pvpsRepo;
+        private DbContext _DbContext = null;
+        private bool _Disposed = false;
 
-        private readonly EfContext _entity;
+        private IRepository<Player> _PlayersRepo = null;
+        private IRepository<Combat> _CombatsRepo = null;
+        private IRepository<HitLog> _HitLogsRepo = null;
+        private IRepository<Transaction> _TransactionsRepo = null;
+        private IRepository<Pve> _PvesRepo = null;
+        private IRepository<Pvp> _PvpsRepo = null;
 
+        public UnitOfWork(DbContext context)
+        {
+            _DbContext = context;
+        }
         public UnitOfWork()
         {
-            _entity = new EfContext();
+            _DbContext = new EfContext();
         }
-        public UnitOfWork(EfContext context)
+
+        public IRepository<Player> PlayersRepo
         {
-            _entity = context;
+            get { 
+            if(_PlayersRepo == null)
+                _PlayersRepo = new Repository<Player>(_DbContext);
+            return _PlayersRepo;
+            }
         }
-        public IPlayersRepository PlayersRepo
+
+        public IRepository<Combat> CombatsRepo
         {
-            get { return (_playersRepo ?? (_playersRepo = new PlayersRepository(_entity))); }
+            get
+            {
+                if (_CombatsRepo == null)
+                    _CombatsRepo = new Repository<Combat>(_DbContext);
+                return _CombatsRepo;
+            }
         }
-        public ICombatsRepository CombatsRepo
+
+        public IRepository<HitLog> HitLogsRepo
         {
-            get { return (_combatsRepo ?? (_combatsRepo = new CombatsRepository(_entity))); }
+            get
+            {
+                if (_HitLogsRepo == null)
+                    _HitLogsRepo = new Repository<HitLog>(_DbContext);
+                return _HitLogsRepo;
+            }
         }
-        public IPvesRepository PvesRepo
+
+        public IRepository<Transaction> TransactionsRepo
         {
-            get { return (_pvesRepo ?? (_pvesRepo = new PvesRepository(_entity))); }
+            get
+            {
+                if (_TransactionsRepo == null)
+                    _TransactionsRepo = new Repository<Transaction>(_DbContext);
+                return _TransactionsRepo;
+            }
         }
-        public IPvpsRepository PvpsRepo
+        public IRepository<Pve> PvesRepo
         {
-            get { return (_pvpsRepo ?? (_pvpsRepo = new PvpsRepository(_entity))); }
+            get
+            {
+                if (_PvesRepo == null)
+                    _PvesRepo = new Repository<Pve>(_DbContext);
+                return _PvesRepo;
+            }
         }
-        public ITransactionsRepository TransactionsRepo
+        public IRepository<Pvp> PvpsRepo
         {
-            get { return (_transactionsRepo ?? (_transactionsRepo = new TransactionsRepository(_entity))); }
+            get
+            {
+                if (_PvpsRepo == null)
+                    _PvpsRepo = new Repository<Pvp>(_DbContext);
+                return _PvpsRepo;
+            }
         }
-        public IHitLogsRepository HitLogsRepo
+        #region Public Methods
+        public virtual void Commit()
         {
-            get { return (_hitLogsRepo ?? (_hitLogsRepo = new HitLogsRepository(_entity))); }
+            _DbContext.SaveChanges();
         }
-        public void Save()
+
+        #endregion
+
+        #region Protected Methods
+        protected virtual void Dispose(bool disposing)
         {
-            _entity.SaveChanges();
+            if (!this._Disposed)
+            {
+                if (disposing)
+                    _DbContext.Dispose();
+            }
+            this._Disposed = true;
         }
+
+        #endregion
 
         public void Dispose()
         {
-           _entity.Dispose();
+            Dispose(true);
+            GC.SuppressFinalize(this);
         }
     }
 }

@@ -1,17 +1,18 @@
 ﻿using System;
+using EF_Repository.Model;
 using EF_Repository.Repository;
 using EF_Repository.Repository.Interfaces;
 
 namespace EF_Repository.Data.Interfaces
 {
-    interface IUnitOfWork:IDisposable
+ public  interface IUnitOfWork:IDisposable
     {
-        IPlayersRepository PlayersRepo { get; }
-        ICombatsRepository CombatsRepo { get; }
-        IPvesRepository PvesRepo { get; }
-        IPvpsRepository PvpsRepo { get; }
-        IHitLogsRepository HitLogsRepo { get; }
-        ITransactionsRepository TransactionsRepo { get; }
-        void Save();
+        IRepository<Player> PlayersRepo { get; }
+        IRepository<Combat> CombatsRepo { get; }
+        IRepository<HitLog> HitLogsRepo { get; }
+        IRepository<Pve> PvesRepo { get; }
+        IRepository<Pvp> PvpsRepo { get; }
+        IRepository<Transaction> TransactionsRepo { get; }
+        void Commit();
     }
 }

@@ -9,11 +9,12 @@ using Microsoft.Build.Framework;
 
 namespace EF_Repository.Model
 {
-     class Player:IPlayer
+    public class Player:IPlayer
     {
         public Player()
         {
-            Transactions = new HashSet<Transcation>();
+            Transactions = new List<Transaction>();
+           // Combats = new List<Combat>();
         }
         public int PlayerId { get; set; }
         public string Login { get; set; }
@@ -22,9 +23,9 @@ namespace EF_Repository.Model
         public bool IsValidEmail { get; set; }
         [Column(TypeName = "Date")]
         public DateTime Date { get; set; }
-        public Nullable<int> CombatId { get; set; }
-        [Required]
-        public virtual Combat Combat { get; set; }
-        public virtual ICollection<Transcation> Transactions { get; set; }
+        public int? CombatId { get; set; }
+        public Combat Combat { get; set; }
+       // public virtual List<Combat> Combats { get; set; } 
+        public virtual  List<Transaction> Transactions { get; set; }
     }
 }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace EF_Repository.Model
 {
-    class Combat
+  public  class Combat
     {
         public Combat()
         {
