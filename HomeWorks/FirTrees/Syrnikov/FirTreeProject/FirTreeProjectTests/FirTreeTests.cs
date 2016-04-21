@@ -14,14 +14,13 @@ namespace FirTreeProjectTests
         [SetUp]
         public void SetUp()
         {
-
         }
 
         [Test]
         public void FirTreeBornAndGrow()
         {
             //arrange
-            FirTree firTree = new FirTree();
+            ITree firTree = new FirTree();
 
             //act
             firTree.GrowUp(10.0);
@@ -34,7 +33,7 @@ namespace FirTreeProjectTests
         public void ChangeGrowthSpeed()
         {
             //arrange
-            FirTree firTree = new FirTree();
+            ITree firTree = new FirTree();
 
             //act
             firTree.GrowUp(10.0);
@@ -49,7 +48,7 @@ namespace FirTreeProjectTests
         public void ColorOfFirTreeIsGreen()
         {
             //arrange
-            FirTree firTree = new FirTree();
+            ITree firTree = new FirTree();
 
             //act
 
@@ -61,7 +60,7 @@ namespace FirTreeProjectTests
         public void InWinterGreenAndShapely()
         {
             //arrange
-            Forest testForest = new Forest();
+            IForest testForest = new Forest();
             testForest.AddTree(new FirTree());
 
             //act
@@ -80,7 +79,7 @@ namespace FirTreeProjectTests
         public void InSummerGreenAndShapely()
         {
             //arrange
-            Forest testForest = new Forest();
+            IForest testForest = new Forest();
             testForest.AddTree(new FirTree());
 
             //act
