@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FirTreeApp", "FirTree\FirTreeApp.csproj", "{55D8EABC-88BC-4DF7-8756-5BE416DB891D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestForest", "UnitTestForest\UnitTestForest.csproj", "{DEEA48CA-896A-4F16-AD89-C967FD01B6FA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{55D8EABC-88BC-4DF7-8756-5BE416DB891D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55D8EABC-88BC-4DF7-8756-5BE416DB891D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55D8EABC-88BC-4DF7-8756-5BE416DB891D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55D8EABC-88BC-4DF7-8756-5BE416DB891D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DEEA48CA-896A-4F16-AD89-C967FD01B6FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DEEA48CA-896A-4F16-AD89-C967FD01B6FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DEEA48CA-896A-4F16-AD89-C967FD01B6FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DEEA48CA-896A-4F16-AD89-C967FD01B6FA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
