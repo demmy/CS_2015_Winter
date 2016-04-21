@@ -26,7 +26,9 @@ namespace UnitTestForest.Interfaces
         {
             int height = firTree.Height;
             ISeason summer = Mock.Of<ISeason>(d => d.NameOfSeason == "Summer");
+
             firTree.Grow(summer);
+
             Assert.That(firTree.Height, Is.EqualTo(height + 7));
         }
         [Test]
@@ -34,14 +36,18 @@ namespace UnitTestForest.Interfaces
         {
             int height = firTree.Height;
             ISeason summer = Mock.Of<ISeason>(d => d.NameOfSeason == "Summer");
+
             firTree.Grow(summer);
+
             Assert.That(firTree.Height - height, Is.GreaterThanOrEqualTo(0));
         }
         [Test]
         public void SummerChangeColor()
         {
             ISeason summer = Mock.Of<ISeason>(d => d.NameOfSeason == "Summer");
+
             firTree.ChangeColor(summer);
+
             Assert.That(firTree.Color, Is.EqualTo("Green"));
         }
         [Test]
@@ -49,7 +55,9 @@ namespace UnitTestForest.Interfaces
         {
             ISeason summer = Mock.Of<ISeason>(d => d.NameOfSeason == "Summer");
             int age = firTree.Age;
+
             firTree.Grow(summer);
+
             Assert.That(firTree.Age, Is.EqualTo(age + 1));
         }
         [Test]
@@ -57,10 +65,12 @@ namespace UnitTestForest.Interfaces
         {
             ISeason summer = Mock.Of<ISeason>(d => d.NameOfSeason == "Summer");
             int age = firTree.Age;
+
             for (int i = 0; i < 10; i++)
             {
                 firTree.Grow(summer);
             }
+
             Assert.That(firTree.Age, Is.EqualTo(age + 10));
         }
         [Test]
@@ -68,7 +78,9 @@ namespace UnitTestForest.Interfaces
         {
             int height = firTree.Height;
             ISeason winter = Mock.Of<ISeason>(d => d.NameOfSeason == "Winter");
+
             firTree.Grow(winter);
+
             Assert.That(firTree.Height, Is.EqualTo(height));
         }
         [Test]
@@ -76,14 +88,18 @@ namespace UnitTestForest.Interfaces
         {
             int height = firTree.Height;
             ISeason winter = Mock.Of<ISeason>(d => d.NameOfSeason == "Winter");
+
             firTree.Grow(winter);
+
             Assert.That(firTree.Height - height, Is.GreaterThanOrEqualTo(0));
         }
         [Test]
         public void WinterChangeColor()
         {
             ISeason winter = Mock.Of<ISeason>(d => d.NameOfSeason == "Winter");
+
             firTree.ChangeColor(winter);
+
             Assert.That(firTree.Color, Is.EqualTo("Green"));
         }
         [Test]
@@ -91,7 +107,9 @@ namespace UnitTestForest.Interfaces
         {
             ISeason winter = Mock.Of<ISeason>(d => d.NameOfSeason == "Winter");
             int age = firTree.Age;
+
             firTree.Grow(winter);
+
             Assert.That(firTree.Age, Is.EqualTo(age));
         }
         [Test]
@@ -99,30 +117,36 @@ namespace UnitTestForest.Interfaces
         {
             ISeason winter = Mock.Of<ISeason>(d => d.NameOfSeason == "Winter");
             int age = firTree.Age;
+
             for (int i = 0; i < 10; i++)
             {
                 firTree.Grow(winter);
             }
+
             Assert.That(firTree.Age, Is.EqualTo(age));
         }
         [Test]
         public void ConeExistenceAfterFourYears()
         {
             ISeason summer = Mock.Of<ISeason>(d => d.NameOfSeason == "Summer");
+
             for (int i = 1; i <= 4; i++)
             {
                 firTree.Grow(summer);
             }
+
             Assert.That(firTree.Cones, Is.EqualTo(false));
         }
         [Test]
         public void ConeExistenceAfterFiveYears()
         {
             ISeason summer = Mock.Of<ISeason>(d => d.NameOfSeason == "Summer");
+
             for (int i = 1; i <= 5; i++)
             {
                 firTree.Grow(summer);
             }
+
             Assert.That(firTree.Cones, Is.EqualTo(true));
 
         }
