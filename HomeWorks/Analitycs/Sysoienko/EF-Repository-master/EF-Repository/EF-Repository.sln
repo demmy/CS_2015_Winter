@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EF-Repository", "EF-Repository\EF-Repository.csproj", "{1BF25489-35D1-45CB-93E5-A8DD07568BCB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EfWinform", "EfWinform\EfWinform.csproj", "{414FD977-FDB5-46C8-B826-6C09934E5BC4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1BF25489-35D1-45CB-93E5-A8DD07568BCB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1BF25489-35D1-45CB-93E5-A8DD07568BCB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1BF25489-35D1-45CB-93E5-A8DD07568BCB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1BF25489-35D1-45CB-93E5-A8DD07568BCB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{414FD977-FDB5-46C8-B826-6C09934E5BC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{414FD977-FDB5-46C8-B826-6C09934E5BC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{414FD977-FDB5-46C8-B826-6C09934E5BC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{414FD977-FDB5-46C8-B826-6C09934E5BC4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
