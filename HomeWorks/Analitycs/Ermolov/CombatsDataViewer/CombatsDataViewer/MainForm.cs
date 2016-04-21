@@ -124,11 +124,6 @@ namespace CombatsDataViewer
             AutoSizeCols(usersList);
             usersList.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             usersList.DataSource = typeof(List<UserDTO>);
-
-            //usersList.DataSource = Users;
-            //AutoSizeCols(usersList);
-            //usersList.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-
             userTransactionList.DataSource = new BindingSource
             {
                 DataSource = UserTransactions
@@ -295,12 +290,6 @@ namespace CombatsDataViewer
             transactionUser.Text = datagrid.CurrentRow.Cells["Login"].Value.ToString();
             userTransactionList.DataSource = UserTransactions;
             charStatTable.DataSource = new List<PlayerDTO> { new UserService(Server).GetCharacterStatistic(uId) };
-            //else if (!datagrid.CurrentRow.Selected)
-            //    return;
-            //UsersTransactions = new UserTransactionService(Server)
-            //    .GetUserTransactions(Convert.ToInt16(usersList.CurrentRow.Cells["Id"].Value));
-            //usersList.DataSource = Users;
-            //AddUser.Enabled = true;
         }
 
         private void clearFilter_Click(object sender, EventArgs e)
