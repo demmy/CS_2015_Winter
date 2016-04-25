@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{1BF25489-35D1-45CB-93E5-A8DD07568BCB}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>EF_Repository</RootNamespace>
     <AssemblyName>EF-Repository</AssemblyName>
@@ -31,6 +31,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -52,39 +55,27 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\Interfaces\IUnitOfWork.cs" />
+    <Compile Include="Migrations\201604181108242_Init.cs" />
+    <Compile Include="Migrations\201604181108242_Init.Designer.cs">
+      <DependentUpon>201604181108242_Init.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Interfaces\IPlayer.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="Repository\CombatsRepository.cs" />
-    <Compile Include="Data\DBInitializer.cs" />
     <Compile Include="Data\EfContext.cs" />
-    <Compile Include="Repository\HitLogsRepository.cs" />
-    <Compile Include="Repository\Interfaces\ICombatsRepository.cs" />
-    <Compile Include="Repository\Interfaces\IHitLogsRepository.cs" />
-    <Compile Include="Repository\Interfaces\IPlayersRepository.cs" />
-    <Compile Include="Repository\Interfaces\IPvesRepository.cs" />
-    <Compile Include="Repository\Interfaces\ITransactionsRepository.cs" />
-    <Compile Include="Repository\Interfaces\IPvpsRepository.cs" />
-    <Compile Include="Repository\PlayersRepository.cs" />
-    <Compile Include="Repository\PvesRepository.cs" />
-    <Compile Include="Repository\PvpsRepository.cs" />
-    <Compile Include="Repository\TransactionsRepository.cs" />
+    <Compile Include="Repository\Interfaces\IRepository.cs" />
+    <Compile Include="Repository\Repository.cs" />
     <Compile Include="Data\UnitOfWork.cs" />
-    <Compile Include="Migrations\201604080647353_Initial.cs" />
-    <Compile Include="Migrations\201604080647353_Initial.Designer.cs">
-      <DependentUpon>201604080647353_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Combat.cs" />
     <Compile Include="Model\HitLog.cs" />
     <Compile Include="Model\Player.cs" />
     <Compile Include="Model\Pve.cs" />
     <Compile Include="Model\Pvp.cs" />
-    <Compile Include="Model\Transcation.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="Model\Transaction.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -96,8 +87,8 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201604080647353_Initial.resx">
-      <DependentUpon>201604080647353_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201604181108242_Init.resx">
+      <DependentUpon>201604181108242_Init.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

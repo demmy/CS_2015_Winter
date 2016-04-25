@@ -11,6 +11,7 @@ namespace ISD_13.Repository.Interfaces
     public interface ITransactionRepository : IRepository<Transaction>
     {
         List<Transaction> FindTransactionsByUserId(int id);
+        List<Transaction> TopTenTransactionsBySum();
         void Delete(List<Transaction> transactionList);
         void DeleteWhithSelectedPlayer(List<Transaction> transactionList);
     }

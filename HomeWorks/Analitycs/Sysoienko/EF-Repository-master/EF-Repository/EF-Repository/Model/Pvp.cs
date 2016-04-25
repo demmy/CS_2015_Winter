@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace EF_Repository.Model
 {
-    class Pvp
+public  class Pvp
     {
         [Key]
         public int PvpId { get; set; }
         public int CombatId { get; set; }
         public Combat Combat;
-        public Player First { get; set; }
-        public Player Second { get; set; }
+        public Player Player { get; set; }
+        public Player Enemy { get; set; }
     }
 }

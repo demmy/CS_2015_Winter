@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace EF_Repository.Model
 {
-    class Pve
+ public  class Pve
     {
         [Key]
         public int PveId { get; set; }
