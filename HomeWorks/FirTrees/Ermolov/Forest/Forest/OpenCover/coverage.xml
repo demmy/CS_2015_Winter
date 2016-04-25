@@ -1,0 +1,667 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CoverageSession xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Summary numSequencePoints="124" visitedSequencePoints="80" numBranchPoints="62" visitedBranchPoints="32" sequenceCoverage="64.52" branchCoverage="51.61" maxCyclomaticComplexity="6" minCyclomaticComplexity="1" />
+  <Modules>
+    <Module skippedDueTo="Filter" hash="3F-86-44-9D-0D-07-6A-A0-B0-74-64-5F-BD-19-3E-CE-6E-DE-17-8C">
+      <FullName>C:\Windows\Microsoft.Net\assembly\GAC_32\mscorlib\v4.0_4.0.0.0__b77a5c561934e089\mscorlib.dll</FullName>
+      <ModuleName>mscorlib</ModuleName>
+      <Classes />
+    </Module>
+    <Module skippedDueTo="MissingPdb" hash="37-80-BE-DC-A8-79-2C-78-4A-75-9F-D4-19-B1-3A-5A-48-3E-CA-03">
+      <FullName>X:\Coding\! Install !\SharpDevelop\bin\Tools\NUnit\nunit-console-x86.exe</FullName>
+      <ModuleName>nunit-console</ModuleName>
+      <Classes />
+    </Module>
+    <Module skippedDueTo="MissingPdb" hash="33-E1-CA-24-52-5A-B7-C7-C4-AF-91-2C-A9-4A-C0-37-67-0D-5B-FE">
+      <FullName>X:\Coding\! Install !\SharpDevelop\bin\Tools\NUnit\lib\nunit.core.dll</FullName>
+      <ModuleName>nunit.core</ModuleName>
+      <Classes />
+    </Module>
+    <Module skippedDueTo="MissingPdb" hash="2A-C4-E5-DE-F3-EE-AD-84-E1-65-84-CC-15-90-76-96-E7-01-44-4E">
+      <FullName>X:\Coding\! Install !\SharpDevelop\bin\Tools\NUnit\lib\nunit-console-runner.dll</FullName>
+      <ModuleName>nunit-console-runner</ModuleName>
+      <Classes />
+    </Module>
+    <Module skippedDueTo="MissingPdb" hash="74-74-F6-87-59-E1-5F-4F-5F-5E-6E-82-50-E8-E2-46-D4-86-15-76">
+      <FullName>X:\Coding\! Install !\SharpDevelop\bin\Tools\NUnit\lib\nunit.util.dll</FullName>
+      <ModuleName>nunit.util</ModuleName>
+      <Classes />
+    </Module>
+    <Module skippedDueTo="MissingPdb" hash="D3-A4-4D-85-55-F7-CE-EF-A5-90-AA-EF-58-E0-9F-B6-CC-27-99-53">
+      <FullName>X:\Coding\! Install !\SharpDevelop\bin\Tools\NUnit\lib\nunit.core.interfaces.dll</FullName>
+      <ModuleName>nunit.core.interfaces</ModuleName>
+      <Classes />
+    </Module>
+    <Module skippedDueTo="Filter" hash="AD-56-8F-5F-20-FC-6D-01-BA-F5-88-25-06-84-53-56-62-E9-A7-DA">
+      <FullName>C:\Windows\Microsoft.Net\assembly\GAC_MSIL\System.Configuration\v4.0_4.0.0.0__b03f5f7f11d50a3a\System.Configuration.dll</FullName>
+      <ModuleName>System.Configuration</ModuleName>
+      <Classes />
+    </Module>
+    <Module skippedDueTo="Filter" hash="31-4C-59-B7-5C-AF-0C-72-D6-7E-ED-4D-87-55-B7-49-31-7E-69-0F">
+      <FullName>C:\Windows\Microsoft.Net\assembly\GAC_MSIL\System\v4.0_4.0.0.0__b77a5c561934e089\System.dll</FullName>
+      <ModuleName>System</ModuleName>
+      <Classes />
+    </Module>
+    <Module skippedDueTo="Filter" hash="CF-7C-5A-57-75-87-21-E0-D5-D9-A4-B6-6E-2E-33-17-9D-6C-8A-C2">
+      <FullName>C:\Windows\Microsoft.Net\assembly\GAC_MSIL\System.Xml\v4.0_4.0.0.0__b77a5c561934e089\System.Xml.dll</FullName>
+      <ModuleName>System.Xml</ModuleName>
+      <Classes />
+    </Module>
+    <Module skippedDueTo="Filter" hash="E0-F1-79-63-0F-43-2B-D0-42-64-3B-65-A6-A2-45-73-1F-DD-FC-3F">
+      <FullName>C:\Windows\Microsoft.Net\assembly\GAC_MSIL\System.Runtime.Remoting\v4.0_4.0.0.0__b77a5c561934e089\System.Runtime.Remoting.dll</FullName>
+      <ModuleName>System.Runtime.Remoting</ModuleName>
+      <Classes />
+    </Module>
+    <Module skippedDueTo="Filter" hash="B7-10-4F-1B-6D-57-21-B9-85-03-68-4E-D4-19-A6-00-93-3C-4E-7D">
+      <FullName>C:\Windows\Microsoft.Net\assembly\GAC_MSIL\System.Core\v4.0_4.0.0.0__b77a5c561934e089\System.Core.dll</FullName>
+      <ModuleName>System.Core</ModuleName>
+      <Classes />
+    </Module>
+    <Module skippedDueTo="Filter" hash="F0-0E-CA-0C-0F-E5-B7-12-18-59-DD-B1-74-AA-CD-CF-B8-E7-01-C1">
+      <FullName>C:\Windows\Microsoft.Net\assembly\GAC_MSIL\mscorlib.resources\v4.0_4.0.0.0_ru_b77a5c561934e089\mscorlib.resources.dll</FullName>
+      <ModuleName>mscorlib.resources</ModuleName>
+      <Classes />
+    </Module>
+    <Module hash="75-EA-DD-12-27-49-EC-5B-B6-3E-CC-4F-87-03-00-B8-1A-48-1C-F7">
+      <Summary numSequencePoints="124" visitedSequencePoints="80" numBranchPoints="62" visitedBranchPoints="32" sequenceCoverage="64.52" branchCoverage="51.61" maxCyclomaticComplexity="6" minCyclomaticComplexity="1" />
+      <FullName>C:\Users\Sergey Ermolov\AppData\Local\Temp\nunit20\ShadowCopyCache\4048_635938979809525902\Tests_149288136\assembly\dl3\b373a7d2\806f270f_fa80d101\Forest.dll</FullName>
+      <ModuleName>Forest</ModuleName>
+      <Files>
+        <File uid="1" fullPath="x:\Coding\Git\solutions\Forest\Forest\Forest.cs" />
+        <File uid="2" fullPath="x:\Coding\Git\solutions\Forest\Forest\ForestTest.cs" />
+        <File uid="3" fullPath="x:\Coding\Git\solutions\Forest\Forest\Trees\FirTree.cs" />
+        <File uid="4" fullPath="x:\Coding\Git\solutions\Forest\Forest\Trees\SomeAbstractTree.cs" />
+        <File uid="5" fullPath="x:\Coding\Git\solutions\Forest\Forest\Trees\TreeCreator.cs" />
+      </Files>
+      <Classes>
+        <Class>
+          <Summary numSequencePoints="0" visitedSequencePoints="0" numBranchPoints="0" visitedBranchPoints="0" sequenceCoverage="0" branchCoverage="0" maxCyclomaticComplexity="0" minCyclomaticComplexity="0" />
+          <FullName>&lt;Module&gt;</FullName>
+          <Methods />
+        </Class>
+        <Class>
+          <Summary numSequencePoints="20" visitedSequencePoints="13" numBranchPoints="17" visitedBranchPoints="4" sequenceCoverage="65" branchCoverage="23.53" maxCyclomaticComplexity="6" minCyclomaticComplexity="1" />
+          <FullName>Forest.Forest</FullName>
+          <Methods>
+            <Method visited="true" cyclomaticComplexity="1" sequenceCoverage="100" branchCoverage="100" isConstructor="true" isStatic="false" isGetter="false" isSetter="false">
+              <Summary numSequencePoints="5" visitedSequencePoints="5" numBranchPoints="1" visitedBranchPoints="1" sequenceCoverage="100" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" />
+              <MetadataToken>100663297</MetadataToken>
+              <Name>System.Void Forest.Forest::.ctor()</Name>
+              <FileRef uid="1" />
+              <SequencePoints>
+                <SequencePoint vc="1" uspid="1" ordinal="0" offset="0" sl="27" sc="9" el="27" ec="60" bec="0" bev="0" fileid="1" />
+                <SequencePoint vc="1" uspid="2" ordinal="1" offset="11" sl="30" sc="9" el="30" ec="24" bec="0" bev="0" fileid="1" />
+                <SequencePoint vc="1" uspid="3" ordinal="2" offset="18" sl="31" sc="9" el="31" ec="10" bec="0" bev="0" fileid="1" />
+                <SequencePoint vc="1" uspid="4" ordinal="3" offset="19" sl="32" sc="13" el="32" ec="53" bec="0" bev="0" fileid="1" />
+                <SequencePoint vc="1" uspid="5" ordinal="4" offset="36" sl="33" sc="9" el="33" ec="10" bec="0" bev="0" fileid="1" />
+              </SequencePoints>
+              <BranchPoints />
+              <MethodPoint xsi:type="SequencePoint" vc="1" uspid="1" ordinal="0" offset="0" sl="27" sc="9" el="27" ec="60" bec="0" bev="0" fileid="1" />
+            </Method>
+            <Method visited="false" cyclomaticComplexity="1" sequenceCoverage="0" branchCoverage="0" isConstructor="false" isStatic="false" isGetter="false" isSetter="false">
+              <Summary numSequencePoints="3" visitedSequencePoints="0" numBranchPoints="1" visitedBranchPoints="0" sequenceCoverage="0" branchCoverage="0" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" />
+              <MetadataToken>100663298</MetadataToken>
+              <Name>System.Void Forest.Forest::changeCurrentSeason(System.DateTime)</Name>
+              <FileRef uid="1" />
+              <SequencePoints>
+                <SequencePoint vc="0" uspid="6" ordinal="0" offset="0" sl="36" sc="9" el="36" ec="10" bec="0" bev="0" fileid="1" />
+                <SequencePoint vc="0" uspid="7" ordinal="1" offset="1" sl="37" sc="13" el="37" ec="45" bec="0" bev="0" fileid="1" />
+                <SequencePoint vc="0" uspid="8" ordinal="2" offset="14" sl="38" sc="9" el="38" ec="10" bec="0" bev="0" fileid="1" />
+              </SequencePoints>
+              <BranchPoints />
+              <MethodPoint xsi:type="SequencePoint" vc="0" uspid="6" ordinal="0" offset="0" sl="36" sc="9" el="36" ec="10" bec="0" bev="0" fileid="1" />
+            </Method>
+            <Method visited="true" cyclomaticComplexity="1" sequenceCoverage="100" branchCoverage="100" isConstructor="false" isStatic="false" isGetter="false" isSetter="false">
+              <Summary numSequencePoints="3" visitedSequencePoints="3" numBranchPoints="1" visitedBranchPoints="1" sequenceCoverage="100" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" />
+              <MetadataToken>100663299</MetadataToken>
+              <Name>System.Void Forest.Forest::Add(Forest.TypeOfTree)</Name>
+              <FileRef uid="1" />
+              <SequencePoints>
+                <SequencePoint vc="6" uspid="9" ordinal="0" offset="0" sl="41" sc="9" el="41" ec="10" bec="0" bev="0" fileid="1" />
+                <SequencePoint vc="6" uspid="10" ordinal="1" offset="1" sl="42" sc="13" el="42" ec="61" bec="0" bev="0" fileid="1" />
+                <SequencePoint vc="6" uspid="11" ordinal="2" offset="24" sl="43" sc="9" el="43" ec="10" bec="0" bev="0" fileid="1" />
+              </SequencePoints>
+              <BranchPoints />
+              <MethodPoint xsi:type="SequencePoint" vc="6" uspid="9" ordinal="0" offset="0" sl="41" sc="9" el="41" ec="10" bec="0" bev="0" fileid="1" />
+            </Method>
+            <Method visited="true" cyclomaticComplexity="6" sequenceCoverage="55.56" branchCoverage="14.29" isConstructor="false" isStatic="false" isGetter="false" isSetter="false">
+              <Summary numSequencePoints="9" visitedSequencePoints="5" numBranchPoints="14" visitedBranchPoints="2" sequenceCoverage="55.56" branchCoverage="14.29" maxCyclomaticComplexity="6" minCyclomaticComplexity="6" />
+              <MetadataToken>100663300</MetadataToken>
+              <Name>Forest.Season Forest.Forest::GetSeason(System.DateTime)</Name>
+              <FileRef uid="1" />
+              <SequencePoints>
+                <SequencePoint vc="1" uspid="12" ordinal="0" offset="0" sl="47" sc="9" el="47" ec="10" bec="0" bev="0" fileid="1" />
+                <SequencePoint vc="1" uspid="13" ordinal="1" offset="1" sl="48" sc="13" el="48" ec="31" bec="0" bev="0" fileid="1" />
+                <SequencePoint vc="1" uspid="14" ordinal="2" offset="3" sl="49" sc="13" el="49" ec="29" bec="5" bev="1" fileid="1" />
+                <SequencePoint vc="0" uspid="15" ordinal="3" offset="69" sl="54" sc="21" el="54" ec="42" bec="0" bev="0" fileid="1" />
+                <SequencePoint vc="1" uspid="16" ordinal="4" offset="73" sl="58" sc="21" el="58" ec="42" bec="0" bev="0" fileid="1" />
+                <SequencePoint vc="0" uspid="17" ordinal="5" offset="77" sl="62" sc="21" el="62" ec="42" bec="0" bev="0" fileid="1" />
+                <SequencePoint vc="0" uspid="18" ordinal="6" offset="81" sl="66" sc="21" el="66" ec="42" bec="0" bev="0" fileid="1" />
+                <SequencePoint vc="0" uspid="19" ordinal="7" offset="85" sl="68" sc="21" el="68" ec="40" bec="0" bev="0" fileid="1" />
+                <SequencePoint vc="1" uspid="20" ordinal="8" offset="89" sl="70" sc="9" el="70" ec="10" bec="0" bev="0" fileid="1" />
+              </SequencePoints>
+              <BranchPoints>
+                <BranchPoint vc="0" uspid="21" ordinal="0" offset="14" path="0" offsetchain="67" offsetend="85" />
+                <BranchPoint vc="0" uspid="22" ordinal="1" offset="14" path="1" offsetchain="" offsetend="69" />
+                <BranchPoint vc="0" uspid="23" ordinal="2" offset="14" path="2" offsetchain="" offsetend="69" />
+                <BranchPoint vc="1" uspid="24" ordinal="3" offset="14" path="3" offsetchain="" offsetend="73" />
+                <BranchPoint vc="0" uspid="25" ordinal="4" offset="14" path="4" offsetchain="" offsetend="73" />
+                <BranchPoint vc="0" uspid="26" ordinal="5" offset="14" path="5" offsetchain="" offsetend="73" />
+                <BranchPoint vc="0" uspid="27" ordinal="6" offset="14" path="6" offsetchain="" offsetend="77" />
+                <BranchPoint vc="0" uspid="28" ordinal="7" offset="14" path="7" offsetchain="" offsetend="77" />
+                <BranchPoint vc="0" uspid="29" ordinal="8" offset="14" path="8" offsetchain="" offsetend="77" />
+                <BranchPoint vc="0" uspid="30" ordinal="9" offset="14" path="9" offsetchain="" offsetend="81" />
+                <BranchPoint vc="0" uspid="31" ordinal="10" offset="14" path="10" offsetchain="" offsetend="81" />
+                <BranchPoint vc="0" uspid="32" ordinal="11" offset="14" path="11" offsetchain="" offsetend="81" />
+                <BranchPoint vc="0" uspid="33" ordinal="12" offset="14" path="12" offsetchain="" offsetend="69" />
+              </BranchPoints>
+              <MethodPoint xsi:type="SequencePoint" vc="1" uspid="12" ordinal="0" offset="0" sl="47" sc="9" el="47" ec="10" bec="0" bev="0" fileid="1" />
+            </Method>
+          </Methods>
+        </Class>
+        <Class>
+          <Summary numSequencePoints="30" visitedSequencePoints="29" numBranchPoints="20" visitedBranchPoints="16" sequenceCoverage="96.67" branchCoverage="80" maxCyclomaticComplexity="2" minCyclomaticComplexity="1" />
+          <FullName>Forest.ForestTest</FullName>
+          <Methods>
+            <Method visited="true" cyclomaticComplexity="1" sequenceCoverage="100" branchCoverage="100" isConstructor="false" isStatic="false" isGetter="false" isSetter="false">
+              <Summary numSequencePoints="3" visitedSequencePoints="3" numBranchPoints="1" visitedBranchPoints="1" sequenceCoverage="100" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" />
+              <MetadataToken>100663301</MetadataToken>
+              <Name>System.Void Forest.ForestTest::SetUp()</Name>
+              <FileRef uid="2" />
+              <SequencePoints>
+                <SequencePoint vc="6" uspid="34" ordinal="0" offset="0" sl="20" sc="9" el="20" ec="10" bec="0" bev="0" fileid="2" />
+                <SequencePoint vc="6" uspid="35" ordinal="1" offset="1" sl="22" sc="13" el="22" ec="40" bec="0" bev="0" fileid="2" />
+                <SequencePoint vc="6" uspid="36" ordinal="2" offset="14" sl="23" sc="9" el="23" ec="10" bec="0" bev="0" fileid="2" />
+              </SequencePoints>
+              <BranchPoints />
+              <MethodPoint xsi:type="SequencePoint" vc="6" uspid="34" ordinal="0" offset="0" sl="20" sc="9" el="20" ec="10" bec="0" bev="0" fileid="2" />
+            </Method>
+            <Method visited="true" cyclomaticComplexity="1" sequenceCoverage="66.67" branchCoverage="100" isConstructor="false" isStatic="false" isGetter="false" isSetter="false">
+              <Summary numSequencePoints="3" visitedSequencePoints="2" numBranchPoints="1" visitedBranchPoints="1" sequenceCoverage="66.67" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" />
+              <MetadataToken>100663302</MetadataToken>
+              <Name>System.Void Forest.ForestTest::ForestCreateTest()</Name>
+              <FileRef uid="2" />
+              <SequencePoints>
+                <SequencePoint vc="1" uspid="37" ordinal="0" offset="0" sl="27" sc="9" el="27" ec="10" bec="0" bev="0" fileid="2" />
+                <SequencePoint vc="1" uspid="38" ordinal="1" offset="1" sl="28" sc="13" el="28" ec="101" bec="0" bev="0" fileid="2" />
+                <SequencePoint vc="0" uspid="39" ordinal="2" offset="34" sl="29" sc="9" el="29" ec="10" bec="0" bev="0" fileid="2" />
+              </SequencePoints>
+              <BranchPoints />
+              <MethodPoint xsi:type="SequencePoint" vc="1" uspid="37" ordinal="0" offset="0" sl="27" sc="9" el="27" ec="10" bec="0" bev="0" fileid="2" />
+            </Method>
+            <Method visited="true" cyclomaticComplexity="1" sequenceCoverage="100" branchCoverage="100" isConstructor="false" isStatic="false" isGetter="false" isSetter="false">
+              <Summary numSequencePoints="2" visitedSequencePoints="2" numBranchPoints="1" visitedBranchPoints="1" sequenceCoverage="100" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" />
+              <MetadataToken>100663303</MetadataToken>
+              <Name>System.Void Forest.ForestTest::AddFirTest()</Name>
+              <FileRef uid="2" />
+              <SequencePoints>
+                <SequencePoint vc="1" uspid="40" ordinal="0" offset="0" sl="33" sc="9" el="33" ec="10" bec="0" bev="0" fileid="2" />
+                <SequencePoint vc="1" uspid="41" ordinal="1" offset="1" sl="35" sc="9" el="35" ec="10" bec="0" bev="0" fileid="2" />
+              </SequencePoints>
+              <BranchPoints />
+              <MethodPoint xsi:type="SequencePoint" vc="1" uspid="40" ordinal="0" offset="0" sl="33" sc="9" el="33" ec="10" bec="0" bev="0" fileid="2" />
+            </Method>
+            <Method visited="true" cyclomaticComplexity="2" sequenceCoverage="100" branchCoverage="66.67" isConstructor="false" isStatic="false" isGetter="false" isSetter="false">
+              <Summary numSequencePoints="4" visitedSequencePoints="4" numBranchPoints="3" visitedBranchPoints="2" sequenceCoverage="100" branchCoverage="66.67" maxCyclomaticComplexity="2" minCyclomaticComplexity="2" />
+              <MetadataToken>100663304</MetadataToken>
+              <Name>System.Void Forest.ForestTest::FirWinterColorTest()</Name>
+              <FileRef uid="2" />
+              <SequencePoints>
+                <SequencePoint vc="1" uspid="42" ordinal="0" offset="0" sl="39" sc="9" el="39" ec="10" bec="0" bev="0" fileid="2" />
+                <SequencePoint vc="1" uspid="43" ordinal="1" offset="1" sl="40" sc="13" el="40" ec="50" bec="0" bev="0" fileid="2" />
+                <SequencePoint vc="1" uspid="44" ordinal="2" offset="13" sl="41" sc="13" el="41" ec="114" bec="2" bev="1" fileid="2" />
+                <SequencePoint vc="1" uspid="45" ordinal="3" offset="81" sl="42" sc="9" el="42" ec="10" bec="0" bev="0" fileid="2" />
+              </SequencePoints>
+              <BranchPoints>
+                <BranchPoint vc="1" uspid="46" ordinal="0" offset="29" path="0" offsetchain="" offsetend="31" />
+                <BranchPoint vc="0" uspid="47" ordinal="1" offset="29" path="1" offsetchain="" offsetend="50" />
+              </BranchPoints>
+              <MethodPoint xsi:type="SequencePoint" vc="1" uspid="42" ordinal="0" offset="0" sl="39" sc="9" el="39" ec="10" bec="0" bev="0" fileid="2" />
+            </Method>
+            <Method visited="true" cyclomaticComplexity="2" sequenceCoverage="100" branchCoverage="66.67" isConstructor="false" isStatic="false" isGetter="false" isSetter="false">
+              <Summary numSequencePoints="4" visitedSequencePoints="4" numBranchPoints="3" visitedBranchPoints="2" sequenceCoverage="100" branchCoverage="66.67" maxCyclomaticComplexity="2" minCyclomaticComplexity="2" />
+              <MetadataToken>100663305</MetadataToken>
+              <Name>System.Void Forest.ForestTest::FirSummerColorTest()</Name>
+              <FileRef uid="2" />
+              <SequencePoints>
+                <SequencePoint vc="1" uspid="48" ordinal="0" offset="0" sl="46" sc="9" el="46" ec="10" bec="0" bev="0" fileid="2" />
+                <SequencePoint vc="1" uspid="49" ordinal="1" offset="1" sl="47" sc="13" el="47" ec="50" bec="0" bev="0" fileid="2" />
+                <SequencePoint vc="1" uspid="50" ordinal="2" offset="13" sl="48" sc="13" el="48" ec="114" bec="2" bev="1" fileid="2" />
+                <SequencePoint vc="1" uspid="51" ordinal="3" offset="81" sl="49" sc="9" el="49" ec="10" bec="0" bev="0" fileid="2" />
+              </SequencePoints>
+              <BranchPoints>
+                <BranchPoint vc="1" uspid="52" ordinal="0" offset="29" path="0" offsetchain="" offsetend="31" />
+                <BranchPoint vc="0" uspid="53" ordinal="1" offset="29" path="1" offsetchain="" offsetend="50" />
+              </BranchPoints>
+              <MethodPoint xsi:type="SequencePoint" vc="1" uspid="48" ordinal="0" offset="0" sl="46" sc="9" el="46" ec="10" bec="0" bev="0" fileid="2" />
+            </Method>
+            <Method visited="true" cyclomaticComplexity="2" sequenceCoverage="100" branchCoverage="66.67" isConstructor="false" isStatic="false" isGetter="false" isSetter="false">
+              <Summary numSequencePoints="6" visitedSequencePoints="6" numBranchPoints="3" visitedBranchPoints="2" sequenceCoverage="100" branchCoverage="66.67" maxCyclomaticComplexity="2" minCyclomaticComplexity="2" />
+              <MetadataToken>100663306</MetadataToken>
+              <Name>System.Void Forest.ForestTest::FirGrowningTest()</Name>
+              <FileRef uid="2" />
+              <SequencePoints>
+                <SequencePoint vc="1" uspid="54" ordinal="0" offset="0" sl="53" sc="9" el="53" ec="10" bec="0" bev="0" fileid="2" />
+                <SequencePoint vc="1" uspid="55" ordinal="1" offset="1" sl="54" sc="13" el="54" ec="90" bec="2" bev="1" fileid="2" />
+                <SequencePoint vc="1" uspid="56" ordinal="2" offset="49" sl="55" sc="13" el="55" ec="48" bec="0" bev="0" fileid="2" />
+                <SequencePoint vc="1" uspid="57" ordinal="3" offset="56" sl="56" sc="13" el="56" ec="28" bec="0" bev="0" fileid="2" />
+                <SequencePoint vc="1" uspid="58" ordinal="4" offset="63" sl="57" sc="13" el="57" ec="59" bec="0" bev="0" fileid="2" />
+                <SequencePoint vc="1" uspid="59" ordinal="5" offset="76" sl="58" sc="9" el="58" ec="10" bec="0" bev="0" fileid="2" />
+              </SequencePoints>
+              <BranchPoints>
+                <BranchPoint vc="1" uspid="60" ordinal="0" offset="17" path="0" offsetchain="" offsetend="19" />
+                <BranchPoint vc="0" uspid="61" ordinal="1" offset="17" path="1" offsetchain="" offsetend="38" />
+              </BranchPoints>
+              <MethodPoint xsi:type="SequencePoint" vc="1" uspid="54" ordinal="0" offset="0" sl="53" sc="9" el="53" ec="10" bec="0" bev="0" fileid="2" />
+            </Method>
+            <Method visited="true" cyclomaticComplexity="2" sequenceCoverage="100" branchCoverage="66.67" isConstructor="false" isStatic="false" isGetter="false" isSetter="false">
+              <Summary numSequencePoints="3" visitedSequencePoints="3" numBranchPoints="3" visitedBranchPoints="2" sequenceCoverage="100" branchCoverage="66.67" maxCyclomaticComplexity="2" minCyclomaticComplexity="2" />
+              <MetadataToken>100663307</MetadataToken>
+              <Name>System.Void Forest.ForestTest::FirIsShapelyTest()</Name>
+              <FileRef uid="2" />
+              <SequencePoints>
+                <SequencePoint vc="1" uspid="62" ordinal="0" offset="0" sl="62" sc="9" el="62" ec="10" bec="0" bev="0" fileid="2" />
+                <SequencePoint vc="1" uspid="63" ordinal="1" offset="1" sl="63" sc="13" el="63" ec="98" bec="2" bev="1" fileid="2" />
+                <SequencePoint vc="1" uspid="64" ordinal="2" offset="59" sl="64" sc="9" el="64" ec="10" bec="0" bev="0" fileid="2" />
+              </SequencePoints>
+              <BranchPoints>
+                <BranchPoint vc="1" uspid="65" ordinal="0" offset="17" path="0" offsetchain="" offsetend="19" />
+                <BranchPoint vc="0" uspid="66" ordinal="1" offset="17" path="1" offsetchain="" offsetend="38" />
+              </BranchPoints>
+              <MethodPoint xsi:type="SequencePoint" vc="1" uspid="62" ordinal="0" offset="0" sl="62" sc="9" el="62" ec="10" bec="0" bev="0" fileid="2" />
+            </Method>
+            <Method visited="true" cyclomaticComplexity="1" sequenceCoverage="100" branchCoverage="100" isConstructor="true" isStatic="false" isGetter="false" isSetter="false">
+              <Summary numSequencePoints="1" visitedSequencePoints="1" numBranchPoints="1" visitedBranchPoints="1" sequenceCoverage="100" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" />
+              <MetadataToken>100663308</MetadataToken>
+              <Name>System.Void Forest.ForestTest::.ctor()</Name>
+              <FileRef uid="2" />
+              <SequencePoints>
+                <SequencePoint vc="1" uspid="67" ordinal="0" offset="0" sl="16" sc="9" el="16" ec="38" bec="0" bev="0" fileid="2" />
+              </SequencePoints>
+              <BranchPoints />
+              <MethodPoint xsi:type="SequencePoint" vc="1" uspid="67" ordinal="0" offset="0" sl="16" sc="9" el="16" ec="38" bec="0" bev="0" fileid="2" />
+            </Method>
+            <Method visited="true" cyclomaticComplexity="1" sequenceCoverage="100" branchCoverage="100" isConstructor="false" isStatic="true" isGetter="false" isSetter="false">
+              <Summary numSequencePoints="1" visitedSequencePoints="1" numBranchPoints="1" visitedBranchPoints="1" sequenceCoverage="100" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" />
+              <MetadataToken>100663309</MetadataToken>
+              <Name>System.Boolean Forest.ForestTest::&lt;FirWinterColorTest&gt;b__0(Forest.Tree)</Name>
+              <FileRef uid="2" />
+              <SequencePoints>
+                <SequencePoint vc="1" uspid="68" ordinal="0" offset="0" sl="41" sc="55" el="41" ec="84" bec="0" bev="0" fileid="2" />
+              </SequencePoints>
+              <BranchPoints />
+              <MethodPoint xsi:type="SequencePoint" vc="1" uspid="68" ordinal="0" offset="0" sl="41" sc="55" el="41" ec="84" bec="0" bev="0" fileid="2" />
+            </Method>
+            <Method visited="true" cyclomaticComplexity="1" sequenceCoverage="100" branchCoverage="100" isConstructor="false" isStatic="true" isGetter="false" isSetter="false">
+              <Summary numSequencePoints="1" visitedSequencePoints="1" numBranchPoints="1" visitedBranchPoints="1" sequenceCoverage="100" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" />
+              <MetadataToken>100663310</MetadataToken>
+              <Name>System.Boolean Forest.ForestTest::&lt;FirSummerColorTest&gt;b__2(Forest.Tree)</Name>
+              <FileRef uid="2" />
+              <SequencePoints>
+                <SequencePoint vc="1" uspid="69" ordinal="0" offset="0" sl="48" sc="55" el="48" ec="84" bec="0" bev="0" fileid="2" />
+              </SequencePoints>
+              <BranchPoints />
+              <MethodPoint xsi:type="SequencePoint" vc="1" uspid="69" ordinal="0" offset="0" sl="48" sc="55" el="48" ec="84" bec="0" bev="0" fileid="2" />
+            </Method>
+            <Method visited="true" cyclomaticComplexity="1" sequenceCoverage="100" branchCoverage="100" isConstructor="false" isStatic="true" isGetter="false" isSetter="false">
+              <Summary numSequencePoints="1" visitedSequencePoints="1" numBranchPoints="1" visitedBranchPoints="1" sequenceCoverage="100" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" />
+              <MetadataToken>100663311</MetadataToken>
+              <Name>System.Boolean Forest.ForestTest::&lt;FirGrowningTest&gt;b__4(Forest.Tree)</Name>
+              <FileRef uid="2" />
+              <SequencePoints>
+                <SequencePoint vc="1" uspid="70" ordinal="0" offset="0" sl="54" sc="59" el="54" ec="88" bec="0" bev="0" fileid="2" />
+              </SequencePoints>
+              <BranchPoints />
+              <MethodPoint xsi:type="SequencePoint" vc="1" uspid="70" ordinal="0" offset="0" sl="54" sc="59" el="54" ec="88" bec="0" bev="0" fileid="2" />
+            </Method>
+            <Method visited="true" cyclomaticComplexity="1" sequenceCoverage="100" branchCoverage="100" isConstructor="false" isStatic="true" isGetter="false" isSetter="false">
+              <Summary numSequencePoints="1" visitedSequencePoints="1" numBranchPoints="1" visitedBranchPoints="1" sequenceCoverage="100" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" />
+              <MetadataToken>100663312</MetadataToken>
+              <Name>System.Boolean Forest.ForestTest::&lt;FirIsShapelyTest&gt;b__6(Forest.Tree)</Name>
+              <FileRef uid="2" />
+              <SequencePoints>
+                <SequencePoint vc="1" uspid="71" ordinal="0" offset="0" sl="63" sc="58" el="63" ec="87" bec="0" bev="0" fileid="2" />
+              </SequencePoints>
+              <BranchPoints />
+              <MethodPoint xsi:type="SequencePoint" vc="1" uspid="71" ordinal="0" offset="0" sl="63" sc="58" el="63" ec="87" bec="0" bev="0" fileid="2" />
+            </Method>
+          </Methods>
+        </Class>
+        <Class>
+          <Summary numSequencePoints="0" visitedSequencePoints="0" numBranchPoints="0" visitedBranchPoints="0" sequenceCoverage="0" branchCoverage="0" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" />
+          <FullName>Forest.Tree</FullName>
+          <Methods>
+            <Method visited="true" cyclomaticComplexity="1" sequenceCoverage="0" branchCoverage="0" isConstructor="true" isStatic="false" isGetter="false" isSetter="false">
+              <Summary numSequencePoints="0" visitedSequencePoints="0" numBranchPoints="0" visitedBranchPoints="0" sequenceCoverage="0" branchCoverage="0" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" />
+              <MetadataToken>100663322</MetadataToken>
+              <Name>System.Void Forest.Tree::.ctor()</Name>
+              <SequencePoints />
+              <BranchPoints />
+              <MethodPoint vc="6" uspid="72" ordinal="0" offset="0" />
+            </Method>
+          </Methods>
+        </Class>
+        <Class>
+          <Summary numSequencePoints="34" visitedSequencePoints="34" numBranchPoints="10" visitedBranchPoints="10" sequenceCoverage="100" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" />
+          <FullName>Forest.FirTree</FullName>
+          <Methods>
+            <Method visited="true" cyclomaticComplexity="1" sequenceCoverage="100" branchCoverage="100" isConstructor="false" isStatic="false" isGetter="true" isSetter="false">
+              <Summary numSequencePoints="3" visitedSequencePoints="3" numBranchPoints="1" visitedBranchPoints="1" sequenceCoverage="100" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" />
+              <MetadataToken>100663325</MetadataToken>
+              <Name>Forest.TypeOfTree Forest.FirTree::get_Type()</Name>
+              <FileRef uid="3" />
+              <SequencePoints>
+                <SequencePoint vc="4" uspid="73" ordinal="0" offset="0" sl="39" sc="13" el="39" ec="14" bec="0" bev="0" fileid="3" />
+                <SequencePoint vc="4" uspid="74" ordinal="1" offset="1" sl="40" sc="17" el="40" ec="29" bec="0" bev="0" fileid="3" />
+                <SequencePoint vc="4" uspid="75" ordinal="2" offset="10" sl="41" sc="13" el="41" ec="14" bec="0" bev="0" fileid="3" />
+              </SequencePoints>
+              <BranchPoints />
+              <MethodPoint xsi:type="SequencePoint" vc="4" uspid="73" ordinal="0" offset="0" sl="39" sc="13" el="39" ec="14" bec="0" bev="0" fileid="3" />
+            </Method>
+            <Method visited="true" cyclomaticComplexity="1" sequenceCoverage="100" branchCoverage="100" isConstructor="false" isStatic="false" isGetter="false" isSetter="true">
+              <Summary numSequencePoints="3" visitedSequencePoints="3" numBranchPoints="1" visitedBranchPoints="1" sequenceCoverage="100" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" />
+              <MetadataToken>100663326</MetadataToken>
+              <Name>System.Void Forest.FirTree::set_Type(Forest.TypeOfTree)</Name>
+              <FileRef uid="3" />
+              <SequencePoints>
+                <SequencePoint vc="6" uspid="76" ordinal="0" offset="0" sl="43" sc="13" el="43" ec="14" bec="0" bev="0" fileid="3" />
+                <SequencePoint vc="6" uspid="77" ordinal="1" offset="1" sl="44" sc="17" el="44" ec="30" bec="0" bev="0" fileid="3" />
+                <SequencePoint vc="6" uspid="78" ordinal="2" offset="8" sl="45" sc="13" el="45" ec="14" bec="0" bev="0" fileid="3" />
+              </SequencePoints>
+              <BranchPoints />
+              <MethodPoint xsi:type="SequencePoint" vc="6" uspid="76" ordinal="0" offset="0" sl="43" sc="13" el="43" ec="14" bec="0" bev="0" fileid="3" />
+            </Method>
+            <Method visited="true" cyclomaticComplexity="1" sequenceCoverage="100" branchCoverage="100" isConstructor="false" isStatic="false" isGetter="true" isSetter="false">
+              <Summary numSequencePoints="3" visitedSequencePoints="3" numBranchPoints="1" visitedBranchPoints="1" sequenceCoverage="100" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" />
+              <MetadataToken>100663327</MetadataToken>
+              <Name>System.Int32 Forest.FirTree::get_Lenght()</Name>
+              <FileRef uid="3" />
+              <SequencePoints>
+                <SequencePoint vc="3" uspid="79" ordinal="0" offset="0" sl="51" sc="13" el="51" ec="14" bec="0" bev="0" fileid="3" />
+                <SequencePoint vc="3" uspid="80" ordinal="1" offset="1" sl="52" sc="17" el="52" ec="31" bec="0" bev="0" fileid="3" />
+                <SequencePoint vc="3" uspid="81" ordinal="2" offset="10" sl="53" sc="13" el="53" ec="14" bec="0" bev="0" fileid="3" />
+              </SequencePoints>
+              <BranchPoints />
+              <MethodPoint xsi:type="SequencePoint" vc="3" uspid="79" ordinal="0" offset="0" sl="51" sc="13" el="51" ec="14" bec="0" bev="0" fileid="3" />
+            </Method>
+            <Method visited="true" cyclomaticComplexity="1" sequenceCoverage="100" branchCoverage="100" isConstructor="false" isStatic="false" isGetter="false" isSetter="true">
+              <Summary numSequencePoints="3" visitedSequencePoints="3" numBranchPoints="1" visitedBranchPoints="1" sequenceCoverage="100" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" />
+              <MetadataToken>100663328</MetadataToken>
+              <Name>System.Void Forest.FirTree::set_Lenght(System.Int32)</Name>
+              <FileRef uid="3" />
+              <SequencePoints>
+                <SequencePoint vc="7" uspid="82" ordinal="0" offset="0" sl="55" sc="13" el="55" ec="14" bec="0" bev="0" fileid="3" />
+                <SequencePoint vc="7" uspid="83" ordinal="1" offset="1" sl="56" sc="17" el="56" ec="32" bec="0" bev="0" fileid="3" />
+                <SequencePoint vc="7" uspid="84" ordinal="2" offset="8" sl="57" sc="13" el="57" ec="14" bec="0" bev="0" fileid="3" />
+              </SequencePoints>
+              <BranchPoints />
+              <MethodPoint xsi:type="SequencePoint" vc="7" uspid="82" ordinal="0" offset="0" sl="55" sc="13" el="55" ec="14" bec="0" bev="0" fileid="3" />
+            </Method>
+            <Method visited="true" cyclomaticComplexity="1" sequenceCoverage="100" branchCoverage="100" isConstructor="false" isStatic="false" isGetter="true" isSetter="false">
+              <Summary numSequencePoints="3" visitedSequencePoints="3" numBranchPoints="1" visitedBranchPoints="1" sequenceCoverage="100" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" />
+              <MetadataToken>100663329</MetadataToken>
+              <Name>System.String Forest.FirTree::get_Color()</Name>
+              <FileRef uid="3" />
+              <SequencePoints>
+                <SequencePoint vc="2" uspid="85" ordinal="0" offset="0" sl="63" sc="13" el="63" ec="14" bec="0" bev="0" fileid="3" />
+                <SequencePoint vc="2" uspid="86" ordinal="1" offset="1" sl="64" sc="17" el="64" ec="30" bec="0" bev="0" fileid="3" />
+                <SequencePoint vc="2" uspid="87" ordinal="2" offset="10" sl="65" sc="15" el="65" ec="16" bec="0" bev="0" fileid="3" />
+              </SequencePoints>
+              <BranchPoints />
+              <MethodPoint xsi:type="SequencePoint" vc="2" uspid="85" ordinal="0" offset="0" sl="63" sc="13" el="63" ec="14" bec="0" bev="0" fileid="3" />
+            </Method>
+            <Method visited="true" cyclomaticComplexity="1" sequenceCoverage="100" branchCoverage="100" isConstructor="false" isStatic="false" isGetter="false" isSetter="true">
+              <Summary numSequencePoints="3" visitedSequencePoints="3" numBranchPoints="1" visitedBranchPoints="1" sequenceCoverage="100" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" />
+              <MetadataToken>100663330</MetadataToken>
+              <Name>System.Void Forest.FirTree::set_Color(System.String)</Name>
+              <FileRef uid="3" />
+              <SequencePoints>
+                <SequencePoint vc="6" uspid="88" ordinal="0" offset="0" sl="67" sc="13" el="67" ec="14" bec="0" bev="0" fileid="3" />
+                <SequencePoint vc="6" uspid="89" ordinal="1" offset="1" sl="68" sc="17" el="68" ec="31" bec="0" bev="0" fileid="3" />
+                <SequencePoint vc="6" uspid="90" ordinal="2" offset="8" sl="69" sc="13" el="69" ec="14" bec="0" bev="0" fileid="3" />
+              </SequencePoints>
+              <BranchPoints />
+              <MethodPoint xsi:type="SequencePoint" vc="6" uspid="88" ordinal="0" offset="0" sl="67" sc="13" el="67" ec="14" bec="0" bev="0" fileid="3" />
+            </Method>
+            <Method visited="true" cyclomaticComplexity="1" sequenceCoverage="100" branchCoverage="100" isConstructor="false" isStatic="false" isGetter="true" isSetter="false">
+              <Summary numSequencePoints="3" visitedSequencePoints="3" numBranchPoints="1" visitedBranchPoints="1" sequenceCoverage="100" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" />
+              <MetadataToken>100663331</MetadataToken>
+              <Name>System.Boolean Forest.FirTree::get_Shapely()</Name>
+              <FileRef uid="3" />
+              <SequencePoints>
+                <SequencePoint vc="1" uspid="91" ordinal="0" offset="0" sl="75" sc="13" el="75" ec="14" bec="0" bev="0" fileid="3" />
+                <SequencePoint vc="1" uspid="92" ordinal="1" offset="1" sl="76" sc="17" el="76" ec="32" bec="0" bev="0" fileid="3" />
+                <SequencePoint vc="1" uspid="93" ordinal="2" offset="10" sl="77" sc="13" el="77" ec="14" bec="0" bev="0" fileid="3" />
+              </SequencePoints>
+              <BranchPoints />
+              <MethodPoint xsi:type="SequencePoint" vc="1" uspid="91" ordinal="0" offset="0" sl="75" sc="13" el="75" ec="14" bec="0" bev="0" fileid="3" />
+            </Method>
+            <Method visited="true" cyclomaticComplexity="1" sequenceCoverage="100" branchCoverage="100" isConstructor="false" isStatic="false" isGetter="false" isSetter="true">
+              <Summary numSequencePoints="3" visitedSequencePoints="3" numBranchPoints="1" visitedBranchPoints="1" sequenceCoverage="100" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" />
+              <MetadataToken>100663332</MetadataToken>
+              <Name>System.Void Forest.FirTree::set_Shapely(System.Boolean)</Name>
+              <FileRef uid="3" />
+              <SequencePoints>
+                <SequencePoint vc="6" uspid="94" ordinal="0" offset="0" sl="79" sc="13" el="79" ec="14" bec="0" bev="0" fileid="3" />
+                <SequencePoint vc="6" uspid="95" ordinal="1" offset="1" sl="80" sc="17" el="80" ec="33" bec="0" bev="0" fileid="3" />
+                <SequencePoint vc="6" uspid="96" ordinal="2" offset="8" sl="81" sc="13" el="81" ec="14" bec="0" bev="0" fileid="3" />
+              </SequencePoints>
+              <BranchPoints />
+              <MethodPoint xsi:type="SequencePoint" vc="6" uspid="94" ordinal="0" offset="0" sl="79" sc="13" el="79" ec="14" bec="0" bev="0" fileid="3" />
+            </Method>
+            <Method visited="true" cyclomaticComplexity="1" sequenceCoverage="100" branchCoverage="100" isConstructor="true" isStatic="false" isGetter="false" isSetter="false">
+              <Summary numSequencePoints="7" visitedSequencePoints="7" numBranchPoints="1" visitedBranchPoints="1" sequenceCoverage="100" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" />
+              <MetadataToken>100663323</MetadataToken>
+              <Name>System.Void Forest.FirTree::.ctor()</Name>
+              <FileRef uid="3" />
+              <SequencePoints>
+                <SequencePoint vc="6" uspid="97" ordinal="0" offset="0" sl="21" sc="9" el="21" ec="25" bec="0" bev="0" fileid="3" />
+                <SequencePoint vc="6" uspid="98" ordinal="1" offset="7" sl="22" sc="9" el="22" ec="10" bec="0" bev="0" fileid="3" />
+                <SequencePoint vc="6" uspid="99" ordinal="2" offset="8" sl="23" sc="13" el="23" ec="35" bec="0" bev="0" fileid="3" />
+                <SequencePoint vc="6" uspid="100" ordinal="3" offset="16" sl="24" sc="13" el="24" ec="24" bec="0" bev="0" fileid="3" />
+                <SequencePoint vc="6" uspid="101" ordinal="4" offset="24" sl="25" sc="13" el="25" ec="28" bec="0" bev="0" fileid="3" />
+                <SequencePoint vc="6" uspid="102" ordinal="5" offset="32" sl="26" sc="13" el="26" ec="29" bec="0" bev="0" fileid="3" />
+                <SequencePoint vc="6" uspid="103" ordinal="6" offset="44" sl="27" sc="9" el="27" ec="10" bec="0" bev="0" fileid="3" />
+              </SequencePoints>
+              <BranchPoints />
+              <MethodPoint xsi:type="SequencePoint" vc="6" uspid="97" ordinal="0" offset="0" sl="21" sc="9" el="21" ec="25" bec="0" bev="0" fileid="3" />
+            </Method>
+            <Method visited="true" cyclomaticComplexity="1" sequenceCoverage="100" branchCoverage="100" isConstructor="false" isStatic="false" isGetter="false" isSetter="false">
+              <Summary numSequencePoints="3" visitedSequencePoints="3" numBranchPoints="1" visitedBranchPoints="1" sequenceCoverage="100" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" />
+              <MetadataToken>100663324</MetadataToken>
+              <Name>System.Void Forest.FirTree::Grow()</Name>
+              <FileRef uid="3" />
+              <SequencePoints>
+                <SequencePoint vc="1" uspid="104" ordinal="0" offset="0" sl="32" sc="9" el="32" ec="10" bec="0" bev="0" fileid="3" />
+                <SequencePoint vc="1" uspid="105" ordinal="1" offset="1" sl="33" sc="13" el="33" ec="22" bec="0" bev="0" fileid="3" />
+                <SequencePoint vc="1" uspid="106" ordinal="2" offset="16" sl="34" sc="9" el="34" ec="10" bec="0" bev="0" fileid="3" />
+              </SequencePoints>
+              <BranchPoints />
+              <MethodPoint xsi:type="SequencePoint" vc="1" uspid="104" ordinal="0" offset="0" sl="32" sc="9" el="32" ec="10" bec="0" bev="0" fileid="3" />
+            </Method>
+          </Methods>
+        </Class>
+        <Class>
+          <Summary numSequencePoints="33" visitedSequencePoints="0" numBranchPoints="10" visitedBranchPoints="0" sequenceCoverage="0" branchCoverage="0" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" />
+          <FullName>Forest.SomeAbstractTree</FullName>
+          <Methods>
+            <Method visited="false" cyclomaticComplexity="1" sequenceCoverage="0" branchCoverage="0" isConstructor="false" isStatic="false" isGetter="true" isSetter="false">
+              <Summary numSequencePoints="3" visitedSequencePoints="0" numBranchPoints="1" visitedBranchPoints="0" sequenceCoverage="0" branchCoverage="0" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" />
+              <MetadataToken>100663335</MetadataToken>
+              <Name>Forest.TypeOfTree Forest.SomeAbstractTree::get_Type()</Name>
+              <FileRef uid="4" />
+              <SequencePoints>
+                <SequencePoint vc="0" uspid="107" ordinal="0" offset="0" sl="38" sc="13" el="38" ec="14" bec="0" bev="0" fileid="4" />
+                <SequencePoint vc="0" uspid="108" ordinal="1" offset="1" sl="39" sc="17" el="39" ec="29" bec="0" bev="0" fileid="4" />
+                <SequencePoint vc="0" uspid="109" ordinal="2" offset="10" sl="40" sc="13" el="40" ec="14" bec="0" bev="0" fileid="4" />
+              </SequencePoints>
+              <BranchPoints />
+              <MethodPoint xsi:type="SequencePoint" vc="0" uspid="107" ordinal="0" offset="0" sl="38" sc="13" el="38" ec="14" bec="0" bev="0" fileid="4" />
+            </Method>
+            <Method visited="false" cyclomaticComplexity="1" sequenceCoverage="0" branchCoverage="0" isConstructor="false" isStatic="false" isGetter="false" isSetter="true">
+              <Summary numSequencePoints="3" visitedSequencePoints="0" numBranchPoints="1" visitedBranchPoints="0" sequenceCoverage="0" branchCoverage="0" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" />
+              <MetadataToken>100663336</MetadataToken>
+              <Name>System.Void Forest.SomeAbstractTree::set_Type(Forest.TypeOfTree)</Name>
+              <FileRef uid="4" />
+              <SequencePoints>
+                <SequencePoint vc="0" uspid="110" ordinal="0" offset="0" sl="42" sc="13" el="42" ec="14" bec="0" bev="0" fileid="4" />
+                <SequencePoint vc="0" uspid="111" ordinal="1" offset="1" sl="43" sc="17" el="43" ec="30" bec="0" bev="0" fileid="4" />
+                <SequencePoint vc="0" uspid="112" ordinal="2" offset="8" sl="44" sc="13" el="44" ec="14" bec="0" bev="0" fileid="4" />
+              </SequencePoints>
+              <BranchPoints />
+              <MethodPoint xsi:type="SequencePoint" vc="0" uspid="110" ordinal="0" offset="0" sl="42" sc="13" el="42" ec="14" bec="0" bev="0" fileid="4" />
+            </Method>
+            <Method visited="false" cyclomaticComplexity="1" sequenceCoverage="0" branchCoverage="0" isConstructor="false" isStatic="false" isGetter="true" isSetter="false">
+              <Summary numSequencePoints="3" visitedSequencePoints="0" numBranchPoints="1" visitedBranchPoints="0" sequenceCoverage="0" branchCoverage="0" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" />
+              <MetadataToken>100663337</MetadataToken>
+              <Name>System.Int32 Forest.SomeAbstractTree::get_Lenght()</Name>
+              <FileRef uid="4" />
+              <SequencePoints>
+                <SequencePoint vc="0" uspid="113" ordinal="0" offset="0" sl="50" sc="13" el="50" ec="14" bec="0" bev="0" fileid="4" />
+                <SequencePoint vc="0" uspid="114" ordinal="1" offset="1" sl="51" sc="17" el="51" ec="31" bec="0" bev="0" fileid="4" />
+                <SequencePoint vc="0" uspid="115" ordinal="2" offset="10" sl="52" sc="13" el="52" ec="14" bec="0" bev="0" fileid="4" />
+              </SequencePoints>
+              <BranchPoints />
+              <MethodPoint xsi:type="SequencePoint" vc="0" uspid="113" ordinal="0" offset="0" sl="50" sc="13" el="50" ec="14" bec="0" bev="0" fileid="4" />
+            </Method>
+            <Method visited="false" cyclomaticComplexity="1" sequenceCoverage="0" branchCoverage="0" isConstructor="false" isStatic="false" isGetter="false" isSetter="true">
+              <Summary numSequencePoints="3" visitedSequencePoints="0" numBranchPoints="1" visitedBranchPoints="0" sequenceCoverage="0" branchCoverage="0" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" />
+              <MetadataToken>100663338</MetadataToken>
+              <Name>System.Void Forest.SomeAbstractTree::set_Lenght(System.Int32)</Name>
+              <FileRef uid="4" />
+              <SequencePoints>
+                <SequencePoint vc="0" uspid="116" ordinal="0" offset="0" sl="54" sc="13" el="54" ec="14" bec="0" bev="0" fileid="4" />
+                <SequencePoint vc="0" uspid="117" ordinal="1" offset="1" sl="55" sc="17" el="55" ec="32" bec="0" bev="0" fileid="4" />
+                <SequencePoint vc="0" uspid="118" ordinal="2" offset="8" sl="56" sc="13" el="56" ec="14" bec="0" bev="0" fileid="4" />
+              </SequencePoints>
+              <BranchPoints />
+              <MethodPoint xsi:type="SequencePoint" vc="0" uspid="116" ordinal="0" offset="0" sl="54" sc="13" el="54" ec="14" bec="0" bev="0" fileid="4" />
+            </Method>
+            <Method visited="false" cyclomaticComplexity="1" sequenceCoverage="0" branchCoverage="0" isConstructor="false" isStatic="false" isGetter="true" isSetter="false">
+              <Summary numSequencePoints="3" visitedSequencePoints="0" numBranchPoints="1" visitedBranchPoints="0" sequenceCoverage="0" branchCoverage="0" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" />
+              <MetadataToken>100663339</MetadataToken>
+              <Name>System.String Forest.SomeAbstractTree::get_Color()</Name>
+              <FileRef uid="4" />
+              <SequencePoints>
+                <SequencePoint vc="0" uspid="119" ordinal="0" offset="0" sl="62" sc="13" el="62" ec="14" bec="0" bev="0" fileid="4" />
+                <SequencePoint vc="0" uspid="120" ordinal="1" offset="1" sl="63" sc="17" el="63" ec="30" bec="0" bev="0" fileid="4" />
+                <SequencePoint vc="0" uspid="121" ordinal="2" offset="10" sl="64" sc="13" el="64" ec="14" bec="0" bev="0" fileid="4" />
+              </SequencePoints>
+              <BranchPoints />
+              <MethodPoint xsi:type="SequencePoint" vc="0" uspid="119" ordinal="0" offset="0" sl="62" sc="13" el="62" ec="14" bec="0" bev="0" fileid="4" />
+            </Method>
+            <Method visited="false" cyclomaticComplexity="1" sequenceCoverage="0" branchCoverage="0" isConstructor="false" isStatic="false" isGetter="false" isSetter="true">
+              <Summary numSequencePoints="3" visitedSequencePoints="0" numBranchPoints="1" visitedBranchPoints="0" sequenceCoverage="0" branchCoverage="0" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" />
+              <MetadataToken>100663340</MetadataToken>
+              <Name>System.Void Forest.SomeAbstractTree::set_Color(System.String)</Name>
+              <FileRef uid="4" />
+              <SequencePoints>
+                <SequencePoint vc="0" uspid="122" ordinal="0" offset="0" sl="66" sc="13" el="66" ec="14" bec="0" bev="0" fileid="4" />
+                <SequencePoint vc="0" uspid="123" ordinal="1" offset="1" sl="67" sc="17" el="67" ec="31" bec="0" bev="0" fileid="4" />
+                <SequencePoint vc="0" uspid="124" ordinal="2" offset="8" sl="68" sc="13" el="68" ec="14" bec="0" bev="0" fileid="4" />
+              </SequencePoints>
+              <BranchPoints />
+              <MethodPoint xsi:type="SequencePoint" vc="0" uspid="122" ordinal="0" offset="0" sl="66" sc="13" el="66" ec="14" bec="0" bev="0" fileid="4" />
+            </Method>
+            <Method visited="false" cyclomaticComplexity="1" sequenceCoverage="0" branchCoverage="0" isConstructor="false" isStatic="false" isGetter="true" isSetter="false">
+              <Summary numSequencePoints="3" visitedSequencePoints="0" numBranchPoints="1" visitedBranchPoints="0" sequenceCoverage="0" branchCoverage="0" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" />
+              <MetadataToken>100663341</MetadataToken>
+              <Name>System.Boolean Forest.SomeAbstractTree::get_Shapely()</Name>
+              <FileRef uid="4" />
+              <SequencePoints>
+                <SequencePoint vc="0" uspid="125" ordinal="0" offset="0" sl="74" sc="13" el="74" ec="14" bec="0" bev="0" fileid="4" />
+                <SequencePoint vc="0" uspid="126" ordinal="1" offset="1" sl="75" sc="17" el="75" ec="32" bec="0" bev="0" fileid="4" />
+                <SequencePoint vc="0" uspid="127" ordinal="2" offset="10" sl="76" sc="13" el="76" ec="14" bec="0" bev="0" fileid="4" />
+              </SequencePoints>
+              <BranchPoints />
+              <MethodPoint xsi:type="SequencePoint" vc="0" uspid="125" ordinal="0" offset="0" sl="74" sc="13" el="74" ec="14" bec="0" bev="0" fileid="4" />
+            </Method>
+            <Method visited="false" cyclomaticComplexity="1" sequenceCoverage="0" branchCoverage="0" isConstructor="false" isStatic="false" isGetter="false" isSetter="true">
+              <Summary numSequencePoints="3" visitedSequencePoints="0" numBranchPoints="1" visitedBranchPoints="0" sequenceCoverage="0" branchCoverage="0" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" />
+              <MetadataToken>100663342</MetadataToken>
+              <Name>System.Void Forest.SomeAbstractTree::set_Shapely(System.Boolean)</Name>
+              <FileRef uid="4" />
+              <SequencePoints>
+                <SequencePoint vc="0" uspid="128" ordinal="0" offset="0" sl="78" sc="13" el="78" ec="14" bec="0" bev="0" fileid="4" />
+                <SequencePoint vc="0" uspid="129" ordinal="1" offset="1" sl="79" sc="17" el="79" ec="33" bec="0" bev="0" fileid="4" />
+                <SequencePoint vc="0" uspid="130" ordinal="2" offset="8" sl="80" sc="13" el="80" ec="14" bec="0" bev="0" fileid="4" />
+              </SequencePoints>
+              <BranchPoints />
+              <MethodPoint xsi:type="SequencePoint" vc="0" uspid="128" ordinal="0" offset="0" sl="78" sc="13" el="78" ec="14" bec="0" bev="0" fileid="4" />
+            </Method>
+            <Method visited="false" cyclomaticComplexity="1" sequenceCoverage="0" branchCoverage="0" isConstructor="true" isStatic="false" isGetter="false" isSetter="false">
+              <Summary numSequencePoints="7" visitedSequencePoints="0" numBranchPoints="1" visitedBranchPoints="0" sequenceCoverage="0" branchCoverage="0" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" />
+              <MetadataToken>100663333</MetadataToken>
+              <Name>System.Void Forest.SomeAbstractTree::.ctor()</Name>
+              <FileRef uid="4" />
+              <SequencePoints>
+                <SequencePoint vc="0" uspid="131" ordinal="0" offset="0" sl="21" sc="9" el="21" ec="34" bec="0" bev="0" fileid="4" />
+                <SequencePoint vc="0" uspid="132" ordinal="1" offset="7" sl="22" sc="9" el="22" ec="10" bec="0" bev="0" fileid="4" />
+                <SequencePoint vc="0" uspid="133" ordinal="2" offset="8" sl="23" sc="13" el="23" ec="39" bec="0" bev="0" fileid="4" />
+                <SequencePoint vc="0" uspid="134" ordinal="3" offset="16" sl="24" sc="13" el="24" ec="24" bec="0" bev="0" fileid="4" />
+                <SequencePoint vc="0" uspid="135" ordinal="4" offset="24" sl="25" sc="13" el="25" ec="29" bec="0" bev="0" fileid="4" />
+                <SequencePoint vc="0" uspid="136" ordinal="5" offset="32" sl="26" sc="13" el="26" ec="33" bec="0" bev="0" fileid="4" />
+                <SequencePoint vc="0" uspid="137" ordinal="6" offset="44" sl="27" sc="9" el="27" ec="10" bec="0" bev="0" fileid="4" />
+              </SequencePoints>
+              <BranchPoints />
+              <MethodPoint xsi:type="SequencePoint" vc="0" uspid="131" ordinal="0" offset="0" sl="21" sc="9" el="21" ec="34" bec="0" bev="0" fileid="4" />
+            </Method>
+            <Method visited="false" cyclomaticComplexity="1" sequenceCoverage="0" branchCoverage="0" isConstructor="false" isStatic="false" isGetter="false" isSetter="false">
+              <Summary numSequencePoints="2" visitedSequencePoints="0" numBranchPoints="1" visitedBranchPoints="0" sequenceCoverage="0" branchCoverage="0" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" />
+              <MetadataToken>100663334</MetadataToken>
+              <Name>System.Void Forest.SomeAbstractTree::Grow()</Name>
+              <FileRef uid="4" />
+              <SequencePoints>
+                <SequencePoint vc="0" uspid="138" ordinal="0" offset="0" sl="31" sc="9" el="31" ec="10" bec="0" bev="0" fileid="4" />
+                <SequencePoint vc="0" uspid="139" ordinal="1" offset="1" sl="33" sc="9" el="33" ec="10" bec="0" bev="0" fileid="4" />
+              </SequencePoints>
+              <BranchPoints />
+              <MethodPoint xsi:type="SequencePoint" vc="0" uspid="138" ordinal="0" offset="0" sl="31" sc="9" el="31" ec="10" bec="0" bev="0" fileid="4" />
+            </Method>
+          </Methods>
+        </Class>
+        <Class>
+          <Summary numSequencePoints="7" visitedSequencePoints="4" numBranchPoints="5" visitedBranchPoints="2" sequenceCoverage="57.14" branchCoverage="40" maxCyclomaticComplexity="5" minCyclomaticComplexity="1" />
+          <FullName>Forest.TreeCreator</FullName>
+          <Methods>
+            <Method visited="true" cyclomaticComplexity="5" sequenceCoverage="57.14" branchCoverage="40" isConstructor="false" isStatic="false" isGetter="false" isSetter="false">
+              <Summary numSequencePoints="7" visitedSequencePoints="4" numBranchPoints="5" visitedBranchPoints="2" sequenceCoverage="57.14" branchCoverage="40" maxCyclomaticComplexity="5" minCyclomaticComplexity="5" />
+              <MetadataToken>100663343</MetadataToken>
+              <Name>Forest.Tree Forest.TreeCreator::Born(Forest.TypeOfTree)</Name>
+              <FileRef uid="5" />
+              <SequencePoints>
+                <SequencePoint vc="6" uspid="140" ordinal="0" offset="0" sl="17" sc="9" el="17" ec="10" bec="0" bev="0" fileid="5" />
+                <SequencePoint vc="6" uspid="141" ordinal="1" offset="1" sl="18" sc="13" el="18" ec="26" bec="4" bev="1" fileid="5" />
+                <SequencePoint vc="6" uspid="142" ordinal="2" offset="25" sl="21" sc="21" el="21" ec="42" bec="0" bev="0" fileid="5" />
+                <SequencePoint vc="0" uspid="143" ordinal="3" offset="33" sl="23" sc="21" el="23" ec="51" bec="0" bev="0" fileid="5" />
+                <SequencePoint vc="0" uspid="144" ordinal="4" offset="41" sl="25" sc="21" el="25" ec="51" bec="0" bev="0" fileid="5" />
+                <SequencePoint vc="0" uspid="145" ordinal="5" offset="49" sl="27" sc="21" el="27" ec="51" bec="0" bev="0" fileid="5" />
+                <SequencePoint vc="6" uspid="146" ordinal="6" offset="57" sl="30" sc="9" el="30" ec="10" bec="0" bev="0" fileid="5" />
+              </SequencePoints>
+              <BranchPoints>
+                <BranchPoint vc="0" uspid="147" ordinal="0" offset="6" path="0" offsetchain="23" offsetend="49" />
+                <BranchPoint vc="6" uspid="148" ordinal="1" offset="6" path="1" offsetchain="" offsetend="25" />
+                <BranchPoint vc="0" uspid="149" ordinal="2" offset="6" path="2" offsetchain="" offsetend="33" />
+                <BranchPoint vc="0" uspid="150" ordinal="3" offset="6" path="3" offsetchain="" offsetend="41" />
+              </BranchPoints>
+              <MethodPoint xsi:type="SequencePoint" vc="6" uspid="140" ordinal="0" offset="0" sl="17" sc="9" el="17" ec="10" bec="0" bev="0" fileid="5" />
+            </Method>
+            <Method visited="true" cyclomaticComplexity="1" sequenceCoverage="0" branchCoverage="0" isConstructor="true" isStatic="false" isGetter="false" isSetter="false">
+              <Summary numSequencePoints="0" visitedSequencePoints="0" numBranchPoints="0" visitedBranchPoints="0" sequenceCoverage="0" branchCoverage="0" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" />
+              <MetadataToken>100663344</MetadataToken>
+              <Name>System.Void Forest.TreeCreator::.ctor()</Name>
+              <SequencePoints />
+              <BranchPoints />
+              <MethodPoint vc="6" uspid="151" ordinal="0" offset="0" />
+            </Method>
+          </Methods>
+        </Class>
+      </Classes>
+    </Module>
+    <Module skippedDueTo="MissingPdb" hash="42-83-FE-A6-9F-01-8E-2C-E8-41-E9-25-3E-1E-0D-99-81-76-6B-C9">
+      <FullName>C:\Users\Sergey Ermolov\AppData\Local\Temp\nunit20\ShadowCopyCache\4048_635938979809525902\Tests_149288136\assembly\dl3\6c5f3124\00cfe7c2_59bfcf01\nunit.framework.dll</FullName>
+      <ModuleName>nunit.framework</ModuleName>
+      <Classes />
+    </Module>
+  </Modules>
+</CoverageSession>
