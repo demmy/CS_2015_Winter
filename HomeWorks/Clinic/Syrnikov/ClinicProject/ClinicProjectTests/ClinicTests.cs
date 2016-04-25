@@ -12,6 +12,84 @@ namespace ClinicProjectTests
     class ClinicTests
     {
         [Test]
+        public void AddDoctorTest()
+        {
+            // arrange
+            IClinic testClinic = new Clinic();
+
+            // act
+            testClinic.AddDoctor(new Orthopedist());
+
+            // assert
+            Assert.IsNotNull(testClinic.Doctors);
+        }
+
+        [Test]
+        public void AddPatientTest()
+        {
+            // arrange
+            IClinic testClinic = new Clinic();
+
+            // act
+            testClinic.AddPatient(new Patient());
+
+            // assert
+            Assert.IsNotNull(testClinic.Patients);
+        }
+
+        [Test]
+        public void ClinicShouldGiveRightDoctor()
+        {
+            // arrange
+            IClinic testClinic = new Clinic();
+            IPatient testPatient = new Patient();
+            testPatient.PatientComplaint.Symptoms.Add(Symptom.Headache);
+
+            // act
+            IDoctor returnedDoctor = testClinic.GiveDoctor(testPatient);
+
+            // assert
+            Assert.IsTrue(returnedDoctor is Orthopedist);
+        }
+
+        [Test]
+        public void ClinicShouldGiveBillForTreatment()
+        {
+            // arrange
+            IClinic testClinic = new Clinic();
+            IPatient testPatient = new Patient();
+            testPatient.PatientComplaint.Symptoms.Add(Symptom.Headache);
+            IDoctor testDoctor = testClinic.GiveDoctor(testPatient);
+            Treatment testTreatment = testDoctor.PrescribeTreatment(testDoctor.Diagnosticate(testPatient.PatientComplaint));
+
+            // act
+            Bill returnedBill = testClinic.GiveBill(testTreatment);
+
+            // assert
+            Assert.IsNotNull(returnedBill);
+        }
+
+        [Test]
+        public void ClinicShouldCure()
+        {
+            // arrange
+            IClinic testClinic = new Clinic();
+            IPatient testPatient = new Patient();
+            testPatient.PatientComplaint.Symptoms.Add(Symptom.Headache);
+            IDoctor testDoctor = testClinic.GiveDoctor(testPatient);
+            Treatment testTreatment = testDoctor.PrescribeTreatment(testDoctor.Diagnosticate(testPatient.PatientComplaint));
+            Bill returnedBill = testClinic.GiveBill(testTreatment);
+            testPatient.PayBill();
+
+            // act
+            testClinic.Cure(testPatient, testDoctor.Diagnosticate(testPatient.PatientComplaint), testTreatment);
+
+            // assert
+            Assert.IsNull(testPatient.PatientComplaint.Symptoms);
+        }
+
+
+        [Test]
         public void UseCaseTest()
         {
             // arrange
@@ -40,15 +118,13 @@ namespace ClinicProjectTests
             Bill billForPatient = testClinic.GiveBill(appointmentForPatient);
 
             //Страховая компания оплачивает счет.
-            testInsuranceCompany.PayBill(testPatient.Insurance, billForPatient);
-            //testPatient.PayBill();
+            testPatient.PayBill();
 
             //После оплаты больница начинает лечение.
             testClinic.Cure(testPatient, diagnosisForPatient, appointmentForPatient);
 
             // assert
-            
-
+            Assert.IsNull(testPatient.PatientComplaint.Symptoms);
         }
     }
 }

@@ -29,7 +29,19 @@ namespace ClinicProjectTests
             // act
 
             // assert
+        }
 
+        [Test]
+        public void PayBillTest()
+        {
+            // arrange
+            IPatient testPatient = new Patient();
+            // act
+            testPatient.PatientBill = new Bill();
+            testPatient.PayBill();
+
+            // assert
+            Assert.IsTrue(testPatient.PatientBill.IsPayed);
 
         }
     }

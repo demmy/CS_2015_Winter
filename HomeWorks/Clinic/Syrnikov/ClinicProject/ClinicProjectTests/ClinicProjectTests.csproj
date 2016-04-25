@@ -61,6 +61,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClinicTests.cs" />
+    <Compile Include="DoctorTest.cs" />
     <Compile Include="InsuranceCompanyTests.cs" />
     <Compile Include="PatientTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
