@@ -24,7 +24,7 @@ namespace WindowsFormsApplication2
 
             var person = database.Persons.Select(x => x.FName +" "+x.LName).FirstOrDefault();
 
-            textBox1.Text = person;
+            textBox1.Text = person.ToString();
         }
     }
 }
