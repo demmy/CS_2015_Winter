@@ -10,6 +10,7 @@ namespace ClinicProject
     {
         Bill PatientBill { get; set; }
         Complaint PatientComplaint { get; set; }
+
         void PayBill();
     }
 }

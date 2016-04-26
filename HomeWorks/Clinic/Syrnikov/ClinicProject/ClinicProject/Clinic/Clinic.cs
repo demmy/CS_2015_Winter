@@ -7,7 +7,7 @@ namespace ClinicProject
     {
         public decimal Balance { get; set; }
         public List<IDoctor> Doctors { get; }
-        public List<IPatient> Patients { get; }
+        public List<IPatient> Patients { get; }       
 
         public void AddDoctor(IDoctor doctor)
         {

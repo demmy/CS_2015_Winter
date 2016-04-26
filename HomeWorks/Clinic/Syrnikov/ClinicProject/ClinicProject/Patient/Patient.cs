@@ -12,9 +12,19 @@ namespace ClinicProject
 
         public Complaint PatientComplaint { get; set; }
 
+        public Patient()
+        {
+            InsuranceCompany.BillIsPayed += BillIsPayed;
+        }
+
         public void PayBill()
         {
-            // use InsuranceCompany?
+            // use InsuranceCompany
+        }
+
+        private void BillIsPayed(InsuranceAccount account)
+        {
+            PatientBill.IsPayed = true;
         }
     }
 }
